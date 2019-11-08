@@ -86,12 +86,33 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="L0x1c-Grow Up">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta name="description" content="记录一下buuctf的write up.RE1.Easyre下载后的拖进ida64:  发现 flag{this_Is_a_EaSyRe} 2.helloword打开下载的压缩包里面发现是个apk的文件拖进APK改之理找到主函数发现flag  flag{7631a988259a00816deda84afb29430a} 3.Reverse1打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Buuctf wp">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;08&#x2F;hello-world&#x2F;index.html">
 <meta property="og:site_name" content="L0x1c-Grow Up">
+<meta property="og:description" content="记录一下buuctf的write up.RE1.Easyre下载后的拖进ida64:  发现 flag{this_Is_a_EaSyRe} 2.helloword打开下载的压缩包里面发现是个apk的文件拖进APK改之理找到主函数发现flag  flag{7631a988259a00816deda84afb29430a} 3.Reverse1打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-0.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-10.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-11.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-12.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-13.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-14.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-15.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-25.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-26.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-27.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-28.png">
+<meta property="og:updated_time" content="2019-11-08T14:25:05.519Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-0.png">
 
 
 
@@ -121,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/08/hello-world/"/>
 
 
 
 
 
-  <title>L0x1c-Grow Up</title>
+  <title>Buuctf wp | L0x1c-Grow Up</title>
   
 
 
@@ -146,8 +167,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,9 +274,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -286,9 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/hello-world/" itemprop="url">Buuctf wp</a></h1>
+          <h1 class="post-title" itemprop="name headline">Buuctf wp</h1>
         
 
         <div class="post-meta">
@@ -377,9 +395,7 @@
       
 
       
-        
-          
-            <h3 id="记录一下buuctf的write-up"><a href="#记录一下buuctf的write-up" class="headerlink" title="记录一下buuctf的write up."></a>记录一下buuctf的write up.</h3><h2 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h2><h3 id="1-Easyre"><a href="#1-Easyre" class="headerlink" title="1.Easyre"></a>1.Easyre</h3><p>下载后的拖进ida64:</p>
+        <h3 id="记录一下buuctf的write-up"><a href="#记录一下buuctf的write-up" class="headerlink" title="记录一下buuctf的write up."></a>记录一下buuctf的write up.</h3><h2 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h2><h3 id="1-Easyre"><a href="#1-Easyre" class="headerlink" title="1.Easyre"></a>1.Easyre</h3><p>下载后的拖进ida64:</p>
 <p><img src="/images/pasted-0.png" alt="upload successful"></p>
 <p>发现 flag{this_Is_a_EaSyRe}</p>
 <h3 id="2-helloword"><a href="#2-helloword" class="headerlink" title="2.helloword"></a>2.helloword</h3><p>打开下载的压缩包里面发现是个apk的文件<br>拖进APK改之理找到主函数发现flag</p>
@@ -418,8 +434,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ( v6 == 2 )</span><br><span class="line">    &#123;</span><br><span class="line">      ++v4;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ( v6 &gt; 2 )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( v6 == 3 )</span><br><span class="line">      &#123;</span><br><span class="line">        --v5;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( v6 != 4 )</span><br><span class="line">LABEL_13:</span><br><span class="line">          <span class="built_in">exit</span>(1);</span><br><span class="line">        ++v5;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( v6 != 1 )</span><br><span class="line">        goto LABEL_13;</span><br><span class="line">      --v4;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>可以看到v6是输入的值，我们up和down是v4进行操作，left和right是v5进行操作<br>5 * v4 - 41 + v5  看出来是5<em>5方阵：<br></em>1111<br>01000<br>01010<br>00010<br>1111#<br>走迷宫flag为22244114422：flag{22244114422}</p>
 
-          
-        
       
     </div>
     
@@ -436,12 +450,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -451,10 +465,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -462,6 +477,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -482,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -559,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录一下buuctf的write-up"><span class="nav-number">1.</span> <span class="nav-text">记录一下buuctf的write up.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RE"><span class="nav-number"></span> <span class="nav-text">RE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Easyre"><span class="nav-number">1.</span> <span class="nav-text">1.Easyre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-helloword"><span class="nav-number">2.</span> <span class="nav-text">2.helloword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Reverse1"><span class="nav-number">3.</span> <span class="nav-text">3.Reverse1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Reverse2"><span class="nav-number">4.</span> <span class="nav-text">4.Reverse2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-新年快乐"><span class="nav-number">5.</span> <span class="nav-text">5.新年快乐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-xor"><span class="nav-number">6.</span> <span class="nav-text">6.xor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-不一样的flag"><span class="nav-number">7.</span> <span class="nav-text">9.不一样的flag</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -701,6 +745,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
