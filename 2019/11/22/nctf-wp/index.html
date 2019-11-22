@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="CTF," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -86,43 +86,34 @@
 
 
 
-<meta name="description" content="记录一下buuctf的write up.RE  Easyre下载后的拖进ida64:  发现 flag{this_Is_a_EaSyRe} helloword打开下载的压缩包里面发现是个apk的文件拖进APK改之理找到主函数发现flag  flag{7631a988259a00816deda84afb29430a} Reverse1打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll)，我们">
-<meta name="keywords" content="CTF">
+<meta name="description" content="Nctf wpRE打开exe文件后，放进dbg以及ida中，进行检索进行操作后找到主函数，来进行分析操作可以看一下主函数的功能，进行分析可以看出来v25,v27,v28,v29,v30,v31在数据内存中的字符串检索 12345678v26 = &amp;apos;gube&amp;apos;v24 = &amp;apos;uC\TN swodniW\tf&amp;apos;v25 = &amp;apos;DeA\noisreVtnerr&amp;apos;v27 = 0v28 = &amp;apos;2346woW\E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Buuctf wp">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;08&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="nctf wp">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;22&#x2F;nctf-wp&#x2F;index.html">
 <meta property="og:site_name" content="L0x1c-Grow Up">
-<meta property="og:description" content="记录一下buuctf的write up.RE  Easyre下载后的拖进ida64:  发现 flag{this_Is_a_EaSyRe} helloword打开下载的压缩包里面发现是个apk的文件拖进APK改之理找到主函数发现flag  flag{7631a988259a00816deda84afb29430a} Reverse1打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll)，我们">
+<meta property="og:description" content="Nctf wpRE打开exe文件后，放进dbg以及ida中，进行检索进行操作后找到主函数，来进行分析操作可以看一下主函数的功能，进行分析可以看出来v25,v27,v28,v29,v30,v31在数据内存中的字符串检索 12345678v26 = &amp;apos;gube&amp;apos;v24 = &amp;apos;uC\TN swodniW\tf&amp;apos;v25 = &amp;apos;DeA\noisreVtnerr&amp;apos;v27 = 0v28 = &amp;apos;2346woW\E">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-0.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-3.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-4.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-5.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-6.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-10.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-11.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-12.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-13.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-14.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-15.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-16.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-17.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-18.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-19.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-20.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-21.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-22.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-23.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-24.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-25.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-26.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-27.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-28.png">
-<meta property="og:updated_time" content="2019-11-22T09:15:50.824Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-46.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-45.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-47.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-48.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-49.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-50.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-51.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-52.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-53.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-54.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-55.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-56.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-57.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-58.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-59.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-60.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-61.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-62.png">
+<meta property="og:updated_time" content="2019-11-22T10:51:47.320Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-0.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-46.png">
 
 
 
@@ -152,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/08/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/22/nctf-wp/"/>
 
 
 
 
 
-  <title>Buuctf wp | L0x1c-Grow Up</title>
+  <title>nctf wp | L0x1c-Grow Up</title>
   
 
 
@@ -319,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/22/nctf-wp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="L0x1c">
@@ -336,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Buuctf wp</h1>
+          <h1 class="post-title" itemprop="name headline">nctf wp</h1>
         
 
         <div class="post-meta">
@@ -348,8 +339,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-08T19:37:17+08:00">
-                2019-11-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T17:20:49+08:00">
+                2019-11-22
               </time>
             
 
@@ -364,34 +355,12 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-11-22T17:15:50+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-11-22T18:51:47+08:00">
                 2019-11-22
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF-RE/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF-RE</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -447,68 +416,22 @@
       
 
       
-        <h3 id="记录一下buuctf的write-up"><a href="#记录一下buuctf的write-up" class="headerlink" title="记录一下buuctf的write up."></a>记录一下buuctf的write up.</h3><p>RE </p>
-<h3 id="Easyre"><a href="#Easyre" class="headerlink" title="Easyre"></a>Easyre</h3><p>下载后的拖进ida64:</p>
-<p><img src="/images/pasted-0.png" alt="upload successful"></p>
-<p>发现 flag{this_Is_a_EaSyRe}</p>
-<h3 id="helloword"><a href="#helloword" class="headerlink" title="helloword"></a>helloword</h3><p>打开下载的压缩包里面发现是个apk的文件<br>拖进APK改之理找到主函数发现flag</p>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-<p>flag{7631a988259a00816deda84afb29430a}</p>
-<h3 id="Reverse1"><a href="#Reverse1" class="headerlink" title="Reverse1"></a>Reverse1</h3><p>打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll)，我们需要自己调整到用户层面(.exe)，所以按一下alt+f9</p>
-<p><img src="/images/pasted-2.png" alt="upload successful"><br>大概主函数在exit的附近看见exit有两个我们在附近进去看看</p>
-<p><img src="/images/pasted-3.png" alt="upload successful"><br>我们看到了flag的值 但是我们需要判断进行了什么操作,然后我们去进行分析</p>
-<p><img src="/images/pasted-4.png" alt="upload successful"><br>经过分析来说</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( Str2[j] == <span class="string">'o'</span> )</span><br><span class="line">  	Str2[j] = <span class="string">'0'</span>;</span><br></pre></td></tr></table></figure>
-<p>可以看到进行的操作是o字符变成了0所以flag为：<br>flag{hell0_world}</p>
-<h3 id="Reverse2"><a href="#Reverse2" class="headerlink" title="Reverse2"></a>Reverse2</h3><p>打开压缩包放进ida</p>
-<p><img src="/images/pasted-5.png" alt="upload successful"><br>可以看到里面进行了判断如果字符串有i和r就变成1 看到了strcmp里面进行和flag地址进行了比较</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.data:0000000000601080 flag            db <span class="string">'&#123;'</span>                  ; DATA XREF: main+34↑r</span><br><span class="line">.data:0000000000601080                                         ; main+44↑r ...</span><br><span class="line">.data:0000000000601081 aHackingForFun  db <span class="string">'hacking_for_fun&#125;'</span>,0</span><br></pre></td></tr></table></figure>
-
-<p>我们可以推出来flag{hacking_for_fun}进行变换：flag{hack1ng_fo1_fun}</p>
-<h3 id="新年快乐"><a href="#新年快乐" class="headerlink" title="新年快乐"></a>新年快乐</h3><p>我们把这个压缩包拖进PEiD的时候发现有壳是一个upx的壳</p>
-<p><img src="/images/pasted-6.png" alt="upload successful"><br>我们把这个包拖进dbg 找到popad</p>
-<p><img src="/images/pasted-10.png" alt="upload successful"><br>我们给jmp下断点</p>
-<p><img src="/images/pasted-11.png" alt="upload successful"><br>到call 00401000位置进去 发现已经脱壳成功</p>
-<p><img src="/images/pasted-12.png" alt="upload successful"><br>进行字符串探索 进入到403024:”please input the true flag:”位置进去看看</p>
-<p><img src="/images/pasted-13.png" alt="upload successful"><br>我们可以分析出来进行了字符串的strcmp的函数功能判断是否和HappyNewYear!相同<br>flag为flag{HappyNewYear!}</p>
-<h3 id="xor"><a href="#xor" class="headerlink" title="xor"></a>xor</h3><p>打开压缩文件，拖进ida</p>
-<p><img src="/images/pasted-14.png" alt="upload successful"><br>看到strcmp函数进行了比较，我们进去看一下再跳转到100000F6Eh可以看到进行了字符串</p>
-<p><img src="/images/pasted-15.png" alt="upload successful"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = 1; i &lt; <span class="string">'!'</span>; ++i )</span><br><span class="line">  v6[i] ^= v6[i - 1];</span><br></pre></td></tr></table></figure>
-
-<p>可以不难分析，进行了前一个和下一个字符串进行了异或，第一个字符串不变，而两次异或就是原来的值所以我们写一个python的脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">str1 = [<span class="string">'f'</span>, 0x0A, <span class="string">'k'</span>, 0x0C, <span class="string">'w'</span>, <span class="string">'&amp;'</span>, <span class="string">'O'</span>, <span class="string">'.'</span>, <span class="string">'@'</span>, 0x11, <span class="string">'x'</span>, 0x0D, <span class="string">'Z'</span>, <span class="string">';'</span>, <span class="string">'U'</span>, 0x11, <span class="string">'p'</span>, 0x19, <span class="string">'F'</span>, 0x1F, <span class="string">'v'</span>, <span class="string">'"'</span>, <span class="string">'M'</span>, <span class="string">'#'</span>, <span class="string">'D'</span>, 0x0E, <span class="string">'g'</span>, 6, <span class="string">'h'</span>, 0x0F, <span class="string">'G'</span>, <span class="string">'2'</span>, <span class="string">'O'</span>]</span><br><span class="line">x = <span class="string">'f'</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(1, len(str1)):</span><br><span class="line">    <span class="keyword">if</span> (isinstance(str1[i], str)):</span><br><span class="line">        <span class="keyword">if</span> (isinstance(str1[i - 1], str)):</span><br><span class="line">            x += chr(ord(str1[i]) ^ ord(str1[i - 1]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x += chr(ord(str1[i]) ^ str1[i - 1])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x += chr(str1[i] ^ ord(str1[i - 1]))</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
-<p>跑出来就是：</p>
-<p><img src="/images/pasted-16.png" alt="upload successful"></p>
-<h3 id="内涵的软件"><a href="#内涵的软件" class="headerlink" title="内涵的软件"></a>内涵的软件</h3><p>打开压缩包中的文件拖进ida</p>
-<p><img src="/images/pasted-17.png" alt="upload successful"><br>进入pirntf的里面那个地址看看有什么重要信息</p>
-<p><img src="/images/pasted-18.png" alt="upload successful"><br>Y输入就是</p>
-<p><img src="/images/pasted-19.png" alt="upload successful"><br>N输入就是</p>
-<p><img src="/images/pasted-20.png" alt="upload successful"><br>如果输入非Y/N就是</p>
-<p><img src="/images/pasted-21.png" alt="upload successful"><br>我们看一下结果的函数我们发现了提示</p>
-<p><img src="/images/pasted-22.png" alt="upload successful"></p>
-<p>flag为：flag{49d3c93df25caad81232130f3d2ebfad}</p>
-<h3 id="Reverse3"><a href="#Reverse3" class="headerlink" title="Reverse3"></a>Reverse3</h3><p>我们打开压缩包里的文件放进ida</p>
-<p><img src="/images/pasted-23.png" alt="upload successful"><br>看见了strcmp的函数里面进行了比较我们进去看一下</p>
-<p><img src="/images/pasted-24.png" alt="upload successful"><br>我们看到了关键的字符串：e3nifIH9b_C@n@dH</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">for</span> ( j = 0; j &lt; v10; ++j )</span><br><span class="line">    Dest[j] += j;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">看到了这个函数我们就知道我们进行的操作是dest字符串第一个减去0第二个减去2 是原来的数组&lt;br&gt;写一个python的脚本</span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">s = <span class="string">"e3nifIH9b_C@n@dH"</span></span><br><span class="line">x = <span class="string">" "</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,len(s)):</span><br><span class="line">        x += chr(ord(s[i]) - i)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
-<p>得到字符串 e2lfbDB2ZV95b3V9<br>strncpy是放进第一个数组里面我们看一下v1函数进行的操作</p>
-<p><img src="/images/pasted-25.png" alt="upload successful"></p>
-<p><img src="/images/pasted-26.png" alt="upload successful">看到了的数是base64进行转换的数<br>去写python脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">import base64</span><br><span class="line">s = <span class="string">"e3nifIH9b_C@n@dH"</span></span><br><span class="line">x = <span class="string">" "</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,len(s)):</span><br><span class="line">        x += chr(ord(s[i]) - i)</span><br><span class="line"><span class="built_in">print</span>(base64.b64decode(x))</span><br></pre></td></tr></table></figure>
-
-<p>运行出现了flag:flag{i_l0ve_you}</p>
-<h3 id="不一样的flag"><a href="#不一样的flag" class="headerlink" title="不一样的flag"></a>不一样的flag</h3><p>打开压缩包文件放进ida</p>
-<p><img src="/images/pasted-27.png" alt="upload successful"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( v8[5 * v4 - 41 + v5] == <span class="string">'1'</span> )</span><br><span class="line">  <span class="built_in">exit</span>(1);</span><br><span class="line"><span class="keyword">if</span> ( v8[5 * v4 - 41 + v5] == <span class="string">'#'</span> )</span><br><span class="line">&#123;</span><br><span class="line">  puts(<span class="string">"\nok, the order you enter is the flag!"</span>);</span><br><span class="line">  <span class="built_in">exit</span>(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以分析出来1是j结束运行到#就是flag</p>
-<p><img src="/images/pasted-28.png" alt="upload successful"><br>可以看到一个关键的字符串：*11110100001010000101111#</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ( v6 == 2 )</span><br><span class="line">    &#123;</span><br><span class="line">      ++v4;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ( v6 &gt; 2 )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( v6 == 3 )</span><br><span class="line">      &#123;</span><br><span class="line">        --v5;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( v6 != 4 )</span><br><span class="line">LABEL_13:</span><br><span class="line">          <span class="built_in">exit</span>(1);</span><br><span class="line">        ++v5;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( v6 != 1 )</span><br><span class="line">        goto LABEL_13;</span><br><span class="line">      --v4;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到v6是输入的值，我们up和down是v4进行操作，left和right是v5进行操作<br>5 * v4 - 41 + v5  看出来是5<em>5方阵：<br></em>1111<br>01000<br>01010<br>00010<br>1111#<br>走迷宫flag为22244114422：flag{22244114422}</p>
+        <h2 id="Nctf-wp"><a href="#Nctf-wp" class="headerlink" title="Nctf wp"></a>Nctf wp</h2><h3 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h3><p>打开exe文件后，放进dbg以及ida中，进行检索<br><img src="/images/pasted-46.png" alt="upload successful"><br><img src="/images/pasted-45.png" alt="upload successful"><br>进行操作后找到主函数，来进行分析操作<br><img src="/images/pasted-47.png" alt="upload successful"><br>可以看一下主函数的功能，进行分析<br><img src="/images/pasted-48.png" alt="upload successful"><br>可以看出来v25,v27,v28,v29,v30,v31在数据内存中的字符串检索<br><img src="/images/pasted-49.png" alt="upload successful"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">v26 = <span class="string">'gube'</span></span><br><span class="line">v24 = <span class="string">'uC\TN swodniW\tf'</span></span><br><span class="line">v25 = <span class="string">'DeA\noisreVtnerr'</span></span><br><span class="line">v27 = 0</span><br><span class="line">v28 = <span class="string">'2346woW\ERAWTFOS'</span></span><br><span class="line">v29 = <span class="string">'W\tfosorciM\edoN'</span></span><br><span class="line">v30 = <span class="string">'tnerruC\TNswodni'</span></span><br><span class="line">v31 = <span class="string">'gubeDeA\noisreV'</span></span><br></pre></td></tr></table></figure>
+<p>先是得到这些字符串但是不知道是干什么的往后面看，看看有什么用</br>看到后面有一句是<br><img src="/images/pasted-50.png" alt="upload successful"><br>可以看到v6=v21的内容，返回来看，上面函数定义的时候是引用的类型的<br><img src="/images/pasted-51.png" alt="upload successful"><br>定义了指针类型的v6和一个数组的v21，c语言中的地址指向是引用，相当于起了个别名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">  switch ( v21[v9] )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> 1:</span><br><span class="line">      --v1;</span><br><span class="line">      v12 -= <span class="string">'\a'</span>;</span><br><span class="line">      --v11;</span><br><span class="line">      <span class="built_in">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 2:</span><br><span class="line">      ++v1;</span><br><span class="line">      v12 += <span class="string">'\a'</span>;</span><br><span class="line">      ++v11;</span><br><span class="line">      <span class="built_in">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 3:</span><br><span class="line">      --v2;</span><br><span class="line">      --v8;</span><br><span class="line">      --v10;</span><br><span class="line">      <span class="built_in">break</span>;</span><br><span class="line">    default:</span><br><span class="line">      <span class="keyword">if</span> ( v21[v9] != 4 )</span><br><span class="line">        <span class="built_in">exit</span>(0);</span><br><span class="line">      ++v2;</span><br><span class="line">      ++v8;</span><br><span class="line">      ++v10;</span><br><span class="line">      <span class="built_in">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( *(_DWORD *)&amp;asc_140003350[4 * (v12 + v8)] == 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_140001020(<span class="string">"You lost"</span>, v10, v11);</span><br><span class="line">    <span class="built_in">exit</span>(0);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v11 &gt; 6 || v10 &gt; 6 )</span><br><span class="line">  &#123;</span><br><span class="line">    puts(<span class="string">"illegal access"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(0);</span><br><span class="line">  &#125;</span><br><span class="line">  ++v9;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> ( v9 &lt; 26 );</span><br><span class="line">	<span class="keyword">if</span> ( *(_DWORD *)&amp;asc_140003350[4 * (v2 + 7i64 * v1)] != 99 )</span><br><span class="line">	_exit(0);</span><br><span class="line">puts(<span class="string">"You win!"</span>);</span><br><span class="line">sub_140001020(<span class="string">"flag&#123;"</span>, v13, v14);</span><br></pre></td></tr></table></figure>
+<p>代码中我们来分析功能</br><br>以可看到上面的switch case 进行的操作是对v2 v8 v10 v11 v12进行的改值的操作，我们又看到了asc的函数，应该不难分析这里是汇编的一个操作，后面有是个值，我们进去查看：</p>
+<p><img src="/images/pasted-52.png" alt="upload successful"><br>看到里面有值，我们进行记录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">8 1 0Eh 0Bh 7</span><br><span class="line">10h 1 0Bh 0Fh 0Fh</span><br><span class="line">1 1 9 1 1</span><br><span class="line">1 1 1 1 0Bh</span><br><span class="line">1 0Ch 0Ch 8 0Eh</span><br><span class="line">1 8 1 8 1</span><br><span class="line">1 0Ch 9 0Eh 1</span><br><span class="line">0Dh 8 0Bh 1 1</span><br><span class="line">1 1 1 1 9</span><br><span class="line">0Ah 9 9 63h</span><br></pre></td></tr></table></figure>
+<p>int一个占用4个字节，所以可以得出来以上的字符串</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span> ( *(_DWORD *)&amp;asc_140003350[4 * (v12 + v8)] == 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_140001020(<span class="string">"You lost"</span>, v10, v11);</span><br><span class="line">    <span class="built_in">exit</span>(0);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v11 &gt; 6 || v10 &gt; 6 )</span><br><span class="line">  &#123;</span><br><span class="line">    puts(<span class="string">"illegal access"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(0);</span><br><span class="line">  &#125;</span><br><span class="line">  ++v9;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> ( v9 &lt; 26 );</span><br><span class="line"><span class="keyword">if</span> ( *(_DWORD *)&amp;asc_140003350[4 * (v2 + 7i64 * v1)] != 99 )</span><br><span class="line">  _exit(0);</span><br><span class="line">puts(<span class="string">"You win!"</span>);</span><br><span class="line">sub_140001020(<span class="string">"flag&#123;"</span>, v13, v14);</span><br></pre></td></tr></table></figure>
+<p>我们可以得出来4×(v12+v8)的位置不能等于1 4×(v2+7×v1)位置等于99</p>
+<p><img src="/images/pasted-53.png" alt="upload successful">可以看出来最后面的位置，的63h在10进制的位置等于99，所以就是48的位置</br>根据switch里面的case可以得到我们输入的东西为‘1 2 3 4’我们去看规律:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1：是v1-- v12-7 </span><br><span class="line">2: 是v1++ v12+7 </span><br><span class="line">3: 是v2-- v8-- </span><br><span class="line">4: 是v2++ v8++</span><br></pre></td></tr></table></figure>
+<p>我们v1 v2 v12 v8的初值为0，v2+7×v1=12，不难分析出来v1等于1，v2等于5</br><br>不可以为1 6 10 11 13 14 15 16 17 18 20 25 27 29 30 34 38 39 40 41 42 43</br><br>可以为0 2 3 4 5 7 8 9 12 19 21 22 23 24 26 28 31 32 33 35 36 37 44 45 46 47 48</br><br>得出来v1 v2序列244444</br><br>2 44 1 444 2222 33 1333 22 4424444<br>检查一下得出来了flag:<br><img src="/images/pasted-54.png" alt="upload successful"></p>
+<h3 id="cacosmia"><a href="#cacosmia" class="headerlink" title="cacosmia"></a>cacosmia</h3><p>首先我们打开以后我们发现了一个cap一个文件我们直接放进wirshark中进行分析<br><img src="/images/pasted-55.png" alt="upload successful"><br>我们去看一下查看wifi那一套套路：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看essid</span></span><br><span class="line">root@kali:~/Desktop<span class="comment"># aircrack-ng cacosmia.cap </span></span><br><span class="line">Opening cacosmia.cap</span><br><span class="line">Read 4276 packets.</span><br><span class="line">   <span class="comment">#  BSSID              ESSID                     Encryption</span></span><br><span class="line">   1  1A:D7:17:98:D0:51  mamawoxiangwantiequan     WPA (1 handshake)</span><br><span class="line">Choosing first network as target.</span><br><span class="line">                                 Aircrack-ng 1.3 </span><br><span class="line">Passphrase not <span class="keyword">in</span> dictionary</span><br><span class="line">Please specify a 151/235 keys tested w).</span><br><span class="line">      Time left: 0 seconds                                      64.26%</span><br><span class="line">Quitting aircrack-ng...</span><br><span class="line"><span class="comment">#爆破密码</span></span><br><span class="line">root@kali:~/Desktop<span class="comment"># aircrack-ng cacosmia.cap -w /usr/share/wordlists/fern-wifi/common.txt </span></span><br><span class="line">Opening cacosmia.cap</span><br><span class="line">Read 4276 packets.</span><br><span class="line">[00:00:00] 16/688 keys tested (1029.20 k/s) </span><br><span class="line">Time left: 0 seconds                                       2.33%</span><br><span class="line">                   KEY FOUND! [ 12345678 ]</span><br><span class="line"></span><br><span class="line">Master Key     : B4 2C 77 C0 A8 F4 E6 E9 9F 85 1B ED 7B 3F 5A 91 </span><br><span class="line">               3C AA D4 42 B9 6D 5C D2 A1 90 E3 F9 75 B3 6D 9F </span><br><span class="line">Transient Key  : 8B D7 4A 1F 2A 0D B7 40 C1 3B BC C9 13 60 46 E5 </span><br><span class="line">               49 4E 9B 9A AF BD E3 89 33 5A 73 C8 95 AC 53 94 </span><br><span class="line">               AF 92 D1 D9 ED E4 B2 AF 40 C1 03 D8 98 2D 8A 90 </span><br><span class="line">               00 58 39 CF C2 9E B9 80 A2 D5 86 57 9A 00 00 00 </span><br><span class="line">EAPOL HMAC     : D8 97 A1 FD CF F2 87 89 6A 19 EF 14 44 33 E0 3C </span><br><span class="line"><span class="comment">#用essid和密码解密流量包</span></span><br><span class="line">root@kali:~/Desktop<span class="comment"># airdecap-ng cacosmia.cap -e mamawoxiangwantiequan -p 12345678</span></span><br><span class="line">Total number of packets <span class="built_in">read</span>          4276</span><br><span class="line">Total number of WEP data packets         0</span><br><span class="line">Total number of WPA data packets       685</span><br><span class="line">Number of plaintext data packets         0</span><br><span class="line">Number of decrypted WEP  packets         0</span><br><span class="line">Number of corrupted WEP  packets         0</span><br><span class="line">Number of decrypted WPA  packets       538</span><br></pre></td></tr></table></figure>
+<p>我们把解密之后的流量包放进wirshark<br><img src="/images/pasted-56.png" alt="upload successful"><br>我们去追踪tcp流向分析<br><img src="/images/pasted-57.png" alt="upload successful"><br>发现里面有一个png图片我们把这里面的信息放进winhex中去掉放进去的http首部信息<br><img src="/images/pasted-58.png" alt="upload successful"><br>得到一个图片<br><img src="/images/pasted-59.png" alt="upload successful"><br>找到了一个加密的压缩包，在原来的数据里面的cookie里面是一个base64加密过来的<br><img src="/images/pasted-60.png" alt="upload successful"><br>告诉我们密码是一个网站自己ping过的一个网站，我们首先会想到ICMP，UDP，TCP，DNS等协议我们在里面进行DNS的检索<br><img src="/images/pasted-61.png" alt="upload successful"><br>密码得到打开压缩包<br><img src="/images/pasted-62.png" alt="upload successful"></p>
 
       
     </div>
@@ -524,12 +447,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/CTF/" rel="tag"># CTF</a>
-          
-        </div>
-      
 
       
       
@@ -539,15 +456,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/11/18/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E6%A0%88/" rel="next" title="函数调用约定以及栈">
+                <i class="fa fa-chevron-left"></i> 函数调用约定以及栈
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/18/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E6%A0%88/" rel="prev" title="函数调用约定以及栈">
-                函数调用约定以及栈 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -713,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录一下buuctf的write-up"><span class="nav-number">1.</span> <span class="nav-text">记录一下buuctf的write up.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Easyre"><span class="nav-number">2.</span> <span class="nav-text">Easyre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#helloword"><span class="nav-number">3.</span> <span class="nav-text">helloword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse1"><span class="nav-number">4.</span> <span class="nav-text">Reverse1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse2"><span class="nav-number">5.</span> <span class="nav-text">Reverse2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新年快乐"><span class="nav-number">6.</span> <span class="nav-text">新年快乐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xor"><span class="nav-number">7.</span> <span class="nav-text">xor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内涵的软件"><span class="nav-number">8.</span> <span class="nav-text">内涵的软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse3"><span class="nav-number">9.</span> <span class="nav-text">Reverse3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不一样的flag"><span class="nav-number">10.</span> <span class="nav-text">不一样的flag</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nctf-wp"><span class="nav-number">1.</span> <span class="nav-text">Nctf wp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RE"><span class="nav-number">1.1.</span> <span class="nav-text">RE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cacosmia"><span class="nav-number">1.2.</span> <span class="nav-text">cacosmia</span></a></li></ol></li></ol></div>
             
 
           </div>
