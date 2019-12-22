@@ -118,7 +118,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-116.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-117.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-118.png">
-<meta property="og:updated_time" content="2019-12-22T16:03:02.863Z">
+<meta property="og:updated_time" content="2019-12-22T16:05:53.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-96.png">
 
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-23T00:03:02+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-23T00:05:53+08:00">
                 2019-12-23
               </time>
             
@@ -530,7 +530,7 @@
 <p>v27 = v15[2] &amp; ~v15[1] &amp; v15[0] | v15[2] &amp; (v15[1] &amp; v15[0] | v15[1] &amp; ~v15[0] | ~(v15[1] | v15[0]))</p>
 <p>v27 = 577031497978884115 </p>
 <p>(v24 ^ v15[3]) = 4483974543195470111 </p>
-<p>(v15[2] &amp; <del>v15[0]  | v15[1] &amp; v15[0] | v15[1] &amp; v15[2]) = (</del>v15[0] &amp; v15[2] | 0xC00020130082C0C)</p>
+<p>(v15[2] &amp; ~ v15[0]  | v15[1] &amp; v15[0] | v15[1] &amp; v15[2]) = (~ v15[0] &amp; v15[2] | 0xC00020130082C0C)</p>
 <p>将输入的DXY{}中间的字符处理 ：与0异或，第24位与0F异或每8位凑一个 int64 依次放入v15[0]-[3]</p>
 <p>按条件依次求得 v15[0]-[3]</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#Author:L0x1c@V&amp;N</span></span><br><span class="line"></span><br><span class="line">x,y,z,q=BitVecs(<span class="string">'x y z w'</span>,<span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">s=Solver()</span><br><span class="line"></span><br><span class="line">s.add((~x)&amp;z==<span class="number">1176889593874</span>)</span><br><span class="line"></span><br><span class="line">s.add(((z&amp;~x)|(x&amp;y)|(z&amp;~y)|(x&amp;~y))==<span class="number">4483974544037412639</span>)</span><br><span class="line"></span><br><span class="line">s.add(((z&amp;~x)|(x&amp;y)|(z&amp;(~y))|(x&amp;(~y)))^w==<span class="number">4483974543195470111</span>)</span><br><span class="line"></span><br><span class="line">s.add(((z&amp;~y)&amp;x|z&amp;((x&amp;y)|y&amp;~x|~(y|x)))==<span class="number">577031497978884115</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> s.model()</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> s.check()</span><br><span class="line"></span><br><span class="line">sat</span><br><span class="line"></span><br><span class="line">[w = <span class="number">842073600</span>,</span><br><span class="line"></span><br><span class="line"> y = <span class="number">3906943046058528520</span>,</span><br><span class="line"></span><br><span class="line"> x = <span class="number">4483973367147818765</span>,</span><br><span class="line"></span><br><span class="line"> z = <span class="number">577031497978884115</span>]</span><br></pre></td></tr></table></figure>
