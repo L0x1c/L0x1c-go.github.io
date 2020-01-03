@@ -99,7 +99,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-126.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-125.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-127.png">
-<meta property="og:updated_time" content="2020-01-03T11:04:53.271Z">
+<meta property="og:updated_time" content="2020-01-03T11:07:56.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-119.png">
 
@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-03T19:04:53+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-03T19:07:56+08:00">
                 2020-01-03
               </time>
             
@@ -428,9 +428,10 @@
       
         <h2 id="ZUC算法"><a href="#ZUC算法" class="headerlink" title="ZUC算法"></a>ZUC算法</h2><p>由于在看ZUC算法的时候会有很多的字符等符号不太知道于是！</p>
 <h3 id="1、运算符"><a href="#1、运算符" class="headerlink" title="1、运算符"></a>1、运算符</h3><p>+ 算术加法运算</br>ab 整数a和b的乘积</br>= 赋值操作符</br>mod 整数模运算</br>⊕ 按比特位逐位异或运算</br>田 模2加法运算</br>‖ 字符串或字节串连接符</br>下标H 取字的最高16比特</br>下标L 取字的最低16比特</br>&lt;&lt;&lt;k 32比特字循环左移k位</br>&gt;&gt;k 32比特字右移K位</br>a-&gt;b 向量a赋值给向量b，即按分量逐分量赋值</br></p>
-<h3 id="2、符号"><a href="#2、符号" class="headerlink" title="2、符号"></a>2、符号</h3><p>S1，S2，S3，……S15 线性反馈移位寄存器的16个31比特寄存器单元变量</br><br>X1，X2，X3，X4 比特重组输出的4个32比特字</br><br>R1，R2 非线性函数F的2个32比特记忆单元变量</br><br>W 非线性函数F输出的32比特字</br><br>W1 R1与X1进行模2^32加法运算输出的32比特字</br><br>W2 R2与X2按比特位逐位异或运算输出的32比特字</br><br>Z 算法每个节拍输出的32比特密钥字</br><br>K 初始种子密钥</br><br>IV 初始向量</br><br>D1，D2，D3……D15 15比特的字符串常量</br><br>F 非线性函数</br><br>L 输出密钥字长度</br></p>
-<h4 id="线性反馈移位寄存器-LFSR"><a href="#线性反馈移位寄存器-LFSR" class="headerlink" title="线性反馈移位寄存器(LFSR)"></a>线性反馈移位寄存器(LFSR)</h4><p>由于这个算法涉及到了LFSR，于是翻起了自己深入浅出密码学，复习一下知识点</br><br>定义:一个LFSR由若干时钟存储元件(触发器)和一个反馈路径组成，存储元件的数目给出了LFSR的度，一个拥有m个触发器的LFSR可以称为“度为m”，反馈网络计算移位寄存器中某些触发器的XOR的和，并将其作为上一个触发器的输入</br><br>简单LFSR<br><img src="/images/pasted-119.png" alt="upload successful"><br>书上的例子挺好的,可以帮助理解LFSR，给了初始状态(S2=1,S1=0,S0=0)</br><br>看图：用自己话理解了一下，将S0与S1进行XOR，出来的结果给S3，这时候S0输出出去，S1，S2进行左平移，S3加入S2的位置，依次类推，因为是异或且每次是一位0和1那么可以写成公式就是:S3=S1+S0 mod 2 </br><br>那我们看一下LFSR的状态序列<br><img src="/images/pasted-120.png" alt="upload successful"><br>推导：S(i+3)=S(i)+S(i+1) mod 2</br><br>我们可以看到在第6个时钟周期后开始重复，0010111，意味着LFSR输出的周期长度为7</p>
-<h6 id="LFSR的数学描述"><a href="#LFSR的数学描述" class="headerlink" title="LFSR的数学描述"></a>LFSR的数学描述</h6><p>继续调用了书上的图<br><img src="/images/pasted-121.png" alt="upload successful"><br>我们可以看到，LFSR拥有了m个触发器和m个可能的反馈位置，并且这些触发器和反馈的位置之间通过XOR操作连接，看是否活跃取决于反馈系数P0….Pn</br><br>这里有了个定义：</br><br>如果Pi=1，此反馈是活跃的(即关闭了开关)</br><br>如果Pi=0，对应的触发器的输出将不会被反馈(即打开了开关)</br><br>将触发器的i的输出与对应的系数Pi相乘，如果Pi=1那么结果就是输出值(对应关闭开关)，如果Pi=0，则输出值也为0(即打开开关)即公式:<br><img src="/images/pasted-126.png" alt="upload successful"><br><img src="/images/pasted-125.png" alt="upload successful"><br>即满足了依次左移的原则，更新Sm，则输出序列描述为:<br><img src="/images/pasted-127.png" alt="upload successful"><br>因为m位状态向量只能得到2^m -1个非零状态(自己理解为是可能性最后遍历回来)，比如最大长度输出序列的LFSR，给定一个度m=4，反馈路径为(P3=0,P2=0,P1=1,P0=1)，周期为2^4-1=15;非最大长度输出序列，给定一个度m=4，反馈路径为(P3=1,P2=1,P1=1,P0=1)周期为5</br><br>0 0 1 1/0 0 0 1/1 0 0 0/0 1 0 0/0 0 1 0/1 0 0 1/1 1 0 0/0 1 1 0/1 0 1 1/0 1 0 1/1 0 1 0/1 1 0 1/1 1 1 0/1 1 1 1/0 1 1 1/（0 0 1 1）所以为15</br><br>1 1 1 1/0 1 1 1/1 0 1 1/1 1 0 1/1 1 1 0/(1 1 1 1 )所以为5</br></p>
+<h3 id="2、符号"><a href="#2、符号" class="headerlink" title="2、符号"></a>2、符号</h3><p>S1，S2，S3，……S15 线性反馈移位寄存器的16个31比特寄存器单元变量</br>X1，X2，X3，X4 比特重组输出的4个32比特字</br>R1，R2 非线性函数F的2个32比特记忆单元变量</br>W 非线性函数F输出的32比特字</br>W1 R1与X1进行模2^32加法运算输出的32比特字</br>W2 R2与X2按比特位逐位异或运算输出的32比特字</br>Z 算法每个节拍输出的32比特密钥字</br>K 初始种子密钥</br>IV 初始向量</br>D1，D2，D3……D15 15比特的字符串常量</br>F 非线性函数</br>L 输出密钥字长度</br></p>
+<h3 id="线性反馈移位寄存器-LFSR"><a href="#线性反馈移位寄存器-LFSR" class="headerlink" title="线性反馈移位寄存器(LFSR)"></a>线性反馈移位寄存器(LFSR)</h3><p>由于这个算法涉及到了LFSR，于是翻起了自己深入浅出密码学，复习一下知识点</br>定义:一个LFSR由若干时钟存储元件(触发器)和一个反馈路径组成，存储元件的数目给出了LFSR的度，一个拥有m个触发器的LFSR可以称为“度为m”，反馈网络计算移位寄存器中某些触发器的XOR的和，并将其作为上一个触发器的输入</br></p>
+<h4 id="简单LFSR"><a href="#简单LFSR" class="headerlink" title="简单LFSR"></a>简单LFSR</h4><p><img src="/images/pasted-119.png" alt="upload successful"><br>书上的例子挺好的,可以帮助理解LFSR，给了初始状态(S2=1,S1=0,S0=0)</br>看图：用自己话理解了一下，将S0与S1进行XOR，出来的结果给S3，这时候S0输出出去，S1，S2进行左平移，S3加入S2的位置，依次类推，因为是异或且每次是一位0和1那么可以写成公式就是:S3=S1+S0 mod 2 </br>那我们看一下LFSR的状态序列<br><img src="/images/pasted-120.png" alt="upload successful"><br>推导：S(i+3)=S(i)+S(i+1) mod 2</br>我们可以看到在第6个时钟周期后开始重复，0010111，意味着LFSR输出的周期长度为7</p>
+<h4 id="LFSR的数学描述"><a href="#LFSR的数学描述" class="headerlink" title="LFSR的数学描述"></a>LFSR的数学描述</h4><p>继续调用了书上的图<br><img src="/images/pasted-121.png" alt="upload successful"><br>我们可以看到，LFSR拥有了m个触发器和m个可能的反馈位置，并且这些触发器和反馈的位置之间通过XOR操作连接，看是否活跃取决于反馈系数P0….Pn</br>这里有了个定义：</br>如果Pi=1，此反馈是活跃的(即关闭了开关)</br>如果Pi=0，对应的触发器的输出将不会被反馈(即打开了开关)</br>将触发器的i的输出与对应的系数Pi相乘，如果Pi=1那么结果就是输出值(对应关闭开关)，如果Pi=0，则输出值也为0(即打开开关)即公式:<br><img src="/images/pasted-126.png" alt="upload successful"><br><img src="/images/pasted-125.png" alt="upload successful"><br>即满足了依次左移的原则，更新Sm，则输出序列描述为:<br><img src="/images/pasted-127.png" alt="upload successful"><br>因为m位状态向量只能得到2^m -1个非零状态(自己理解为是可能性最后遍历回来)，比如最大长度输出序列的LFSR，给定一个度m=4，反馈路径为(P3=0,P2=0,P1=1,P0=1)，周期为2^4-1=15;非最大长度输出序列，给定一个度m=4，反馈路径为(P3=1,P2=1,P1=1,P0=1)周期为5</br><br>0 0 1 1/0 0 0 1/1 0 0 0/0 1 0 0/0 0 1 0/1 0 0 1/1 1 0 0/0 1 1 0/1 0 1 1/0 1 0 1/1 0 1 0/1 1 0 1/1 1 1 0/1 1 1 1/0 1 1 1/（0 0 1 1）所以为15</br><br>1 1 1 1/0 1 1 1/1 0 1 1/1 1 0 1/1 1 1 0/(1 1 1 1 )所以为5</br></p>
 
       
     </div>
@@ -629,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZUC算法"><span class="nav-number">1.</span> <span class="nav-text">ZUC算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、运算符"><span class="nav-number">1.1.</span> <span class="nav-text">1、运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、符号"><span class="nav-number">1.2.</span> <span class="nav-text">2、符号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性反馈移位寄存器-LFSR"><span class="nav-number">1.2.1.</span> <span class="nav-text">线性反馈移位寄存器(LFSR)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#LFSR的数学描述"><span class="nav-number">1.2.1.0.1.</span> <span class="nav-text">LFSR的数学描述</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZUC算法"><span class="nav-number">1.</span> <span class="nav-text">ZUC算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、运算符"><span class="nav-number">1.1.</span> <span class="nav-text">1、运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、符号"><span class="nav-number">1.2.</span> <span class="nav-text">2、符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性反馈移位寄存器-LFSR"><span class="nav-number">1.3.</span> <span class="nav-text">线性反馈移位寄存器(LFSR)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单LFSR"><span class="nav-number">1.3.1.</span> <span class="nav-text">简单LFSR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LFSR的数学描述"><span class="nav-number">1.3.2.</span> <span class="nav-text">LFSR的数学描述</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
