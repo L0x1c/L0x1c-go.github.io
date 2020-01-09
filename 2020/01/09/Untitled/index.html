@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="来自buu上的红帽杯的试题 easy re放入了ida进行分析，打开后shift+f12进行关键字的查找，找到了主函数 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747">
+<meta property="og:type" content="article">
+<meta property="og:title" content="红帽杯RE WP">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;09&#x2F;Untitled&#x2F;index.html">
+<meta property="og:site_name" content="L0x1c-Grow Up">
+<meta property="og:description" content="来自buu上的红帽杯的试题 easy re放入了ida进行分析，打开后shift+f12进行关键字的查找，找到了主函数 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-144.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-145.png">
+<meta property="og:updated_time" content="2020-01-09T16:51:52.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-144.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/09/Untitled/"/>
+
+
+
+
+
+  <title>红帽杯RE WP | L0x1c-Grow Up</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">L0x1c-Grow Up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">默默学习二进制的一个小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/09/Untitled/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="L0x1c">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="L0x1c-Grow Up">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">红帽杯RE WP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-09T21:10:17+08:00">
+                2020-01-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-10T00:51:52+08:00">
+                2020-01-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>来自buu上的红帽杯的试题</p>
+<h2 id="easy-re"><a href="#easy-re" class="headerlink" title="easy re"></a>easy re</h2><p>放入了ida进行分析，打开后shift+f12进行关键字的查找，找到了主函数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line">signed __int64 sub_4009C6()</span><br><span class="line">&#123;</span><br><span class="line">  char *v0; // rsi</span><br><span class="line">  char *v1; // rdi</span><br><span class="line">  __int64 v2; // rax</span><br><span class="line">  signed __int64 result; // rax</span><br><span class="line">  unsigned __int64 v4; // rax</span><br><span class="line">  __int64 v5; // rax</span><br><span class="line">  const __m128i *v6; // ST10_8</span><br><span class="line">  const __m128i *v7; // ST18_8</span><br><span class="line">  const __m128i *v8; // ST20_8</span><br><span class="line">  const __m128i *v9; // ST28_8</span><br><span class="line">  const __m128i *v10; // ST30_8</span><br><span class="line">  const __m128i *v11; // ST38_8</span><br><span class="line">  const __m128i *v12; // ST40_8</span><br><span class="line">  const __m128i *v13; // ST48_8</span><br><span class="line">  const __m128i *v14; // ST50_8</span><br><span class="line">  __int64 v15; // ST58_8</span><br><span class="line">  int i; // [rsp+Ch] [rbp-114h]</span><br><span class="line">  char v17; // [rsp+60h] [rbp-C0h]</span><br><span class="line">  char v18; // [rsp+61h] [rbp-BFh]</span><br><span class="line">  char v19; // [rsp+62h] [rbp-BEh]</span><br><span class="line">  char v20; // [rsp+63h] [rbp-BDh]</span><br><span class="line">  char v21; // [rsp+64h] [rbp-BCh]</span><br><span class="line">  char v22; // [rsp+65h] [rbp-BBh]</span><br><span class="line">  char v23; // [rsp+66h] [rbp-BAh]</span><br><span class="line">  char v24; // [rsp+67h] [rbp-B9h]</span><br><span class="line">  char v25; // [rsp+68h] [rbp-B8h]</span><br><span class="line">  char v26; // [rsp+69h] [rbp-B7h]</span><br><span class="line">  char v27; // [rsp+6Ah] [rbp-B6h]</span><br><span class="line">  char v28; // [rsp+6Bh] [rbp-B5h]</span><br><span class="line">  char v29; // [rsp+6Ch] [rbp-B4h]</span><br><span class="line">  char v30; // [rsp+6Dh] [rbp-B3h]</span><br><span class="line">  char v31; // [rsp+6Eh] [rbp-B2h]</span><br><span class="line">  char v32; // [rsp+6Fh] [rbp-B1h]</span><br><span class="line">  char v33; // [rsp+70h] [rbp-B0h]</span><br><span class="line">  char v34; // [rsp+71h] [rbp-AFh]</span><br><span class="line">  char v35; // [rsp+72h] [rbp-AEh]</span><br><span class="line">  char v36; // [rsp+73h] [rbp-ADh]</span><br><span class="line">  char v37; // [rsp+74h] [rbp-ACh]</span><br><span class="line">  char v38; // [rsp+75h] [rbp-ABh]</span><br><span class="line">  char v39; // [rsp+76h] [rbp-AAh]</span><br><span class="line">  char v40; // [rsp+77h] [rbp-A9h]</span><br><span class="line">  char v41; // [rsp+78h] [rbp-A8h]</span><br><span class="line">  char v42; // [rsp+79h] [rbp-A7h]</span><br><span class="line">  char v43; // [rsp+7Ah] [rbp-A6h]</span><br><span class="line">  char v44; // [rsp+7Bh] [rbp-A5h]</span><br><span class="line">  char v45; // [rsp+7Ch] [rbp-A4h]</span><br><span class="line">  char v46; // [rsp+7Dh] [rbp-A3h]</span><br><span class="line">  char v47; // [rsp+7Eh] [rbp-A2h]</span><br><span class="line">  char v48; // [rsp+7Fh] [rbp-A1h]</span><br><span class="line">  char v49; // [rsp+80h] [rbp-A0h]</span><br><span class="line">  char v50; // [rsp+81h] [rbp-9Fh]</span><br><span class="line">  char v51; // [rsp+82h] [rbp-9Eh]</span><br><span class="line">  char v52; // [rsp+83h] [rbp-9Dh]</span><br><span class="line">  char v53[32]; // [rsp+90h] [rbp-90h]</span><br><span class="line">  int v54; // [rsp+B0h] [rbp-70h]</span><br><span class="line">  char v55; // [rsp+B4h] [rbp-6Ch]</span><br><span class="line">  char v56; // [rsp+C0h] [rbp-60h]</span><br><span class="line">  char v57; // [rsp+E7h] [rbp-39h]</span><br><span class="line">  char v58; // [rsp+100h] [rbp-20h]</span><br><span class="line">  unsigned __int64 v59; // [rsp+108h] [rbp-18h]</span><br><span class="line"></span><br><span class="line">  v59 = __readfsqword(40u);</span><br><span class="line">  v17 = <span class="string">'I'</span>;</span><br><span class="line">  v18 = <span class="string">'o'</span>;</span><br><span class="line">  v19 = <span class="string">'d'</span>;</span><br><span class="line">  v20 = <span class="string">'l'</span>;</span><br><span class="line">  v21 = <span class="string">'&gt;'</span>;</span><br><span class="line">  v22 = <span class="string">'Q'</span>;</span><br><span class="line">  v23 = <span class="string">'n'</span>;</span><br><span class="line">  v24 = <span class="string">'b'</span>;</span><br><span class="line">  v25 = <span class="string">'('</span>;</span><br><span class="line">  v26 = <span class="string">'o'</span>;</span><br><span class="line">  v27 = <span class="string">'c'</span>;</span><br><span class="line">  v28 = <span class="string">'y'</span>;</span><br><span class="line">  v29 = <span class="string">''</span>;</span><br><span class="line">  v30 = <span class="string">'y'</span>;</span><br><span class="line">  v31 = <span class="string">'.'</span>;</span><br><span class="line">  v32 = <span class="string">'i'</span>;</span><br><span class="line">  v33 = <span class="string">''</span>;</span><br><span class="line">  v34 = <span class="string">'d'</span>;</span><br><span class="line">  v35 = <span class="string">'`'</span>;</span><br><span class="line">  v36 = <span class="string">'3'</span>;</span><br><span class="line">  v37 = <span class="string">'w'</span>;</span><br><span class="line">  v38 = <span class="string">'&#125;'</span>;</span><br><span class="line">  v39 = <span class="string">'w'</span>;</span><br><span class="line">  v40 = <span class="string">'e'</span>;</span><br><span class="line">  v41 = <span class="string">'k'</span>;</span><br><span class="line">  v42 = <span class="string">'9'</span>;</span><br><span class="line">  v43 = <span class="string">'&#123;'</span>;</span><br><span class="line">  v44 = <span class="string">'i'</span>;</span><br><span class="line">  v45 = <span class="string">'y'</span>;</span><br><span class="line">  v46 = <span class="string">'='</span>;</span><br><span class="line">  v47 = <span class="string">'~'</span>;</span><br><span class="line">  v48 = <span class="string">'y'</span>;</span><br><span class="line">  v49 = <span class="string">'L'</span>;</span><br><span class="line">  v50 = <span class="string">'@'</span>;</span><br><span class="line">  v51 = <span class="string">'E'</span>;</span><br><span class="line">  v52 = <span class="string">'C'</span>;</span><br><span class="line">  memset(v53, 0, sizeof(v53));</span><br><span class="line">  v54 = 0;</span><br><span class="line">  v55 = 0;</span><br><span class="line">  v0 = v53;</span><br><span class="line">  sub_4406E0(0LL, (__int64)v53);</span><br><span class="line">  v55 = 0;</span><br><span class="line">  v1 = v53;</span><br><span class="line">  LODWORD(v2) = sub_424BA0((const __m128i *)v53);</span><br><span class="line">  <span class="keyword">if</span> ( v2 == 36 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( i = 0; ; ++i )</span><br><span class="line">    &#123;</span><br><span class="line">      v1 = v53;</span><br><span class="line">      LODWORD(v4) = sub_424BA0((const __m128i *)v53);</span><br><span class="line">      <span class="keyword">if</span> ( i &gt;= v4 )</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">      <span class="keyword">if</span> ( (unsigned __int8)(v53[i] ^ i) != *(&amp;v17 + i) )</span><br><span class="line">      &#123;</span><br><span class="line">        result = 4294967294LL;</span><br><span class="line">        goto LABEL_13;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sub_410CC0((const __m128i *)<span class="string">"continue!"</span>);</span><br><span class="line">    memset(&amp;v56, 0, 0x40uLL);</span><br><span class="line">    v58 = 0;</span><br><span class="line">    v0 = &amp;v56;</span><br><span class="line">    sub_4406E0(0LL, (__int64)&amp;v56);</span><br><span class="line">    v57 = 0;</span><br><span class="line">    v1 = &amp;v56;</span><br><span class="line">    LODWORD(v5) = sub_424BA0((const __m128i *)&amp;v56);</span><br><span class="line">    <span class="keyword">if</span> ( v5 == 39 )</span><br><span class="line">    &#123;</span><br><span class="line">      v6 = (const __m128i *)sub_400E44((const __m128i *)&amp;v56);</span><br><span class="line">      v7 = (const __m128i *)sub_400E44(v6);</span><br><span class="line">      v8 = (const __m128i *)sub_400E44(v7);</span><br><span class="line">      v9 = (const __m128i *)sub_400E44(v8);</span><br><span class="line">      v10 = (const __m128i *)sub_400E44(v9);</span><br><span class="line">      v11 = (const __m128i *)sub_400E44(v10);</span><br><span class="line">      v12 = (const __m128i *)sub_400E44(v11);</span><br><span class="line">      v13 = (const __m128i *)sub_400E44(v12);</span><br><span class="line">      v14 = (const __m128i *)sub_400E44(v13);</span><br><span class="line">      v15 = sub_400E44(v14);</span><br><span class="line">      v0 = off_6CC090;</span><br><span class="line">      v1 = (char *)v15;</span><br><span class="line">      <span class="keyword">if</span> ( !(unsigned int)sub_400360(v15, (__int64)off_6CC090) )</span><br><span class="line">      &#123;</span><br><span class="line">        sub_410CC0((const __m128i *)<span class="string">"You found me!!!"</span>);</span><br><span class="line">        v1 = <span class="string">"bye bye~"</span>;</span><br><span class="line">        sub_410CC0((const __m128i *)<span class="string">"bye bye~"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      result = 0LL;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      result = 4294967293LL;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    result = 0xFFFFFFFFLL;</span><br><span class="line">  &#125;</span><br><span class="line">LABEL_13:</span><br><span class="line">  <span class="keyword">if</span> ( __readfsqword(0x28u) != v59 )</span><br><span class="line">    sub_444020(v1, v0);</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到第一次的异或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( v2 == 36 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( i = 0; ; ++i )</span><br><span class="line">    &#123;</span><br><span class="line">      v1 = v53;</span><br><span class="line">      LODWORD(v4) = sub_424BA0((const __m128i *)v53);</span><br><span class="line">      <span class="keyword">if</span> ( i &gt;= v4 )</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">      <span class="keyword">if</span> ( (unsigned __int8)(v53[i] ^ i) != *(&amp;v17 + i) )</span><br><span class="line">      &#123;</span><br><span class="line">        result = 4294967294LL;</span><br><span class="line">        goto LABEL_13;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>一共和36个字符进行比较，跟输入的v17的进行比较，需要输入的v53[i]^i等于上面有的v17到v52可以写出脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include&lt;string&gt;</span></span><br><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	string A = <span class="string">"Iodl&gt;Qnb(ocy y.i d`3w&#125;wek9&#123;iy=~yL@EC"</span>;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0;A[i];i++) &#123;</span><br><span class="line">		A[i] = A[i] ^ i;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; A &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">//Info:The first four chars are `flag`</span><br></pre></td></tr></table></figure>
+<p>得出来Info:The first four chars are `flag`得出来了一个信息，然后继续向下看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">memset(&amp;v56, 0,64uLL);</span><br><span class="line">v58 = 0;</span><br><span class="line">v0 = &amp;v56;</span><br><span class="line">sub_4406E0(0LL, (__int64)&amp;v56);</span><br><span class="line">v57 = 0;</span><br><span class="line">v1 = &amp;v56;</span><br><span class="line">LODWORD(v5) = sub_424BA0((const __m128i *)&amp;v56);</span><br><span class="line"><span class="keyword">if</span> ( v5 == 39 )</span><br><span class="line">&#123;</span><br><span class="line">  v6 = (const __m128i *)sub_400E44((const __m128i *)&amp;v56);</span><br><span class="line">  v7 = (const __m128i *)sub_400E44(v6);</span><br><span class="line">  v8 = (const __m128i *)sub_400E44(v7);</span><br><span class="line">  v9 = (const __m128i *)sub_400E44(v8);</span><br><span class="line">  v10 = (const __m128i *)sub_400E44(v9);</span><br><span class="line">  v11 = (const __m128i *)sub_400E44(v10);</span><br><span class="line">  v12 = (const __m128i *)sub_400E44(v11);</span><br><span class="line">  v13 = (const __m128i *)sub_400E44(v12);</span><br><span class="line">  v14 = (const __m128i *)sub_400E44(v13);</span><br><span class="line">  v15 = sub_400E44(v14);</span><br><span class="line">  v0 = off_6CC090;</span><br><span class="line">  v1 = (char *)v15;</span><br><span class="line">  <span class="keyword">if</span> ( !(unsigned int)sub_400360(v15, (__int64)off_6CC090) )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_410CC0((const __m128i *)<span class="string">"You found me!!!"</span>);</span><br><span class="line">    v1 = <span class="string">"bye bye~"</span>;</span><br><span class="line">    sub_410CC0((const __m128i *)<span class="string">"bye bye~"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  result = 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.rodata:00000000004A23A8 aVm0wd2vhuxhtwg db <span class="string">'Vm0wd2VHUXhTWGhpUm1SWVYwZDRWVll3Wkc5WFJsbDNXa1pPVlUxV2NIcFhhMk0xV'</span></span><br><span class="line">.rodata:00000000004A23A8                                         ; DATA XREF: .data:off_6CC090↓o</span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'mpKS1NHVkdXbFpOYmtKVVZtcEtTMUl5VGtsaVJtUk9ZV3hhZVZadGVHdFRNVTVYVW'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'01T2FGSnRVbGhhVjNoaFZWWmtWMXBFVWxSTmJFcElWbTAxVDJGV1NuTlhia0pXWWx'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'ob1dGUnJXbXRXTVZaeVdrWm9hVlpyV1hwV1IzaGhXVmRHVjFOdVVsWmlhMHBZV1ZS'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'R1lWZEdVbFZTYlhSWFRWWndNRlZ0TVc5VWJGcFZWbXR3VjJKSFVYZFdha1pXWlZaT'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'2NtRkhhRk5pVjJoWVYxZDBhMVV3TlhOalJscFlZbGhTY1ZsclduZGxiR1J5VmxSR1'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'ZXSlZjRWhaTUZKaFZqSktWVkZZYUZkV1JWcFlWV3BHYTFkWFRrZFRiV3hvVFVoQ1d'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'sWXhaRFJpTWtsM1RVaG9hbEpYYUhOVmJUVkRZekZhY1ZKcmRGTk5Wa3A2VjJ0U1Ex'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'WlhTbFpqUldoYVRVWndkbFpxUmtwbGJVWklZVVprYUdFeGNHOVhXSEJIWkRGS2RGS'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'nJhR2hTYXpWdlZGVm9RMlJzV25STldHUlZUVlpXTlZadE5VOVdiVXBJVld4c1dtSl'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'lUWGhXTUZwell6RmFkRkpzVWxOaVNFSktWa1phVTFFeFduUlRhMlJxVWxad1YxWnR'</span></span><br><span class="line">.rodata:00000000004A23A8                 db <span class="string">'lRXRXTVZaSFVsUnNVVlZVTURrPQ=='</span>,0</span><br></pre></td></tr></table></figure>
+<p>不难看出是经过了10次的base64，变成了如下的密文，所以本人直接在网上解密了10次，emmm，之后会写个分析base64和解密base64的exp的<br><img src="/images/pasted-144.png" alt="upload successful"><br>得出来是一个看雪的网址：<a href="https://bbs.pediy.com/thread-254172.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-254172.htm</a><br><img src="/images/pasted-145.png" alt="upload successful"><br>但是发现在.fini还存在一个函数，里面存放的是程序运行main函数之后所运行的函数，而.init是在main函数之前的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">unsigned __int64 sub_400D35()</span><br><span class="line">&#123;</span><br><span class="line">  __int64 v0; // rdi</span><br><span class="line">  unsigned __int64 result; // rax</span><br><span class="line">  unsigned __int64 v2; // rt1</span><br><span class="line">  unsigned int v3; // [rsp+Ch] [rbp-24h]</span><br><span class="line">  signed int i; // [rsp+10h] [rbp-20h]</span><br><span class="line">  signed int j; // [rsp+14h] [rbp-1Ch]</span><br><span class="line">  unsigned int v6; // [rsp+24h] [rbp-Ch]</span><br><span class="line">  unsigned __int64 v7; // [rsp+28h] [rbp-8h]</span><br><span class="line"></span><br><span class="line">  v7 = __readfsqword(0x28u);</span><br><span class="line">  v0 = 0LL;</span><br><span class="line">  v3 = sub_43FD20() - qword_6CEE38;</span><br><span class="line">  <span class="keyword">for</span> ( i = 0; i &lt;= 1233; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    v0 = v3;</span><br><span class="line">    sub_40F790(v3);</span><br><span class="line">    sub_40FE60(v3);</span><br><span class="line">    sub_40FE60(v3);</span><br><span class="line">    v3 = (unsigned __int64)sub_40FE60(v3) ^ 0x98765432;</span><br><span class="line">  &#125;</span><br><span class="line">  v6 = v3;</span><br><span class="line">  <span class="keyword">if</span> ( ((unsigned __int8)v3 ^ byte_6CC0A0[0]) == 102 &amp;&amp; (HIBYTE(v6) ^ (unsigned __int8)byte_6CC0A3) == 103 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( j = 0; j &lt;= 24; ++j )</span><br><span class="line">    &#123;</span><br><span class="line">      v0 = (unsigned __int8)(byte_6CC0A0[j] ^ *((_BYTE *)&amp;v6 + j % 4));</span><br><span class="line">      sub_410E90(v0);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  v2 = __readfsqword(0x28u);</span><br><span class="line">  result = v2 ^ v7;</span><br><span class="line">  <span class="keyword">if</span> ( v2 != v7 )</span><br><span class="line">    sub_444020(v0);</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进行分析，一共是两次异或，可以看出来v6=v3且102为f 103为g推断为上面的提示字符串flag 和内存中给的数据反向解密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include&lt;string&gt;</span></span><br><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	char key3[4] = &#123;&#125;;</span><br><span class="line">	string key1 = <span class="string">"flag"</span>;</span><br><span class="line">	char key2[] =  &#123;</span><br><span class="line">    0x40,0x35,0x20,0x56,0x5D,0x18,0x22,0x45,0x17,0x2F,0x24,0x6E,0x62,0x3C,0x27,0x54,0x48,0x6C,0x24,0x6E,0x72,0x3C,0x32,0x45,0x5B &#125;;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0;i &lt; 4;i++) &#123;</span><br><span class="line">		key3[i] = key1[i] ^ key2[i];</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; key3 &lt;&lt; endl;//&amp;YA1</span><br><span class="line">	char flag[40] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0;i &lt; 25;i++) &#123;</span><br><span class="line">		flag[i] = key2[i] ^ key3[i % 4];</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; flag &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">//flag&#123;Act1ve_Defen5e_Test&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="xx"><a href="#xx" class="headerlink" title="xx"></a>xx</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/03/ZUC%E7%AE%97%E6%B3%95/" rel="next" title="ZUC算法">
+                <i class="fa fa-chevron-left"></i> ZUC算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="L0x1c" />
+            
+              <p class="site-author-name" itemprop="name">L0x1c</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/L0x1c" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/L0x1c" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xi4or0uji.github.io/" title="Xi4or0uji" target="_blank">Xi4or0uji</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#easy-re"><span class="nav-number">1.</span> <span class="nav-text">easy re</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xx"><span class="nav-number">2.</span> <span class="nav-text">xx</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">L0x1c</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
