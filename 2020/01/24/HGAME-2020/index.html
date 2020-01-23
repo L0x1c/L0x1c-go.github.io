@@ -98,7 +98,10 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;uploader.shimo.im&#x2F;f&#x2F;Ox404M0QFSU2XhOu.png!thumbnail">
 <meta property="og:image" content="https:&#x2F;&#x2F;uploader.shimo.im&#x2F;f&#x2F;vBWpkR9AirIAy3AF.png!thumbnail">
 <meta property="og:image" content="https:&#x2F;&#x2F;uploader.shimo.im&#x2F;f&#x2F;NsQT3ugbMoctXeGB.png!thumbnail">
-<meta property="og:updated_time" content="2020-01-23T18:04:11.210Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-171.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-172.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-173.png">
+<meta property="og:updated_time" content="2020-01-23T18:10:55.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;uploader.shimo.im&#x2F;f&#x2F;J3jHk8NCaI8fhgEI.png!thumbnail">
 
@@ -342,7 +345,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-24T02:04:11+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-24T02:10:55+08:00">
                 2020-01-24
               </time>
             
@@ -432,6 +435,12 @@
 <p>x[8] = 25943.000000</p>
 <p>// 其实就是个矩阵乘法，直接逆矩阵相乘就可以了</p>
 <p>-24840_ -78193_51567_2556_ -26463_26729_3608_ -25933_25943</p>
+<h1 id="week2"><a href="#week2" class="headerlink" title="week2"></a>week2</h1><h2 id="unpack"><a href="#unpack" class="headerlink" title="unpack"></a>unpack</h2><p>打开后发现是一个upx的一个问题，但是自己upx -d不好使，然后学习了一下dump的问题，学习的链接：<a href="https://stfpeak.github.io/2017/04/11/ELF-unpack-method/" target="_blank" rel="noopener">https://stfpeak.github.io/2017/04/11/ELF-unpack-method/</a><br><img src="/images/pasted-171.png" alt="upload successful"><br>首先运行这个程序，然后再另一个终端找到这个进程的PID，然后cat一下它的内存<br><img src="/images/pasted-172.png" alt="upload successful"><br>然后启动gdb，将改进程attach到gdb上，命令：$ gdb attach (pid)，然后就是gdb命令：gdb) dump memory /root/memory.dump 0x00400000 0x006ce000</br>解释一下语法：</p>
+<ul>
+<li>“dump memory”是命令</li>
+<li>“/root/memory.dump”是我们想保存dump出的内容的路径。</li>
+<li>两个hex是内存地址区间，这跟/proc/6686/maps的格式有些不一样。这是以0x开头的而且没有连字符。</br>在root在会有一个dump的文件，放到ida中找到主函数：<br><img src="/images/pasted-173.png" alt="upload successful"><br>看出来是一个加法的基础运算<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;stdio.h&gt;</span></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	int v7[42] = &#123;&#125;;</span><br><span class="line">	int v[42] = &#123; 0x68,0x68,0x63,0x70,0x69,0x80,0x5b,0x75,0x78,0x49,0x6d,0x76,0x75,0x7b,0x75,0x6e,0x41,0x84,0x71,0x65,0x44,0x82,0x4a,0x85,0x8c,0x82,0x7d,0x7a,0x82,0x4d,0x90,0x7e,0x92,0x54,0x98,0x88,0x96,0x98,0x57,0x95,0x8f,0xa6 &#125;;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt;= 41; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		v7[i] = v[i] - i;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, v7[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br><span class="line">//hgame&#123;Unp@cking_1s_R0m4ntic_f0r_r3vers1ng&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -630,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reverse"><span class="nav-number">1.</span> <span class="nav-text">Reverse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week1"><span class="nav-number">2.</span> <span class="nav-text">week1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#advance"><span class="nav-number">2.1.</span> <span class="nav-text">advance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maze"><span class="nav-number">2.2.</span> <span class="nav-text">maze</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bitwise-operation2"><span class="nav-number">2.3.</span> <span class="nav-text">bitwise_operation2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cpp"><span class="nav-number">2.4.</span> <span class="nav-text">cpp</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reverse"><span class="nav-number">1.</span> <span class="nav-text">Reverse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week1"><span class="nav-number">2.</span> <span class="nav-text">week1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#advance"><span class="nav-number">2.1.</span> <span class="nav-text">advance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maze"><span class="nav-number">2.2.</span> <span class="nav-text">maze</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bitwise-operation2"><span class="nav-number">2.3.</span> <span class="nav-text">bitwise_operation2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cpp"><span class="nav-number">2.4.</span> <span class="nav-text">cpp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#week2"><span class="nav-number">3.</span> <span class="nav-text">week2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unpack"><span class="nav-number">3.1.</span> <span class="nav-text">unpack</span></a></li></ol></li></ol></div>
             
 
           </div>
