@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ZUC算法由于在看ZUC算法的时候会有很多的字符等符号不太知道于是！ 运算符+ 算术加法运算ab 整数a和b的乘积= 赋值操作符mod 整数模运算⊕ 按比特位逐位异或运算田 模2加法运算‖ 字符串或字节串连接符下标H 取字的最高16比特下标L 取字的最低16比特&amp;lt;&amp;lt;&amp;lt;k 32比特字循环左移k位&amp;gt;&amp;gt;k 32比特字右移K位a-&amp;gt;b 向量a赋值给向量b，即按分量逐分量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZUC算法">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;03&#x2F;ZUC%E7%AE%97%E6%B3%95&#x2F;index.html">
+<meta property="og:site_name" content="L0x1c-Grow Up">
+<meta property="og:description" content="ZUC算法由于在看ZUC算法的时候会有很多的字符等符号不太知道于是！ 运算符+ 算术加法运算ab 整数a和b的乘积= 赋值操作符mod 整数模运算⊕ 按比特位逐位异或运算田 模2加法运算‖ 字符串或字节串连接符下标H 取字的最高16比特下标L 取字的最低16比特&amp;lt;&amp;lt;&amp;lt;k 32比特字循环左移k位&amp;gt;&amp;gt;k 32比特字右移K位a-&amp;gt;b 向量a赋值给向量b，即按分量逐分量">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-119.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-120.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-121.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-126.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-125.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-127.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-130.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-135.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-134.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-132.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-137.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-133.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-136.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-138.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-139.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-140.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-141.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-142.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-143.png">
+<meta property="og:updated_time" content="2020-01-26T11:52:03.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-119.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/03/ZUC算法/"/>
+
+
+
+
+
+  <title>ZUC算法 | L0x1c-Grow Up</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">L0x1c-Grow Up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">默默学习二进制的一个小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/03/ZUC%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="L0x1c">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="L0x1c-Grow Up">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ZUC算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-03T17:13:43+08:00">
+                2020-01-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-26T19:52:03+08:00">
+                2020-01-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-RE/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-RE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ZUC算法"><a href="#ZUC算法" class="headerlink" title="ZUC算法"></a>ZUC算法</h2><p>由于在看ZUC算法的时候会有很多的字符等符号不太知道于是！</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>+ 算术加法运算</br>ab 整数a和b的乘积</br>= 赋值操作符</br>mod 整数模运算</br>⊕ 按比特位逐位异或运算</br>田 模2加法运算</br>‖ 字符串或字节串连接符</br>下标H 取字的最高16比特</br>下标L 取字的最低16比特</br>&lt;&lt;&lt;k 32比特字循环左移k位</br>&gt;&gt;k 32比特字右移K位</br>a-&gt;b 向量a赋值给向量b，即按分量逐分量赋值</br></p>
+<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h3><p>S1，S2，S3，……S15 线性反馈移位寄存器的16个31比特寄存器单元变量</br>X1，X2，X3，X4 比特重组输出的4个32比特字</br>R1，R2 非线性函数F的2个32比特记忆单元变量</br>W 非线性函数F输出的32比特字</br>W1 R1与X1进行模2^32加法运算输出的32比特字</br>W2 R2与X2按比特位逐位异或运算输出的32比特字</br>Z 算法每个节拍输出的32比特密钥字</br>K 初始种子密钥</br>IV 初始向量</br>D1，D2，D3……D15 15比特的字符串常量</br>F 非线性函数</br>L 输出密钥字长度</br></p>
+<h3 id="线性反馈移位寄存器-LFSR"><a href="#线性反馈移位寄存器-LFSR" class="headerlink" title="线性反馈移位寄存器(LFSR)"></a>线性反馈移位寄存器(LFSR)</h3><p>由于这个算法涉及到了LFSR，于是翻起了自己深入浅出密码学，复习一下知识点</br>定义:一个LFSR由若干时钟存储元件(触发器)和一个反馈路径组成，存储元件的数目给出了LFSR的度，一个拥有m个触发器的LFSR可以称为“度为m”，反馈网络计算移位寄存器中某些触发器的XOR的和，并将其作为上一个触发器的输入</br></p>
+<h4 id="简单LFSR"><a href="#简单LFSR" class="headerlink" title="简单LFSR"></a>简单LFSR</h4><p><img src="/images/pasted-119.png" alt="upload successful"><br>书上的例子挺好的,可以帮助理解LFSR，给了初始状态(S2=1,S1=0,S0=0)</br>看图：用自己话理解了一下，将S0与S1进行XOR，出来的结果给S3，这时候S0输出出去，S1，S2进行左平移，S3加入S2的位置，依次类推，因为是异或且每次是一位0和1那么可以写成公式就是:S3=S1+S0 mod 2 </br>那我们看一下LFSR的状态序列<br><img src="/images/pasted-120.png" alt="upload successful"><br>推导：S(i+3)=S(i)+S(i+1) mod 2</br>我们可以看到在第6个时钟周期后开始重复，0010111，意味着LFSR输出的周期长度为7</p>
+<h4 id="LFSR的数学描述"><a href="#LFSR的数学描述" class="headerlink" title="LFSR的数学描述"></a>LFSR的数学描述</h4><p>继续调用了书上的图<br><img src="/images/pasted-121.png" alt="upload successful"><br>我们可以看到，LFSR拥有了m个触发器和m个可能的反馈位置，并且这些触发器和反馈的位置之间通过XOR操作连接，看是否活跃取决于反馈系数P0….Pn</br>这里有了个定义：</br>如果Pi=1，此反馈是活跃的(即关闭了开关)</br>如果Pi=0，对应的触发器的输出将不会被反馈(即打开了开关)</br>将触发器的i的输出与对应的系数Pi相乘，如果Pi=1那么结果就是输出值(对应关闭开关)，如果Pi=0，则输出值也为0(即打开开关)即公式:<br><img src="/images/pasted-126.png" alt="upload successful"><br><img src="/images/pasted-125.png" alt="upload successful"><br>即满足了依次左移的原则，更新Sm，则输出序列描述为:<br><img src="/images/pasted-127.png" alt="upload successful"><br>因为m位状态向量只能得到2^m -1个非零状态(自己理解为是可能性最后遍历回来)，比如最大长度输出序列的LFSR，给定一个度m=4，反馈路径为(P3=0,P2=0,P1=1,P0=1)，周期为2^4-1=15;非最大长度输出序列，给定一个度m=4，反馈路径为(P3=1,P2=1,P1=1,P0=1)周期为5</br><br>0 0 1 1/0 0 0 1/1 0 0 0/0 1 0 0/0 0 1 0/1 0 0 1/1 1 0 0/0 1 1 0/1 0 1 1/0 1 0 1/1 0 1 0/1 1 0 1/1 1 1 0/1 1 1 1/0 1 1 1/（0 0 1 1）所以为15</br>1 1 1 1/0 1 1 1/1 0 1 1/1 1 0 1/1 1 1 0/(1 1 1 1 )所以为5</br>LFSR通常用：反馈系数向量(Pm-1,…..,P1,P0)则P(x)=X^m+Pm-1X^m-1+……+P1x+p0</br>如上面的例子中的系数(P3=0,P2=0,P1=1,P0=1)的LFSR可以表示为多项式x^4+x+1,最大长度LFSR拥有所谓的本源多项式(设f(x)是一个整系数多项式, 若f(x)的系数的公因子只有±1, 则称f(x)是一个本原多项式.)查了很久总结一下：代数式系数对应的0 1 字串,满足,用8进制变为对应的十进制,若为素数,则为本原多项式，所以本原多项式是一种特殊的不可约分多项式，只有1和他的本身.所以例如(0,2,5)为1+x^2+x^5为10011八进制为23为素数<br><img src="/images/pasted-130.png" alt="upload successful"></p>
+<h3 id="算法构架"><a href="#算法构架" class="headerlink" title="算法构架"></a>算法构架</h3><p><img src="/images/pasted-135.png" alt="upload successful"><br>上层是16级线性反馈移位寄存器(LFSR),中层是比特重组(BR),下层是非线性函数F</p>
+<h4 id="第一层：线性反馈移位寄存器（LFSR）"><a href="#第一层：线性反馈移位寄存器（LFSR）" class="headerlink" title="第一层：线性反馈移位寄存器（LFSR）"></a>第一层：线性反馈移位寄存器（LFSR）</h4><p><img src="/images/pasted-134.png" alt="upload successful"><br>LFSR包括16个31比特寄存器单元变量S1，S2，S3，……S15,最开始进行了初始化<br><img src="/images/pasted-132.png" alt="upload successful"><br><img src="/images/pasted-137.png" alt="upload successful">)因为是mod(2^31-1) 2^31-1=2147483647为素数，所以为素域，采用16次本原多项式P(x)=x^16-2^15*x^15-2^17*x^13-2^21*x^10-2^20*x^4-(2^8+1)所以根据线性反馈移位寄存器的公式来说(看上面的介绍)V=2^15*S^15-2^17*S^13-2^21*S^10-2^20*S^4-(2^8+1)S0 mod(2^31-1)先放到一边，准备开始移位即：(s1,s2…..s16)变为(s0,s1….s16)所以输出的为32位比特，但是我们要舍去一个最开始的把s16进行放入到s15的位置s0的位置进行保存</br>所以可以得到公式为是:S16=(V+u)mod(2^31-1)其中v是上面公式得到的与LFSR接受的31比特进行相加之后与2^31-1进行求余就是S16，如果我们的S16=0 那么S16置为2^31-1</br>以上是初始化的模式，初始化和工作模式的差异为，初始化时需要引入非线性函数F输出W通过舍弃最低为比特得到u，而工作模式不需要</br>一般分为两种情况:<img src="/images/pasted-133.png" alt="upload successful"></p>
+<h4 id="第二层：比特重组（BR）"><a href="#第二层：比特重组（BR）" class="headerlink" title="第二层：比特重组（BR）"></a>第二层：比特重组（BR）</h4><p>比特重组在LFSR和F之间，起到数据组合和关联的作用</br>在LFSR的寄存器单元中抽取128比特进行4个分组4个32比特为X0,X1,X2,X3传递给F</br>计算过程：</br>X0=S15H || S14L<br>X1=S11L || S19H<br>X2=S7L || S5H<br>X3=S2L || S0H<br>其中||表示两个字符首位进行拼接，H代表高16位，L代表低16位</p>
+<h4 id="第三层：非线性函数F"><a href="#第三层：非线性函数F" class="headerlink" title="第三层：非线性函数F"></a>第三层：非线性函数F</h4><p>非线性函数F内部包含2个32比特存储单元R1和R2，F的输入为来自比特重组的3个32比特字X0,X1,X2，F的输出为一个32比特的W，计算过程：<br><img src="/images/pasted-136.png" alt="upload successful"><br>F层核心部件，S盒:非线性部件，为ZUC提供混淆，L变换:线性变换，为ZUC提供扩散，F使用了两个8*8的S盒：<br><img src="/images/pasted-138.png" alt="upload successful"><br><img src="/images/pasted-139.png" alt="upload successful"><br><img src="/images/pasted-140.png" alt="upload successful"><br>F使用了两个L变换：L1和L2<br><img src="/images/pasted-141.png" alt="upload successful"><br>最后结果<br><img src="/images/pasted-142.png" alt="upload successful"></p>
+<h3 id="代码实现：加密"><a href="#代码实现：加密" class="headerlink" title="代码实现：加密"></a>代码实现：加密</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pragma once</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include&lt;malloc.h&gt;</span></span><br><span class="line"><span class="comment">#include&lt;stdio.h&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* ————————————W—————————- */</span><br><span class="line">typedef unsigned char u8;</span><br><span class="line">typedef unsigned int u32;</span><br><span class="line">/* —————————————t————————- */</span><br><span class="line">/* the state registers of LFSR 16 cells*/</span><br><span class="line">u32 LFSR_S0;</span><br><span class="line">u32 LFSR_S1;</span><br><span class="line">u32 LFSR_S2;</span><br><span class="line">u32 LFSR_S3;</span><br><span class="line">u32 LFSR_S4;</span><br><span class="line">u32 LFSR_S5;</span><br><span class="line">u32 LFSR_S6;</span><br><span class="line">u32 LFSR_S7;</span><br><span class="line">u32 LFSR_S8;</span><br><span class="line">u32 LFSR_S9;</span><br><span class="line">u32 LFSR_S10;</span><br><span class="line">u32 LFSR_S11;</span><br><span class="line">u32 LFSR_S12;</span><br><span class="line">u32 LFSR_S13;</span><br><span class="line">u32 LFSR_S14;</span><br><span class="line">u32 LFSR_S15;</span><br><span class="line">/* the registers of f算法中的R1,R2 */</span><br><span class="line">u32 F_R1;</span><br><span class="line">u32 F_R2;</span><br><span class="line">/* the outputs of BitReorganization BR中的X0,X1,X2,X3*/</span><br><span class="line">u32 BRC_X0;</span><br><span class="line">u32 BRC_X1;</span><br><span class="line">u32 BRC_X2;</span><br><span class="line">u32 BRC_X3;</span><br><span class="line">/* the s-boxes 两个S盒*/</span><br><span class="line">u8 S0[256] = &#123;</span><br><span class="line">0x3e,0x72,0x5b,0x47,0xca,0xe0,0x00,0x33,0x04,0xd1,0x54,0x98,0x09,0xb9,0x6d,0xcb,</span><br><span class="line">0x7b,0x1b,0xf9,0x32,0xaf,0x9d,0x6a,0xa5,0xb8,0x2d,0xfc,0x1d,0x08,0x53,0x03,0x90,</span><br><span class="line">0x4d,0x4e,0x84,0x99,0xe4,0xce,0xd9,0x91,0xdd,0xb6,0x85,0x48,0x8b,0x29,0x6e,0xac,</span><br><span class="line">0xcd,0xc1,0xf8,0x1e,0x73,0x43,0x69,0xc6,0xb5,0xbd,0xfd,0x39,0x63,0x20,0xd4,0x38,</span><br><span class="line">0x76,0x7d,0xb2,0xa7,0xcf,0xed,0x57,0xc5,0xf3,0x2c,0xbb,0x14,0x21,0x06,0x55,0x9b,</span><br><span class="line">0xe3,0xef,0x5e,0x31,0x4f,0x7f,0x5a,0xa4,0x0d,0x82,0x51,0x49,0x5f,0xba,0x58,0x1c,</span><br><span class="line">0x4a,0x16,0xd5,0x17,0xa8,0x92,0x24,0x1f,0x8c,0xff,0xd8,0xae,0x2e,0x01,0xd3,0xad,</span><br><span class="line">0x3b,0x4b,0xda,0x46,0xeb,0xc9,0xde,0x9a,0x8f,0x87,0xd7,0x3a,0x80,0x6f,0x2f,0xc8,</span><br><span class="line">0xb1,0xb4,0x37,0xf7,0x0a,0x22,0x13,0x28,0x7c,0xcc,0x3c,0x89,0xc7,0xc3,0x96,0x56,</span><br><span class="line">0x07,0xbf,0x7e,0xf0,0x0b,0x2b,0x97,0x52,0x35,0x41,0x79,0x61,0xa6,0x4c,0x10,0xfe,</span><br><span class="line">0xbc,0x26,0x95,0x88,0x8a,0xb0,0xa3,0xfb,0xc0,0x18,0x94,0xf2,0xe1,0xe5,0xe9,0x5d,</span><br><span class="line">0xd0,0xdc,0x11,0x66,0x64,0x5c,0xec,0x59,0x42,0x75,0x12,0xf5,0x74,0x9c,0xaa,0x23,</span><br><span class="line">0x0e,0x86,0xab,0xbe,0x2a,0x02,0xe7,0x67,0xe6,0x44,0xa2,0x6c,0xc2,0x93,0x9f,0xf1,</span><br><span class="line">0xf6,0xfa,0x36,0xd2,0x50,0x68,0x9e,0x62,0x71,0x15,0x3d,0xd6,0x40,0xc4,0xe2,0x0f,</span><br><span class="line">0x8e,0x83,0x77,0x6b,0x25,0x05,0x3f,0x0c,0x30,0xea,0x70,0xb7,0xa1,0xe8,0xa9,0x65,</span><br><span class="line">0x8d,0x27,0x1a,0xdb,0x81,0xb3,0xa0,0xf4,0x45,0x7a,0x19,0xdf,0xee,0x78,0x34,0x60</span><br><span class="line">&#125;;</span><br><span class="line">//s0盒</span><br><span class="line">u8 S1[256] = &#123;</span><br><span class="line">0x55,0xc2,0x63,0x71,0x3b,0xc8,0x47,0x86,0x9f,0x3c,0xda,0x5b,0x29,0xaa,0xfd,0x77,</span><br><span class="line">0x8c,0xc5,0x94,0x0c,0xa6,0x1a,0x13,0x00,0xe3,0xa8,0x16,0x72,0x40,0xf9,0xf8,0x42,</span><br><span class="line">0x44,0x26,0x68,0x96,0x81,0xd9,0x45,0x3e,0x10,0x76,0xc6,0xa7,0x8b,0x39,0x43,0xe1,</span><br><span class="line">0x3a,0xb5,0x56,0x2a,0xc0,0x6d,0xb3,0x05,0x22,0x66,0xbf,0xdc,0x0b,0xfa,0x62,0x48,</span><br><span class="line">0xdd,0x20,0x11,0x06,0x36,0xc9,0xc1,0xcf,0xf6,0x27,0x52,0xbb,0x69,0xf5,0xd4,0x87,</span><br><span class="line">0x7f,0x84,0x4c,0xd2,0x9c,0x57,0xa4,0xbc,0x4f,0x9a,0xdf,0xfe,0xd6,0x8d,0x7a,0xeb,</span><br><span class="line">0x2b,0x53,0xd8,0x5c,0xa1,0x14,0x17,0xfb,0x23,0xd5,0x7d,0x30,0x67,0x73,0x08,0x09,</span><br><span class="line">0xee,0xb7,0x70,0x3f,0x61,0xb2,0x19,0x8e,0x4e,0xe5,0x4b,0x93,0x8f,0x5d,0xdb,0xa9,</span><br><span class="line">0xad,0xf1,0xae,0x2e,0xcb,0x0d,0xfc,0xf4,0x2d,0x46,0x6e,0x1d,0x97,0xe8,0xd1,0xe9,</span><br><span class="line">0x4d,0x37,0xa5,0x75,0x5e,0x83,0x9e,0xab,0x82,0x9d,0xb9,0x1c,0xe0,0xcd,0x49,0x89,</span><br><span class="line">0x01,0xb6,0xbd,0x58,0x24,0xa2,0x5f,0x38,0x78,0x99,0x15,0x90,0x50,0xb8,0x95,0xe4,</span><br><span class="line">0xd0,0x91,0xc7,0xce,0xed,0x0f,0xb4,0x6f,0xa0,0xcc,0xf0,0x02,0x4a,0x79,0xc3,0xde,</span><br><span class="line">0xa3,0xef,0xea,0x51,0xe6,0x6b,0x18,0xec,0x1b,0x2c,0x80,0xf7,0x74,0xe7,0xff,0x21,</span><br><span class="line">0x5a,0x6a,0x54,0x1e,0x41,0x31,0x92,0x35,0xc4,0x33,0x07,0x0a,0xba,0x7e,0x0e,0x34,</span><br><span class="line">0x88,0xb1,0x98,0x7c,0xf3,0x3d,0x60,0x6c,0x7b,0xca,0xd3,0x1f,0x32,0x65,0x04,0x28,</span><br><span class="line">0x64,0xbe,0x85,0x9b,0x2f,0x59,0x8a,0xd7,0xb0,0x25,0xac,0xaf,0x12,0x03,0xe2,0xf2</span><br><span class="line">&#125;;</span><br><span class="line">//s1盒</span><br><span class="line">/* the constants D */</span><br><span class="line">u32 EK_d[16] = &#123;</span><br><span class="line">0x44D7, 0x26BC, 0x626B, 0x135E, 0x5789, 0x35E2, 0x7135, 0x09AF,</span><br><span class="line">0x4D78, 0x2F13, 0x6BC4, 0x1AF1, 0x5E26, 0x3C4D, 0x789A, 0x47AC</span><br><span class="line">&#125;;</span><br><span class="line">/* ——————————————————————- */</span><br><span class="line">/* c = a + b mod (2^31 – 1)  那个附录里复杂的计算*/</span><br><span class="line">u32 AddM(u32 a, u32 b) &#123;</span><br><span class="line">	u32 c = a + b;</span><br><span class="line">	<span class="built_in">return</span> (c &amp; 0x7FFFFFFF) + (c &gt;&gt; 31);</span><br><span class="line">&#125;</span><br><span class="line">/* LFSR with initialization mode */</span><br><span class="line"><span class="comment">#define MulByPow2(x, k) ((((x) &lt;&lt; k) | ((x) &gt;&gt; (31 - k))) &amp; 0x7FFFFFFF) </span></span><br><span class="line">void LFSRWithInitialisationMode(u32 u) &#123;</span><br><span class="line">	u32 f, v; f = LFSR_S0;</span><br><span class="line">	v = MulByPow2(LFSR_S0, 8);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S4, 20);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S10, 21);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S13, 17);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S15, 15);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	f = AddM(f, u);</span><br><span class="line">	/* update the state */</span><br><span class="line">	LFSR_S0 = LFSR_S1;</span><br><span class="line">	LFSR_S1 = LFSR_S2;</span><br><span class="line">	LFSR_S2 = LFSR_S3;</span><br><span class="line">	LFSR_S3 = LFSR_S4;</span><br><span class="line">	LFSR_S4 = LFSR_S5;</span><br><span class="line">	LFSR_S5 = LFSR_S6;</span><br><span class="line">	LFSR_S6 = LFSR_S7;</span><br><span class="line">	LFSR_S7 = LFSR_S8;</span><br><span class="line">	LFSR_S8 = LFSR_S9;</span><br><span class="line">	LFSR_S9 = LFSR_S10;</span><br><span class="line">	LFSR_S10 = LFSR_S11;</span><br><span class="line">	LFSR_S11 = LFSR_S12;</span><br><span class="line">	LFSR_S12 = LFSR_S13;</span><br><span class="line">	LFSR_S13 = LFSR_S14;</span><br><span class="line">	LFSR_S14 = LFSR_S15;</span><br><span class="line">	LFSR_S15 = f;</span><br><span class="line">&#125;</span><br><span class="line">/* LFSR with work mode 工作模式*/</span><br><span class="line">void <span class="function"><span class="title">LFSRWithWorkMode</span></span>() &#123;</span><br><span class="line">	u32 f, v; f = LFSR_S0;</span><br><span class="line">	v = MulByPow2(LFSR_S0, 8);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S4, 20);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S10, 21);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S13, 17);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	v = MulByPow2(LFSR_S15, 15);</span><br><span class="line">	f = AddM(f, v);</span><br><span class="line"></span><br><span class="line">	/* update the state */</span><br><span class="line">	LFSR_S0 = LFSR_S1;</span><br><span class="line">	LFSR_S1 = LFSR_S2;</span><br><span class="line">	LFSR_S2 = LFSR_S3;</span><br><span class="line">	LFSR_S3 = LFSR_S4;</span><br><span class="line">	LFSR_S4 = LFSR_S5;</span><br><span class="line">	LFSR_S5 = LFSR_S6;</span><br><span class="line">	LFSR_S6 = LFSR_S7;</span><br><span class="line">	LFSR_S7 = LFSR_S8;</span><br><span class="line">	LFSR_S8 = LFSR_S9;</span><br><span class="line">	LFSR_S9 = LFSR_S10;</span><br><span class="line">	LFSR_S10 = LFSR_S11;</span><br><span class="line">	LFSR_S11 = LFSR_S12;</span><br><span class="line">	LFSR_S12 = LFSR_S13;</span><br><span class="line">	LFSR_S13 = LFSR_S14;</span><br><span class="line">	LFSR_S14 = LFSR_S15;</span><br><span class="line">	LFSR_S15 = f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* BitReorganization */</span><br><span class="line">void <span class="function"><span class="title">BitReorganization</span></span>() &#123;</span><br><span class="line">	BRC_X0 = ((LFSR_S15 &amp; 0x7FFF8000) &lt;&lt; 1) | (LFSR_S14 &amp; 0xFFFF);</span><br><span class="line">	BRC_X1 = ((LFSR_S11 &amp; 0xFFFF) &lt;&lt; 16) | (LFSR_S9 &gt;&gt; 15);</span><br><span class="line">	BRC_X2 = ((LFSR_S7 &amp; 0xFFFF) &lt;&lt; 16) | (LFSR_S5 &gt;&gt; 15);</span><br><span class="line">	BRC_X3 = ((LFSR_S2 &amp; 0xFFFF) &lt;&lt; 16) | (LFSR_S0 &gt;&gt; 15);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#define ROT(a, k) (((a) &lt;&lt; k) | ((a) &gt;&gt; (32 - k)))</span></span><br><span class="line">/* L1 */</span><br><span class="line">u32 L1(u32 X) &#123;</span><br><span class="line">	<span class="built_in">return</span> (X ^ ROT(X, 2) ^ ROT(X, 10) ^ ROT(X, 18) ^ ROT(X, 24));</span><br><span class="line">&#125;</span><br><span class="line">/* L2 */</span><br><span class="line">u32 L2(u32 X) &#123;</span><br><span class="line">	<span class="built_in">return</span> (X ^ ROT(X, 8) ^ ROT(X, 14) ^ ROT(X, 22) ^ ROT(X, 30));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#define MAKEU32(a, b, c, d) (((u32)(a) &lt;&lt; 24) | ((u32)(b) &lt;&lt; 16) | ((u32)(c) &lt;&lt; 8) | ((u32)(d)))</span></span><br><span class="line">/* F */</span><br><span class="line">u32 <span class="function"><span class="title">F</span></span>() &#123;</span><br><span class="line">	u32 W, W1, W2, u, v;</span><br><span class="line">	W = (BRC_X0 ^ F_R1) + F_R2;</span><br><span class="line">	W1 = F_R1 + BRC_X1;</span><br><span class="line">	W2 = F_R2 ^ BRC_X2;</span><br><span class="line">	u = L1((W1 &lt;&lt; 16) | (W2 &gt;&gt; 16));</span><br><span class="line">	v = L2((W2 &lt;&lt; 16) | (W1 &gt;&gt; 16));</span><br><span class="line">	F_R1 = MAKEU32(S0[u &gt;&gt; 24], S1[(u &gt;&gt; 16) &amp; 0xFF],</span><br><span class="line">		S0[(u &gt;&gt; 8) &amp; 0xFF], S1[u &amp; 0xFF]);</span><br><span class="line">	F_R2 = MAKEU32(S0[v &gt;&gt; 24], S1[(v &gt;&gt; 16) &amp; 0xFF],</span><br><span class="line">		S0[(v &gt;&gt; 8) &amp; 0xFF], S1[v &amp; 0xFF]);</span><br><span class="line">	<span class="built_in">return</span> W;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#define MAKEU31(a, b, c)(((u32)(a) &lt;&lt; 23)|((u32)(b) &lt;&lt; 8)|(u32)(c))</span></span><br><span class="line">/* initialize */</span><br><span class="line">//初始化</span><br><span class="line">void Initialization(u8* k, u8* iv) &#123;</span><br><span class="line">	u32 w, nCount;</span><br><span class="line"></span><br><span class="line">	/* expand key */</span><br><span class="line">	LFSR_S0 = MAKEU31(k[0], EK_d[0], iv[0]);</span><br><span class="line">	LFSR_S1 = MAKEU31(k[1], EK_d[1], iv[1]);</span><br><span class="line">	LFSR_S2 = MAKEU31(k[2], EK_d[2], iv[2]);</span><br><span class="line">	LFSR_S3 = MAKEU31(k[3], EK_d[3], iv[3]);</span><br><span class="line">	LFSR_S4 = MAKEU31(k[4], EK_d[4], iv[4]);</span><br><span class="line">	LFSR_S5 = MAKEU31(k[5], EK_d[5], iv[5]);</span><br><span class="line">	LFSR_S6 = MAKEU31(k[6], EK_d[6], iv[6]);</span><br><span class="line">	LFSR_S7 = MAKEU31(k[7], EK_d[7], iv[7]);</span><br><span class="line">	LFSR_S8 = MAKEU31(k[8], EK_d[8], iv[8]);</span><br><span class="line">	LFSR_S9 = MAKEU31(k[9], EK_d[9], iv[9]);</span><br><span class="line">	LFSR_S10 = MAKEU31(k[10], EK_d[10], iv[10]);</span><br><span class="line">	LFSR_S11 = MAKEU31(k[11], EK_d[11], iv[11]);</span><br><span class="line">	LFSR_S12 = MAKEU31(k[12], EK_d[12], iv[12]);</span><br><span class="line">	LFSR_S13 = MAKEU31(k[13], EK_d[13], iv[13]);</span><br><span class="line">	LFSR_S14 = MAKEU31(k[14], EK_d[14], iv[14]);</span><br><span class="line">	LFSR_S15 = MAKEU31(k[15], EK_d[15], iv[15]);</span><br><span class="line">	/* <span class="built_in">set</span> F_R1 and F_R2 to zero */</span><br><span class="line">	F_R1 = 0;</span><br><span class="line">	F_R2 = 0;</span><br><span class="line">	nCount = 32;</span><br><span class="line">	<span class="keyword">while</span> (nCount &gt; 0)</span><br><span class="line">	&#123;</span><br><span class="line">		BitReorganization();</span><br><span class="line">		w = F();</span><br><span class="line">		LFSRWithInitialisationMode(w &gt;&gt; 1);</span><br><span class="line">		nCount--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//生成密钥流</span><br><span class="line">void GenerateKeystream(u32* pKeystream, int KeystreamLen) &#123;</span><br><span class="line">	int i;</span><br><span class="line">	&#123;</span><br><span class="line">		BitReorganization();</span><br><span class="line">		F();		/* discard the output of F */</span><br><span class="line">		LFSRWithWorkMode();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = 0; i &lt; KeystreamLen; i++) &#123;</span><br><span class="line">		BitReorganization();</span><br><span class="line">		pKeystream[i] = F() ^ BRC_X3;</span><br><span class="line">		LFSRWithWorkMode();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/*Test1 :测试密钥的生成 :</span><br><span class="line">input:</span><br><span class="line">	Key: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</span><br><span class="line">	IV: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</span><br><span class="line">output: z1: 27bede74</span><br><span class="line">		z2: 018082da</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	int i;</span><br><span class="line">	u32 z[10];</span><br><span class="line">	u8 k1[] = &#123;0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00&#125;;</span><br><span class="line">	u8 iv1[] = &#123;0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00&#125;;</span><br><span class="line">	Initialization(k1, iv1);</span><br><span class="line">	GenerateKeystream(z, 2);</span><br><span class="line">	<span class="keyword">for</span> (i = 0; i &lt; 2; i++) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Z[%d],%08X\n"</span>,i, z[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码实现：解密"><a href="#代码实现：解密" class="headerlink" title="代码实现：解密"></a>代码实现：解密</h3><p><img src="/images/pasted-143.png" alt="upload successful"><br>流密码进行，一般会给出k,iv以及一个密文序列，那么进行异或就可以出来明文</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/22/V&N%20WriteUp/" rel="next" title="GXY wp">
+                <i class="fa fa-chevron-left"></i> GXY wp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/09/Untitled/" rel="prev" title="红帽杯RE WP">
+                红帽杯RE WP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="L0x1c" />
+            
+              <p class="site-author-name" itemprop="name">L0x1c</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/L0x1c" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/L0x1c" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xi4or0uji.github.io/" title="Xi4or0uji" target="_blank">Xi4or0uji</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZUC算法"><span class="nav-number">1.</span> <span class="nav-text">ZUC算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">1.1.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号"><span class="nav-number">1.2.</span> <span class="nav-text">符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性反馈移位寄存器-LFSR"><span class="nav-number">1.3.</span> <span class="nav-text">线性反馈移位寄存器(LFSR)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单LFSR"><span class="nav-number">1.3.1.</span> <span class="nav-text">简单LFSR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LFSR的数学描述"><span class="nav-number">1.3.2.</span> <span class="nav-text">LFSR的数学描述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法构架"><span class="nav-number">1.4.</span> <span class="nav-text">算法构架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一层：线性反馈移位寄存器（LFSR）"><span class="nav-number">1.4.1.</span> <span class="nav-text">第一层：线性反馈移位寄存器（LFSR）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二层：比特重组（BR）"><span class="nav-number">1.4.2.</span> <span class="nav-text">第二层：比特重组（BR）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三层：非线性函数F"><span class="nav-number">1.4.3.</span> <span class="nav-text">第三层：非线性函数F</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现：加密"><span class="nav-number">1.5.</span> <span class="nav-text">代码实现：加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现：解密"><span class="nav-number">1.6.</span> <span class="nav-text">代码实现：解密</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">L0x1c</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

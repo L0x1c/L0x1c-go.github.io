@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CNSS RE搭建虚拟机按照题目要求，安装VMware，在虚拟机里直接执行文件即可得到Flag 12root@kali:~&#x2F;ws$ .&#x2F;movgcccnss&amp;#123;H31l0,1inUx!!&amp;#125; Baby_string用IDA加载并按Shift+F12查看字符串即可找到 1.data:00403004 00000019 C cnss&amp;#123;7h1s_iS_wh4t_R3_1s&amp;#1">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CNSS RE wp">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;18&#x2F;CNSS-RE-wp&#x2F;index.html">
+<meta property="og:site_name" content="L0x1c-Grow Up">
+<meta property="og:description" content="CNSS RE搭建虚拟机按照题目要求，安装VMware，在虚拟机里直接执行文件即可得到Flag 12root@kali:~&#x2F;ws$ .&#x2F;movgcccnss&amp;#123;H31l0,1inUx!!&amp;#125; Baby_string用IDA加载并按Shift+F12查看字符串即可找到 1.data:00403004 00000019 C cnss&amp;#123;7h1s_iS_wh4t_R3_1s&amp;#1">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-82.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-83.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-84.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-85.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-87.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-88.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-90.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-92.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-91.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-93.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-94.png">
+<meta property="og:updated_time" content="2020-01-21T08:48:20.223Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;pasted-82.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/18/CNSS-RE-wp/"/>
+
+
+
+
+
+  <title>CNSS RE wp | L0x1c-Grow Up</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">L0x1c-Grow Up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">默默学习二进制的一个小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/CNSS-RE-wp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="L0x1c">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="L0x1c-Grow Up">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CNSS RE wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T21:03:36+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-21T16:48:20+08:00">
+                2020-01-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-RE/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-RE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="CNSS-RE"><a href="#CNSS-RE" class="headerlink" title="CNSS RE"></a>CNSS RE</h2><h3 id="搭建虚拟机"><a href="#搭建虚拟机" class="headerlink" title="搭建虚拟机"></a>搭建虚拟机</h3><p>按照题目要求，安装VMware，在虚拟机里直接执行文件即可得到Flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/ws$ ./movgcc</span><br><span class="line">cnss&#123;H31l0,1inUx!!&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Baby-string"><a href="#Baby-string" class="headerlink" title="Baby_string"></a>Baby_string</h3><p>用IDA加载并按Shift+F12查看字符串即可找到<br><img src="/images/pasted-82.png" alt="upload successful"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.data:00403004 00000019 C cnss&#123;7h1s_iS_wh4t_R3_1s&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Baby-encode"><a href="#Baby-encode" class="headerlink" title="Baby_encode"></a>Baby_encode</h3><p>用IDA加载，找到main后进入F5反汇编查看伪代码<br><img src="/images/pasted-83.png" alt="upload successful"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scanf(<span class="string">"%s"</span>, input);</span><br><span class="line"><span class="keyword">for</span> ( i = 0; i &lt; strlen(flag); ++i )</span><br><span class="line">  flag[i] ^= 7u;</span><br><span class="line"><span class="keyword">if</span> ( !strcmp(flag, input) )</span><br><span class="line">  puts(<span class="string">"Oh you got the flag!"</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  puts(<span class="string">"What a pity!"</span>);</span><br></pre></td></tr></table></figure>
+<p>可以看到strcmp函数，相同为1，点击flag进去后发现</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.data:00403004 ; char flag[]</span><br><span class="line">.data:00403004 _flag           db <span class="string">'ditt|7oXj~X`77777777C&amp;z'</span>,0 ; DATA XREF: _main+3Do</span><br></pre></td></tr></table></figure>
+<p>所以看程序我们只需要异或回去就好</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include&lt;string&gt;</span></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line">	char flag[] = <span class="string">"ditt|7oXj~X`77777777C&amp;z"</span>;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; strlen(flag); ++i)</span><br><span class="line">		flag[i] ^= 7u;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s"</span>, flag);</span><br><span class="line">&#125;</span><br><span class="line">//cnss&#123;0h_my_g00000000D!&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="snake"><a href="#snake" class="headerlink" title="snake"></a>snake</h3><p>打开后发现是一个贪吃蛇的游戏，我们放入IDA中进行反编译<br><img src="/images/pasted-84.png" alt="upload successful"><br><img src="/images/pasted-85.png" alt="upload successful"><br>发现了重要的语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( v4 &gt; 265 )</span><br><span class="line">&#123;</span><br><span class="line">  v5 = dword_40EDC0;</span><br><span class="line">  LOBYTE(v5) = dword_40EDC0 ^ 0xE9;</span><br><span class="line">  sub_4032FB(v5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当蛇的长度大于265时，游戏就能通关,把v4和v5的值改成266即可伪装成通关的状态<br>再看一下sub_4032FB</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  sub_401500(v7);</span><br><span class="line">  sub_401500(Text);</span><br><span class="line">  sub_401500(Caption);</span><br><span class="line">  sub_401500(Format);</span><br><span class="line">  sub_401500(v3);</span><br><span class="line">  sub_401500(v2);</span><br><span class="line">  system(<span class="string">"title 贪吃蛇（控制台版）[当前状态:获胜~!]"</span>);</span><br><span class="line">  v9 = (unsigned __int8)a1;</span><br><span class="line">  v8 = (a1 &gt;&gt; 8) &amp; 255;</span><br><span class="line">  dword_40E024 = 0;</span><br><span class="line">  v10 = 0;</span><br><span class="line">  <span class="keyword">while</span> ( a1 )</span><br><span class="line">  &#123;</span><br><span class="line">    aDi585435673491[v10] = a1;</span><br><span class="line">    a1 &gt;&gt;= 8;</span><br><span class="line">    ++v10;</span><br><span class="line">  &#125;</span><br><span class="line">  sub_401C0A(aHck, (int)aDi585435673491);</span><br><span class="line">  <span class="keyword">if</span> ( !strncmp(<span class="string">"cnss"</span>, Str2, 4u) )</span><br><span class="line">  &#123;</span><br><span class="line">    puts(Str2);</span><br><span class="line">    MessageBoxA(0, Text, Caption, 0);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="built_in">exit</span>(0);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(Format);</span><br><span class="line">  MessageBoxA(0, v3, v2, 0);</span><br><span class="line">  system(<span class="string">"pause"</span>);</span><br><span class="line">  system(<span class="string">"mode con cols=80 lines=23"</span>);</span><br><span class="line">  <span class="built_in">return</span> sub_4023DC(49);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看是谁调用了这个地址我们看一下<br><img src="/images/pasted-87.png" alt="upload successful"><br>找到内存中snake_realease_v2.exe+EEC4所对应的数据可以看到C4和C8位置<br><img src="/images/pasted-88.png" alt="upload successful"><br>由于我们分析了是266时候胜利所以我们直接改成C8位置改成268<br><img src="/images/pasted-90.png" alt="upload successful"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnss&#123;CE_caN_ju5T_Act_w1lfulLy!!&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Baby-Assembly-Code"><a href="#Baby-Assembly-Code" class="headerlink" title="Baby_Assembly_Code"></a>Baby_Assembly_Code</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">extern	<span class="built_in">printf</span></span><br><span class="line"></span><br><span class="line">SECTION .data</span><br><span class="line">    name:         db <span class="string">'mrh929'</span>, 0</span><br><span class="line">    HelloCnss:    db <span class="string">'hello,cnss!'</span>, 10, 9 , <span class="string">"---%s"</span>, 10,0</span><br><span class="line">    str1:         db <span class="string">"Let's start reading the assembly code!"</span>,10,0</span><br><span class="line"></span><br><span class="line">    enc:          db 0,0,0,7,6,83,83,0,19,11,84,79,7,17,65,5,73,29,14,77,4,4,0,0,2,18,31,6,24,14,13,13,73,12,1,69,68,0,0,0</span><br><span class="line">    str2:         db <span class="string">"Come on!"</span>,10,0</span><br><span class="line">    exp1:         db <span class="string">"%s%s"</span>,0</span><br><span class="line"></span><br><span class="line">    str3:         db <span class="string">"input your answer:"</span>,10,0</span><br><span class="line">    exp2:         db <span class="string">"(%d + %d + %d + %d * %d - (%d &gt;&gt; 1)) ^ %d = ?"</span>, 10, <span class="string">"%s"</span> ，0</span><br><span class="line"></span><br><span class="line">SECTION .text</span><br><span class="line">global main</span><br><span class="line"></span><br><span class="line">alter_str: //将edi指向字符串中的值都和esi指向字符串中的值进行异或一直到遇到0为止</span><br><span class="line">    push    rbp //将rbp压入栈，保存堆栈</span><br><span class="line">    mov     rbp, rsp //栈顶和栈底到一个位置</span><br><span class="line">    xor     ecx, ecx //清空ecx的值</span><br><span class="line"></span><br><span class="line">    label:</span><br><span class="line">    mov     al, [edi+ecx] //将edi+ecx地址中的值放到al中</span><br><span class="line">    <span class="built_in">test</span>    al, al //进行与的操作，改变ZF标志位（结果为0，ZF 变成1），判断al是否为0</span><br><span class="line">    je      quit //ZF标志位看上个语句的结果，ZF变成了1，就跳转到quit</span><br><span class="line">    mov     bl, [esi+ecx] //将esi+ecx中地址的值放到bl中</span><br><span class="line">    xor     al, bl //将al与bl中的值进行异或</span><br><span class="line">    mov     [edi+ecx], al //al中的值放入edi+ecx的地址中</span><br><span class="line">    add     ecx, 1 //ecx进行+1</span><br><span class="line">    jmp     label //跳转到label</span><br><span class="line"></span><br><span class="line">    quit:</span><br><span class="line">    leave //还原堆栈</span><br><span class="line">    ret //还原函数</span><br><span class="line"></span><br><span class="line">main:  ;主函数从这里开始</span><br><span class="line">    push    rbp //把rbp压入堆栈，保存堆栈</span><br><span class="line">    mov     rbp, rsp //栈顶和栈底到一个位置</span><br><span class="line">    ;以上两行不需翻译</span><br><span class="line"></span><br><span class="line">    mov     rdi, HelloCnss //将HelloCnss的地址放入rdi中</span><br><span class="line">    mov     rsi, name //将name的地址放入rsi中</span><br><span class="line">    call    <span class="built_in">printf</span> //调用<span class="built_in">printf</span>地址的函数，输出HelloCnss与name</span><br><span class="line"></span><br><span class="line">    mov     rdi, str1 //将str1的地址放入rdi中</span><br><span class="line">    mov     rsi, enc //将enc的地址，放入rsi中</span><br><span class="line">    call    alter_str //调用alter_str地址的函数，用enc编码str1</span><br><span class="line"></span><br><span class="line">    mov     rdi, exp1 //将exp1的地址放入rdi</span><br><span class="line">    mov     rsi, str1 //将str1的地址放入rsi</span><br><span class="line">    mov     rdx, str2 //将str2的地址放入rdx</span><br><span class="line">    call    <span class="built_in">printf</span> //调用<span class="built_in">printf</span>函数，用exp1来格式化输出str1与str2</span><br><span class="line"></span><br><span class="line">    ; 翻译至此（包括alter_str）可得到 60% 的分数</span><br><span class="line"></span><br><span class="line">    mov     rdi, exp2 //将exp2的地址放入rdi</span><br><span class="line">    mov     rsi, 1 //将1放入rsi中</span><br><span class="line">    mov     rdx, 2 //将2放入rdx中</span><br><span class="line">    mov     rcx, 3 //将3放入rcx中</span><br><span class="line">    mov     r8, 4 //将4放入r8中</span><br><span class="line">    mov     r9, 5 //将5放入r9中</span><br><span class="line">    push    str3 //把str3放入堆栈</span><br><span class="line">    push    7 //7放入堆栈</span><br><span class="line">    push    6 //6放入堆栈</span><br><span class="line"></span><br><span class="line">    mov     rax, 0 //rax清空</span><br><span class="line">    call    <span class="built_in">printf</span> //用exp2来格式化输出输出(1 + 2 + 3 + 4 * 5 - (6 &gt;&gt; 1)) ^ 7 = ? ，10，str3，0</span><br><span class="line"></span><br><span class="line">    ; 翻译至此（包括alter_str）</span><br><span class="line">    ; 并回答问题：</span><br><span class="line">	; 就linux下的C语言函数的传参方式而言，x86与x64下有什么区别？</span><br><span class="line">    //64位linux下前6个参数用寄存器传入，后面的所有参数栈传入</span><br><span class="line">    //32位linux，都用栈传入</span><br><span class="line">    //_stdcall和_cdecl用push堆栈传参，而_stdcall来说push恢复堆栈的时候在调用函数里面，从而节省了代码的占用空间，_cdecl是在正常的调用函数外面进行了堆栈的恢复，_fastcall尽可能用mov寄存器传参提升了运算的速度，因为寄存器的运算速度很快，顺序从右到左</span><br><span class="line">    ; 可得到 100% 的分数</span><br><span class="line"></span><br><span class="line">    sub     rsp, 10 //rsp-10，栈顶提升提供大小为10的空间</span><br><span class="line">    mov     rax, 0 //将rax清空</span><br><span class="line">    mov     rdi, 2 //将2放入rdi中</span><br><span class="line">    mov     rsi, rsp //把rsp的值放入rsi，将栈顶的值保存到rsi中</span><br><span class="line">    mov     rdx, 10 //将10放入rdx中</span><br><span class="line">    syscall //通过syscall来调用sys_read读取用户输入</span><br><span class="line"></span><br><span class="line">	; 以上部分要求准确答出该语句所调用的函数，不能用C语言的其他函数代替</span><br><span class="line">	</span><br><span class="line">    ; 翻译至此（包括alter_str）可获得 120% 的分数</span><br><span class="line"></span><br><span class="line">    ; prepare <span class="keyword">for</span> fixing input</span><br><span class="line">    lea     rcx, [rsi] //把rsi地址中的值放入rcx中</span><br><span class="line">    add     rcx, rax //rcs+rax</span><br><span class="line"></span><br><span class="line">    ; 以上两行不用翻译</span><br><span class="line"></span><br><span class="line">    push	0x000a //把10压入堆栈</span><br><span class="line">    mov     rdx, 0x2174686769722074 //!thgirt</span><br><span class="line">    push	rdx //rdx压入堆栈</span><br><span class="line">    mov     rdx, 0x6f6e207369207325 //on si s%</span><br><span class="line">	push	rdx //rdx压入堆栈</span><br><span class="line">    mov		rax, rsp //%s is not right!</span><br><span class="line"></span><br><span class="line">    mov     rdx, 0x000a21746867 //!thg</span><br><span class="line">    push	rdx</span><br><span class="line">    mov     rdx, 0x6972207369207325 //ir si s%</span><br><span class="line">	push	rdx</span><br><span class="line">	mov		rbx, rsp //同上%s is right!</span><br><span class="line"></span><br><span class="line">    mov     dl, [rsi] //将rsi中的值放入dl中</span><br><span class="line">    cmp     dl, 0x31 //与1进行比较</span><br><span class="line">    jne     eпd //如果输入的不是1，则跳到end</span><br><span class="line">    mov     dl, [rsi+1] //rsi地址加1的值放入dl中</span><br><span class="line">    cmp     dl, 0x36 //与6进行比较</span><br><span class="line">    jne     eпd //如果输入的不是6，则跳到end</span><br><span class="line">    mov     dl, [rsi+2] //rsi地址加2的值放入dl中</span><br><span class="line">    cmp     dl, 0xa //将dl与0xa(16)进行比较</span><br><span class="line">    jne     end //如果输入的不是16，则跳到end</span><br><span class="line"> </span><br><span class="line">    mov     rdi, rbx //rbx放入rdi，rdi指向字符串%s is right!</span><br><span class="line">    jmp     stop //跳转到stop</span><br><span class="line"></span><br><span class="line">    end:</span><br><span class="line">    mov     rdi, rax //rdi指向字符串%s is not right!</span><br><span class="line"></span><br><span class="line">    stop:</span><br><span class="line">    ; Fix the output</span><br><span class="line">    sub     rcx, 1 //rcx-1</span><br><span class="line">    mov     byte [rcx], 0 ////字符串末尾添0</span><br><span class="line">    ; Show the result</span><br><span class="line">    xor     rax, rax //清空rax</span><br><span class="line">    call    priпtf //调用<span class="built_in">printf</span> 输出结果is (not) right!</span><br><span class="line"></span><br><span class="line">    mov     rax, 0 //rax清空</span><br><span class="line">    leave //还原堆栈</span><br><span class="line">    ret //还原原函数</span><br><span class="line"></span><br><span class="line">    ;翻译全部（包括alter_str）可获得 150% 的分数</span><br></pre></td></tr></table></figure>
+<h3 id="lt-–指针–-gt"><a href="#lt-–指针–-gt" class="headerlink" title="&lt;–指针–&gt;"></a>&lt;–指针–&gt;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">*(unsigned long long*)(a.var1) = 0x01020304aabbccdd</span><br><span class="line">声明a.var1指向八个字节大小的空间，并在其中存储了八个字节的内容，在内存中的顺序是反序</span><br><span class="line">结果为</span><br><span class="line">0xDD,0xCC,0xBB,0xAA,0x4,0x3,0x2,0x1,</span><br><span class="line">char是有符号数，所以需要判断符号位</span><br><span class="line">处理01，02，03，04时候因为二进制最高位为0，要保证表示的数字不变，前面全部补0即可，没有影响</span><br><span class="line">处理aa，bb，cc，dd时候因为二进制最高位为1，计算机中负数用补码表示</span><br><span class="line">结果为</span><br><span class="line">0xFFFFFFDD,0xFFFFFFCC,0xFFFFFFBB,0xFFFFFFAA,0x4,0x3,0x2,0x1,</span><br><span class="line">a.var1 + 8 + i</span><br><span class="line">地址越位</span><br><span class="line">结果为</span><br><span class="line">0xDD,0xCC,0xBB,0xAA,0x4,0x3,0x2,0x1,</span><br><span class="line">0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7,</span><br></pre></td></tr></table></figure>
+<h3 id="Easy-Flat"><a href="#Easy-Flat" class="headerlink" title="Easy_Flat"></a>Easy_Flat</h3><p>拖进IDA，看一下主函数<br><img src="/images/pasted-92.png" alt="upload successful"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">v8 = 2094104837;</span><br><span class="line"><span class="keyword">while</span> ( 1 )</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">while</span> ( 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">while</span> ( 1 )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">while</span> ( 1 )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">while</span> ( 1 )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">while</span> ( 1 )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">while</span> ( 1 )</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="keyword">while</span> ( v8 == -1910856655 )</span><br><span class="line">              &#123;</span><br><span class="line">                v4 = -1741896534;</span><br><span class="line">                <span class="keyword">if</span> ( v9 &lt;= 25 )</span><br><span class="line">                  v4 = 437352961;</span><br><span class="line">                v8 = v4;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> ( v8 != -1741896534 )</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">              v5 = strcmp(s, (const char *)(unsigned int)s2) == 0;</span><br><span class="line">              v6 = 1105054524;</span><br><span class="line">              <span class="keyword">if</span> ( v5 )</span><br><span class="line">                v6 = 304955634;</span><br><span class="line">              v8 = v6;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> ( v8 != -1214177781 )</span><br><span class="line">              <span class="built_in">break</span>;</span><br><span class="line">            sub_400610(s);</span><br><span class="line">            v11 = 0;</span><br><span class="line">            v8 = 658032998;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> ( v8 != -1113027527 )</span><br><span class="line">            <span class="built_in">break</span>;</span><br><span class="line">          v9 = 0;</span><br><span class="line">          v8 = -1910856655;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ( v8 != -170736245 )</span><br><span class="line">          <span class="built_in">break</span>;</span><br><span class="line">        ++v9;</span><br><span class="line">        v8 = -1910856655;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> ( v8 != 304955634 )</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">      sub_400640(s);</span><br><span class="line">      v8 = 658032998;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( v8 != 437352961 )</span><br><span class="line">      <span class="built_in">break</span>;</span><br><span class="line">    s[v9] += v9;</span><br><span class="line">    v8 = -170736245;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v8 == 658032998 )</span><br><span class="line">    <span class="built_in">break</span>;</span><br><span class="line">  <span class="keyword">if</span> ( v8 == 1105054524 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_400610(s);</span><br><span class="line">    v8 = 658032998;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> ( v8 == 2094104837 )</span><br><span class="line">  &#123;</span><br><span class="line">    v3 = -1113027527;</span><br><span class="line">    <span class="keyword">if</span> ( v12 != 26 )</span><br><span class="line">      v3 = -1214177781;</span><br><span class="line">    v8 = v3;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看一下strcmp v2的字符串的值<br><img src="/images/pasted-91.png" alt="upload successful"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.data:0000000000601050 ; char byte_601050[4]</span><br><span class="line">.data:0000000000601050 byte_601050     db 63h, 6Fh, 75h, 76h, 7Fh, 35h, 68h, 6Dh, 7Dh, 3Eh, 6Dh</span><br><span class="line">.data:0000000000601050                                         ; DATA XREF: main+266↑o</span><br><span class="line">.data:0000000000601050                 db 6Ch, 60h, 2 dup(3Eh), 7Dh, 6Fh, 42h, 65h, 72h, 7Bh</span><br><span class="line">.data:0000000000601050                 db 67h, 49h, 78h, 6Ch, 96h, 18h dup(0)</span><br></pre></td></tr></table></figure>
+<p>分析程序走到sub_400640();这里就可以成功并且退出程序，我们逆推一下 v8 刚开始需要等于304955634之后v8=658032998 break 出去了往前推v8=-1741896534且v5的strcmp需要将对比相等 v8=-1910856655 可以看出来在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ( v8 != 437352961 )</span><br><span class="line">      <span class="built_in">break</span>;</span><br><span class="line">    s[v9] += v9;</span><br><span class="line">    v8 = -170736245;</span><br><span class="line">  &#125;</span><br><span class="line">    <span class="keyword">if</span> ( v8 != -170736245 )</span><br><span class="line">      <span class="built_in">break</span>;</span><br><span class="line">    ++v9;</span><br><span class="line">    v8 = -1910856655;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">while</span> ( v8 == -1910856655 )&#123;</span><br><span class="line">       v4 = -1741896534;</span><br><span class="line">       <span class="keyword">if</span> ( v9 &lt;= 25 )</span><br><span class="line">       v4 = 437352961;</span><br><span class="line">       v8 = v4;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>因为这两个的while(1)在正确的输出的前面所以可以找到了规律</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include &lt;cstring&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	char flag[] = &#123; 0x63,0x6F,0x75,0x76,0x7F,0x35,0x68,0x6D,0x7D,0x3E,0x6D,0x6C,0x60,0x3E,0x3E,0x7D,0x6F,0x42,0x65,0x72,0x7B,0x67,0x49,0x78,0x6C,0x96 &#125;;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0;i &lt; sizeof(flag) ;i++) </span><br><span class="line">	flag[i] -= i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s"</span>, flag);</span><br><span class="line">&#125;</span><br><span class="line">//cnss&#123;0bfu5caT10n_1S_gR3aT&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Mips架构逆向"><a href="#Mips架构逆向" class="headerlink" title="Mips架构逆向"></a>Mips架构逆向</h3><p>照着Mips指令翻译</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//cnss&#123;71me_t0_le4rn_Mips&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="辉夜大小姐想要玩游戏"><a href="#辉夜大小姐想要玩游戏" class="headerlink" title="辉夜大小姐想要玩游戏"></a>辉夜大小姐想要玩游戏</h3><p>放入IDA之后，找到主函数进入<br><img src="/images/pasted-93.png" alt="upload successful"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( strlen(s) == v3 )</span><br><span class="line">&#123;</span><br><span class="line">  v6 = 0;</span><br><span class="line">  v7 = 0;</span><br><span class="line">  <span class="keyword">while</span> ( v6 &lt;= 80 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( !dword_203020[v6] )</span><br><span class="line">    &#123;</span><br><span class="line">      v5 = v7++;</span><br><span class="line">      dword_203020[v6] = s[v5] - 48;</span><br><span class="line">    &#125;</span><br><span class="line">    ++v6;</span><br><span class="line">  &#125;</span><br><span class="line">  v8 = 1;</span><br><span class="line">  <span class="keyword">for</span> ( i = 0; i &lt;= 8; ++i )</span><br><span class="line">    v8 &amp;= sub_F3B(&amp;dword_203020[9 * i]);</span><br><span class="line">  <span class="keyword">for</span> ( j = 0; j &lt;= 8; ++j )</span><br><span class="line">    v8 &amp;= sub_FFA(&amp;dword_203020[j]);</span><br><span class="line">  <span class="keyword">for</span> ( k = 0; k &lt;= 2; ++k )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( l = 0; l &lt;= 2; ++l )</span><br><span class="line">      v8 &amp;= sub_10C3(&amp;dword_203020[27 * k + 3 * l]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v8 )</span><br><span class="line">  &#123;</span><br><span class="line">    puts(<span class="string">"don-dayo!"</span>);</span><br><span class="line">    sub_11A1((__int64)s);</span><br><span class="line">    puts(byte_2032C0);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>dword_203020:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.data:0000000000203020 dword_203020    dd 2 dup(0), 7, 3 dup(0), 4, 2 dup(0), 6, 2 dup(0), 3</span><br><span class="line">.data:0000000000203020                                         ; DATA XREF: sub_127B+21↑o</span><br><span class="line">.data:0000000000203020                                         ; main+F2↑o ...</span><br><span class="line">.data:0000000000203020                 dd 4 dup(0), 8, 5 dup(0), 1, 3 dup(0), 3, 2 dup(0), 9</span><br><span class="line">.data:0000000000203020                 dd 4 dup(0), 1, 4 dup(0), 4, 0, 2, 2 dup(0), 8, 0Ah dup(0)</span><br><span class="line">.data:0000000000203020                 dd 2, 4 dup(0), 9, 4 dup(0), 6, 4 dup(0), 3, 2 dup(0)</span><br><span class="line">.data:0000000000203020                 dd 4, 1Dh dup(0</span><br></pre></td></tr></table></figure>
+<p>sub_F3B</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = 0; i &lt;= 8; ++i )</span><br><span class="line">  ++*((_DWORD *)&amp;v4 + *(signed int *)(4LL * i + a1));</span><br><span class="line"><span class="keyword">for</span> ( j = 1; j &lt;= 9; ++j )</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> ( *((_DWORD *)&amp;v4 + j) != 1 )</span><br><span class="line">    <span class="built_in">return</span> <span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进行了行的9个数是否重复</br><br>sub_FFA</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">for</span> ( i = 0; i &lt;= 8; ++i )</span><br><span class="line">    ++*((_DWORD *)&amp;v4 + *(signed int *)(36LL * i + a1));</span><br><span class="line">  <span class="keyword">for</span> ( j = 1; j &lt;= 9; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( *((_DWORD *)&amp;v4 + j) != 1 )</span><br><span class="line">      <span class="built_in">return</span> <span class="string">'\0'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> 1LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进行了列的9个数是否重复</br><br>sub_10C3</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">for</span> ( i = 0; i &lt;= 2; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> ( j = 0; j &lt;= 2; ++j )</span><br><span class="line">    &#123;</span><br><span class="line">      v1 = *(_DWORD *)(4LL * (9 * i + j) + a1);</span><br><span class="line">      ++*((_DWORD *)&amp;v6 + v1);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> ( k = 1; k &lt;= 9; ++k )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( *((_DWORD *)&amp;v6 + k) != 1 )</span><br><span class="line">      <span class="built_in">return</span> 0LL;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> 1LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进行了3×3的9个数是否重复<br><img src="/images/pasted-94.png" alt="upload successful"><br>发现自己输入的个数在rax中，与rdx进行了比较cmp函数，可以看出来是输入64个数</br><br>进入到内存中看到了81个数后，进行9×9的整理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2, 1, 7, 5, 8, 9, 4, 3, 6</span><br><span class="line">6, 9, 5, 3, 7, 4, 1, 2, 8</span><br><span class="line">4, 8, 3, 2, 6, 1, 9, 5, 7</span><br><span class="line">3, 4, 6, 9, 2, 7, 5, 8, 1</span><br><span class="line">5, 7, 1, 8, 4, 3, 2, 6, 9</span><br><span class="line">8, 2, 9, 1, 5, 6, 3, 7, 4</span><br><span class="line">7, 3, 2, 4, 1, 8, 6, 9, 5</span><br><span class="line">1, 5, 8, 6, 9, 2, 7, 4, 3</span><br><span class="line">9, 6, 4, 7, 3, 5, 8, 1, 2</span><br></pre></td></tr></table></figure>
+<p>输入64个空值得出了答案</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnss&#123;faN7ast1c_5ud0ku_R3verse!!&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Junk-Code"><a href="#Junk-Code" class="headerlink" title="Junk Code"></a>Junk Code</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/22/nctf-wp/" rel="next" title="nctf wp">
+                <i class="fa fa-chevron-left"></i> nctf wp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/22/V&N%20WriteUp/" rel="prev" title="GXY wp">
+                GXY wp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="L0x1c" />
+            
+              <p class="site-author-name" itemprop="name">L0x1c</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/L0x1c" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/L0x1c" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xi4or0uji.github.io/" title="Xi4or0uji" target="_blank">Xi4or0uji</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CNSS-RE"><span class="nav-number">1.</span> <span class="nav-text">CNSS RE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建虚拟机"><span class="nav-number">1.1.</span> <span class="nav-text">搭建虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Baby-string"><span class="nav-number">1.2.</span> <span class="nav-text">Baby_string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Baby-encode"><span class="nav-number">1.3.</span> <span class="nav-text">Baby_encode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snake"><span class="nav-number">1.4.</span> <span class="nav-text">snake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Baby-Assembly-Code"><span class="nav-number">1.5.</span> <span class="nav-text">Baby_Assembly_Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-–指针–-gt"><span class="nav-number">1.6.</span> <span class="nav-text">&lt;–指针–&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Easy-Flat"><span class="nav-number">1.7.</span> <span class="nav-text">Easy_Flat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mips架构逆向"><span class="nav-number">1.8.</span> <span class="nav-text">Mips架构逆向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#辉夜大小姐想要玩游戏"><span class="nav-number">1.9.</span> <span class="nav-text">辉夜大小姐想要玩游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Junk-Code"><span class="nav-number">1.10.</span> <span class="nav-text">Junk Code</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">L0x1c</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

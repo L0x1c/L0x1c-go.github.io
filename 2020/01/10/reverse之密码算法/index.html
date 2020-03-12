@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="reverse之密码算法1.base64编码加密原理base64加密流程，将三个八字节数据为一组合成一个24位的数据，再把这24位重新拆分成4组6位为一组的数据，将6位一组的数据作为字母表下标，因此重新生成编码 字母表如下： ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F; 若加密字符长度求余3为1 ，则将其余下的一位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RE crypto">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;10&#x2F;reverse%E4%B9%8B%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95&#x2F;index.html">
+<meta property="og:site_name" content="L0x1c-Grow Up">
+<meta property="og:description" content="reverse之密码算法1.base64编码加密原理base64加密流程，将三个八字节数据为一组合成一个24位的数据，再把这24位重新拆分成4组6位为一组的数据，将6位一组的数据作为字母表下标，因此重新生成编码 字母表如下： ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F; 若加密字符长度求余3为1 ，则将其余下的一位">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;p1aymaker&#x2F;picture&#x2F;master&#x2F;img&#x2F;20191005140759.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;p1aymaker&#x2F;picture&#x2F;master&#x2F;img&#x2F;20191005163847.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;p1aymaker&#x2F;picture&#x2F;master&#x2F;img&#x2F;20191005164007.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;p1aymaker&#x2F;picture&#x2F;master&#x2F;img&#x2F;20191005172339.png">
+<meta property="og:updated_time" content="2020-01-10T07:15:40.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;p1aymaker&#x2F;picture&#x2F;master&#x2F;img&#x2F;20191005140759.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/10/reverse之密码算法/"/>
+
+
+
+
+
+  <title>RE crypto | L0x1c-Grow Up</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">L0x1c-Grow Up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">默默学习二进制的一个小白</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/reverse%E4%B9%8B%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="L0x1c">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="L0x1c-Grow Up">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RE crypto</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-10T15:13:43+08:00">
+                2020-01-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-10T15:15:40+08:00">
+                2020-01-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-RE/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-RE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="reverse之密码算法"><a href="#reverse之密码算法" class="headerlink" title="reverse之密码算法"></a>reverse之密码算法</h1><h2 id="1-base64编码"><a href="#1-base64编码" class="headerlink" title="1.base64编码"></a>1.base64编码</h2><h3 id="加密原理"><a href="#加密原理" class="headerlink" title="加密原理"></a>加密原理</h3><p>base64加密流程，将三个八字节数据为一组合成一个24位的数据，再把这24位重新拆分成4组6位为一组的数据，将6位一组的数据作为字母表下标，因此重新生成编码</p>
+<p>字母表如下：</p>
+<p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</p>
+<p>若加密字符长度求余3为1 ，则将其余下的一位用0补至12位，重新生成两个字符最后再加上两个’=’</p>
+<p>若加密字符长度求余3为2，则将其余下的两位用0补至18位，重新生成三个字符最后再加上一个’=’</p>
+<p>例如字符串’1’编码后</p>
+<p>‘1’转换为二进制0011 0001 前6位为0011 00 对应着index为12  为字符M  最后两位01补齐后为010000 index为16</p>
+<p>对应着Q 所以’1’的base64编码为MQ==</p>
+<p>因此base64长度若原长度能够被3整除，则加密长度为原长度的4/3倍</p>
+<p>否则为原长度的4/3倍+4</p>
+<p>‘12’的字符串编码？</p>
+<h3 id="base64-In-CTF"><a href="#base64-In-CTF" class="headerlink" title="base64 In CTF"></a>base64 In CTF</h3><h4 id="easy-Base64"><a href="#easy-Base64" class="headerlink" title="easy Base64"></a>easy Base64</h4><p>提示:简单的base64</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">s =<span class="string">"e3nifIH9b_C@n@dH"</span></span><br><span class="line"></span><br><span class="line">flag =<span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i in range(len(s)):</span><br><span class="line"></span><br><span class="line">flag += chr(ord(s[i])- i)</span><br><span class="line"></span><br><span class="line">flag = base64.b64decode(flag)</span><br><span class="line"></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<h4 id="changed-Base64"><a href="#changed-Base64" class="headerlink" title="changed Base64"></a>changed Base64</h4><p>提示:字母表变换</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> arr[] = <span class="string">"8F]Z:F)&amp;=E$T+S%4,6PU:#1M5T4Q5D,]"</span>;</span><br><span class="line">	<span class="keyword">char</span> base64_table[] = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(<span class="keyword">char</span>); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, base64_table[arr[i] - <span class="number">32</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到结果Ym96amJGdlE0LzFUMWw1aDRtV0UxVkM9进行base64解密得到结果bozjbFvQ4/1T1l5h4mWE1VC=</p>
+<p>再换表解密得到结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line">base64_table=<span class="string">'OPQRSTUVWXYZ0123456789+/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN'</span></span><br><span class="line">base_encode=str(raw_input(<span class="string">u"请输入解密字符"</span>))</span><br><span class="line">counter=base_encode.count(<span class="string">"="</span>)</span><br><span class="line">length=len(base_encode)</span><br><span class="line">encode=<span class="string">""</span></span><br><span class="line">encode_re=<span class="string">""</span></span><br><span class="line"><span class="keyword">if</span>(counter==<span class="number">2</span>):</span><br><span class="line">    a=base64_table.find(base_encode[length<span class="number">-4</span>:length<span class="number">-3</span>])<span class="comment">#取前六位</span></span><br><span class="line">    a=a&lt;&lt;<span class="number">2</span></span><br><span class="line">    b=base64_table.find(base_encode[length<span class="number">-3</span>:length<span class="number">-2</span>])<span class="comment">#取2位</span></span><br><span class="line">    b=b&gt;&gt;<span class="number">4</span></span><br><span class="line">    encode_re=chr(a+b)</span><br><span class="line"><span class="keyword">if</span>(counter==<span class="number">1</span>):</span><br><span class="line">    a=base64_table.find(base_encode[length<span class="number">-4</span>:length<span class="number">-3</span>])<span class="comment">#第一个字符前6位</span></span><br><span class="line">    a=a&lt;&lt;<span class="number">2</span></span><br><span class="line">    b=base64_table.find(base_encode[length<span class="number">-3</span>:length<span class="number">-2</span>])<span class="comment">#第二个字符前2位</span></span><br><span class="line">    b=b&gt;&gt;<span class="number">4</span></span><br><span class="line">    encode_re1=chr(a+b)</span><br><span class="line">    a=base64_table.find(base_encode[length<span class="number">-3</span>:length<span class="number">-2</span>])<span class="comment">#第二个字符后4位</span></span><br><span class="line">    a=(a&amp;<span class="number">0xf</span>)&lt;&lt;<span class="number">4</span></span><br><span class="line">    b=base64_table.find(base_encode[length<span class="number">-2</span>:length<span class="number">-1</span>])<span class="comment">#第三个字符前4位</span></span><br><span class="line">    b=b&gt;&gt;<span class="number">2</span></span><br><span class="line">    encode_re2=chr(a+b)</span><br><span class="line">    encode_re=encode_re1+encode_re2</span><br><span class="line">length=length<span class="number">-4</span></span><br><span class="line"><span class="keyword">if</span>(counter==<span class="number">0</span>):</span><br><span class="line">    length=length+<span class="number">4</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,length,<span class="number">4</span>):<span class="comment">#以4个字符为一组</span></span><br><span class="line">   a=base64_table.find(base_encode[i:i+<span class="number">1</span>])<span class="comment">#第一个字符6位</span></span><br><span class="line">   a=a&lt;&lt;<span class="number">2</span></span><br><span class="line">   b=base64_table.find(base_encode[i+<span class="number">1</span>:i+<span class="number">2</span>])<span class="comment">#第二个字符前2位</span></span><br><span class="line">   b=b&gt;&gt;<span class="number">4</span></span><br><span class="line">   encode=encode+chr(a+b)</span><br><span class="line">   a=base64_table.find(base_encode[i+<span class="number">1</span>:i+<span class="number">2</span>])<span class="comment">#第二个字符后4位</span></span><br><span class="line">   a=((a&amp;<span class="number">0xf</span>)&lt;&lt;<span class="number">4</span>)</span><br><span class="line">   b=base64_table.find(base_encode[i+<span class="number">2</span>:i+<span class="number">3</span>])<span class="comment">#第三个字符前4位</span></span><br><span class="line">   b=b&gt;&gt;<span class="number">2</span></span><br><span class="line">   encode=encode+chr(a+b)</span><br><span class="line">   a=base64_table.find(base_encode[i+<span class="number">2</span>:i+<span class="number">3</span>])<span class="comment">#取第三个字符后2位</span></span><br><span class="line">   a=(a&amp;<span class="number">3</span>)&lt;&lt;<span class="number">6</span></span><br><span class="line">   b=base64_table.find(base_encode[i+<span class="number">3</span>:i+<span class="number">4</span>])<span class="comment">#取第四个字符6位</span></span><br><span class="line">   encode=encode+chr(a+b)</span><br><span class="line">encode=encode+encode_re</span><br><span class="line"><span class="keyword">print</span> encode</span><br><span class="line">print( binascii.b2a_hex(encode))</span><br><span class="line">print(<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-RC4加密"><a href="#2-RC4加密" class="headerlink" title="2.RC4加密"></a>2.RC4加密</h2><h3 id="加密原理-1"><a href="#加密原理-1" class="headerlink" title="加密原理"></a>加密原理</h3><p>初始化长度为256的<a href="https://zh.wikipedia.org/wiki/S盒" target="_blank" rel="noopener">S盒</a>。第一个for循环将0到255的互不重复的元素装入S盒。第二个for循环根据密钥打乱S盒。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i from <span class="number">0</span> to <span class="number">255</span></span><br><span class="line">     S[i] := i</span><br><span class="line"> endfor</span><br><span class="line"> j := <span class="number">0</span></span><br><span class="line"> <span class="keyword">for</span>( i=<span class="number">0</span> ; i&lt;<span class="number">256</span> ; i++)</span><br><span class="line">     j := (j + S[i] + key[i mod keylength]) % <span class="number">256</span></span><br><span class="line">     swap values of S[i] <span class="keyword">and</span> S[j]</span><br><span class="line"> endfor</span><br></pre></td></tr></table></figure>
+
+<p>下面i,j是两个指针。每收到一个字节，就进行while循环。通过一定的算法（(a),(b)）定位S盒中的一个元素，并与输入字节异或，得到k。循环中还改变了S盒（(c)）。如果输入的是<a href="https://zh.wikipedia.org/wiki/明文" target="_blank" rel="noopener">明文</a>，输出的就是<a href="https://zh.wikipedia.org/wiki/密文" target="_blank" rel="noopener">密文</a>；如果输入的是密文，输出的就是明文。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i := <span class="number">0</span></span><br><span class="line">j := <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> GeneratingOutput:</span><br><span class="line">    i := (i + <span class="number">1</span>) mod <span class="number">256</span>   <span class="comment">//a</span></span><br><span class="line">    j := (j + S[i]) mod <span class="number">256</span> <span class="comment">//b</span></span><br><span class="line">    swap values of S[i] <span class="keyword">and</span> S[j]  <span class="comment">//c</span></span><br><span class="line">    k := inputByte ^ S[(S[i] + S[j]) % <span class="number">256</span>]</span><br><span class="line">    output K</span><br><span class="line">endwhile</span><br></pre></td></tr></table></figure>
+
+<h3 id="RC4-in-CTF"><a href="#RC4-in-CTF" class="headerlink" title="RC4 in CTF"></a>RC4 in CTF</h3><p>题目RC4&amp;BASE64</p>
+<p>首先RC4解密</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rc4_init</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>*s, <span class="keyword">unsigned</span> <span class="keyword">char</span>*key, <span class="keyword">unsigned</span> <span class="keyword">long</span> Len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//char k[256]=&#123;0&#125;;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> k[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> tmp = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;<span class="number">256</span>; i++) &#123;</span><br><span class="line">		s[i] = i;</span><br><span class="line">		k[i] = key[i%Len];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;<span class="number">256</span>; i++) &#123;</span><br><span class="line">		j = (j + s[i] + k[i]) % <span class="number">256</span>;</span><br><span class="line">		tmp = s[i];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"copy for dongdeng"</span>);</span><br><span class="line">		s[i] = s[j];<span class="comment">//交换s[i]和s[j]</span></span><br><span class="line">		s[j] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rc4_crypt</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>*s, <span class="keyword">unsigned</span> <span class="keyword">char</span>*Data, <span class="keyword">unsigned</span> <span class="keyword">long</span> Len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> k = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> tmp;</span><br><span class="line">	<span class="keyword">for</span> (k = <span class="number">0</span>; k&lt;Len; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		i = (i + <span class="number">1</span>) % <span class="number">256</span>;</span><br><span class="line">		j = (j + s[i]) % <span class="number">256</span>;</span><br><span class="line">		tmp = s[i];</span><br><span class="line">		s[i] = s[j];<span class="comment">//交换s[x]和s[y]</span></span><br><span class="line">		s[j] = tmp;</span><br><span class="line">		t = (s[i] + s[j]) % <span class="number">256</span>;</span><br><span class="line">		Data[k] ^= s[t];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> s[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;, s2[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;<span class="comment">//S-box</span></span><br><span class="line">	<span class="keyword">char</span> key[<span class="number">256</span>] = &#123; <span class="string">"flag&#123;this_is_not_the_flag_hahaha&#125;"</span> &#125;;</span><br><span class="line">	BYTE pData[<span class="number">47</span>] = &#123;</span><br><span class="line">		<span class="number">0x20</span>, <span class="number">0xC3</span>, <span class="number">0x1A</span>, <span class="number">0xAE</span>, <span class="number">0x97</span>, <span class="number">0x3C</span>, <span class="number">0x7A</span>, <span class="number">0x41</span>, <span class="number">0xDE</span>, <span class="number">0xF6</span>, <span class="number">0x78</span>, <span class="number">0x15</span>,</span><br><span class="line">		<span class="number">0xCB</span>, <span class="number">0x4B</span>, <span class="number">0x4C</span>, <span class="number">0xDC</span>, <span class="number">0x26</span>, <span class="number">0x55</span>, <span class="number">0x8B</span>, <span class="number">0x55</span>, <span class="number">0xE5</span>, <span class="number">0xE9</span>, <span class="number">0x55</span>, <span class="number">0x75</span>, <span class="number">0x40</span>, <span class="number">0x3D</span>, <span class="number">0x82</span>, <span class="number">0x13</span>,</span><br><span class="line">		<span class="number">0xA5</span>, <span class="number">0x60</span>, <span class="number">0x13</span>, <span class="number">0x3B</span>, <span class="number">0xF5</span>, <span class="number">0xD8</span>, <span class="number">0x19</span>, <span class="number">0x0E</span>, <span class="number">0x47</span>, <span class="number">0xCF</span>, <span class="number">0x5F</span>, <span class="number">0x5E</span>, <span class="number">0xDE</span>, <span class="number">0x9D</span>, <span class="number">0x14</span>, <span class="number">0xBD</span></span><br><span class="line">	&#125;;<span class="comment">//填写加密数据</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> len = <span class="built_in">strlen</span>((<span class="keyword">char</span> *)pData);</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"pData=%s\n"</span>, pData);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"key=%s,length=%d\n\n"</span>, key, <span class="built_in">strlen</span>(key));</span><br><span class="line">	rc4_init(s, (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)key, <span class="built_in">strlen</span>(key));<span class="comment">//已经完成了初始化</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"完成对S[i]的初始化，如下：\n\n"</span>);</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;<span class="number">256</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%02X"</span>, s[i]);</span><br><span class="line">		<span class="keyword">if</span> (i &amp;&amp; (i + <span class="number">1</span>) % <span class="number">16</span> == <span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n\n"</span>);</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;<span class="number">256</span>; i++)<span class="comment">//用s2[i]暂时保留经过初始化的s[i]，很重要的！！！</span></span><br><span class="line">	&#123;</span><br><span class="line">		s2[i] = s[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//printf("已经初始化，现在加密:\n\n");</span></span><br><span class="line">	<span class="comment">//rc4_crypt(s, (unsigned char*)pData, len);//加密</span></span><br><span class="line">	<span class="comment">//printf("pData=%s\n\n", pData);</span></span><br><span class="line">	<span class="comment">//printf("已经加密，现在解密:\n\n");</span></span><br><span class="line">	<span class="comment">//rc4_init(s,(unsigned char*)key,strlen(key));//初始化密钥</span></span><br><span class="line">	rc4_crypt(s2, (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)pData, len);<span class="comment">//解密</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"pData=%s\n\n"</span>, pData);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到结果ZeptZ3l5UHQra25nd19yYzMrYR5wX2Jtc2P2VF9gYNM9</p>
+<p>接着变种base64解密</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line">base64_table='ABCDEFGHIJSTUVWKLMNOPQRXYZabcdqrstuvwxefghijklmnopyz0123456789+/'</span><br><span class="line">base_encode=str(raw_input(<span class="string">u"请输入解密字符"</span>))</span><br><span class="line">counter=base_encode.count(<span class="string">"="</span>)</span><br><span class="line">length=len(base_encode)</span><br><span class="line">encode=<span class="string">""</span></span><br><span class="line">encode_re=<span class="string">""</span></span><br><span class="line"><span class="keyword">if</span>(counter==<span class="number">2</span>):</span><br><span class="line">    a=base64_table.find(base_encode[length<span class="number">-4</span>:length<span class="number">-3</span>])#取前六位</span><br><span class="line">    a=a&lt;&lt;<span class="number">2</span></span><br><span class="line">    b=base64_table.find(base_encode[length<span class="number">-3</span>:length<span class="number">-2</span>])#取<span class="number">2</span>位</span><br><span class="line">    b=b&gt;&gt;<span class="number">4</span></span><br><span class="line">    encode_re=chr(a+b)</span><br><span class="line"><span class="keyword">if</span>(counter==<span class="number">1</span>):</span><br><span class="line">    a=base64_table.find(base_encode[length<span class="number">-4</span>:length<span class="number">-3</span>])#第一个字符前<span class="number">6</span>位</span><br><span class="line">    a=a&lt;&lt;<span class="number">2</span></span><br><span class="line">    b=base64_table.find(base_encode[length<span class="number">-3</span>:length<span class="number">-2</span>])#第二个字符前<span class="number">2</span>位</span><br><span class="line">    b=b&gt;&gt;<span class="number">4</span></span><br><span class="line">    encode_re1=chr(a+b)</span><br><span class="line">    a=base64_table.find(base_encode[length<span class="number">-3</span>:length<span class="number">-2</span>])#第二个字符后<span class="number">4</span>位</span><br><span class="line">    a=(a&amp;<span class="number">0xf</span>)&lt;&lt;<span class="number">4</span></span><br><span class="line">    b=base64_table.find(base_encode[length<span class="number">-2</span>:length<span class="number">-1</span>])#第三个字符前<span class="number">4</span>位</span><br><span class="line">    b=b&gt;&gt;<span class="number">2</span></span><br><span class="line">    encode_re2=chr(a+b)</span><br><span class="line">    encode_re=encode_re1+encode_re2</span><br><span class="line">length=length<span class="number">-4</span></span><br><span class="line"><span class="keyword">if</span>(counter==<span class="number">0</span>):</span><br><span class="line">    length=length+<span class="number">4</span></span><br><span class="line"><span class="keyword">for</span> i in range(<span class="number">0</span>,length,<span class="number">4</span>):#以<span class="number">4</span>个字符为一组</span><br><span class="line">   a=base64_table.find(base_encode[i:i+<span class="number">1</span>])#第一个字符<span class="number">6</span>位</span><br><span class="line">   a=a&lt;&lt;<span class="number">2</span></span><br><span class="line">   b=base64_table.find(base_encode[i+<span class="number">1</span>:i+<span class="number">2</span>])#第二个字符前<span class="number">2</span>位</span><br><span class="line">   b=b&gt;&gt;<span class="number">4</span></span><br><span class="line">   encode=encode+chr(a+b)</span><br><span class="line">   a=base64_table.find(base_encode[i+<span class="number">1</span>:i+<span class="number">2</span>])#第二个字符后<span class="number">4</span>位</span><br><span class="line">   a=((a&amp;<span class="number">0xf</span>)&lt;&lt;<span class="number">4</span>)</span><br><span class="line">   b=base64_table.find(base_encode[i+<span class="number">2</span>:i+<span class="number">3</span>])#第三个字符前<span class="number">4</span>位</span><br><span class="line">   b=b&gt;&gt;<span class="number">2</span></span><br><span class="line">   encode=encode+chr(a+b)</span><br><span class="line">   a=base64_table.find(base_encode[i+<span class="number">2</span>:i+<span class="number">3</span>])#取第三个字符后<span class="number">2</span>位</span><br><span class="line">   a=(a&amp;<span class="number">3</span>)&lt;&lt;<span class="number">6</span></span><br><span class="line">   b=base64_table.find(base_encode[i+<span class="number">3</span>:i+<span class="number">4</span>])#取第四个字符<span class="number">6</span>位</span><br><span class="line">   encode=encode+chr(a+b)</span><br><span class="line">encode=encode+encode_re</span><br><span class="line">print encode</span><br><span class="line">print( binascii.b2a_hex(encode))</span><br><span class="line">print(<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-TEA系列（微型加密算法）"><a href="#3-TEA系列（微型加密算法）" class="headerlink" title="3.TEA系列（微型加密算法）"></a>3.TEA系列（微型加密算法）</h2><h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><p>含有Golden Ratio=0x9E3779B9</p>
+<p>密钥长度为16byte（128位）</p>
+<h3 id="TEA"><a href="#TEA" class="headerlink" title="TEA"></a>TEA</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//加密函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">encrypt</span> <span class="params">(<span class="keyword">uint32_t</span>* v, <span class="keyword">uint32_t</span>* k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> v0=v[<span class="number">0</span>], v1=v[<span class="number">1</span>], sum=<span class="number">0</span>, i;           <span class="comment">/* set up */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> delta=<span class="number">0x9e3779b9</span>;                     <span class="comment">/* a key schedule constant */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> k0=k[<span class="number">0</span>], k1=k[<span class="number">1</span>], k2=k[<span class="number">2</span>], k3=k[<span class="number">3</span>];   <span class="comment">/* cache key */</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;                       <span class="comment">/* basic cycle start */</span></span><br><span class="line">        sum += delta;</span><br><span class="line">        v0 += ((v1&lt;&lt;<span class="number">4</span>) + k0) ^ (v1 + sum) ^ ((v1&gt;&gt;<span class="number">5</span>) + k1);</span><br><span class="line">        v1 += ((v0&lt;&lt;<span class="number">4</span>) + k2) ^ (v0 + sum) ^ ((v0&gt;&gt;<span class="number">5</span>) + k3);</span><br><span class="line">    &#125;                                              <span class="comment">/* end cycle */</span></span><br><span class="line">    v[<span class="number">0</span>]=v0; v[<span class="number">1</span>]=v1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//解密函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">decrypt</span> <span class="params">(<span class="keyword">uint32_t</span>* v, <span class="keyword">uint32_t</span>* k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> v0=v[<span class="number">0</span>], v1=v[<span class="number">1</span>], sum=<span class="number">0xC6EF3720</span>, i;  <span class="comment">/* set up */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> delta=<span class="number">0x9e3779b9</span>;                     <span class="comment">/* a key schedule constant */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> k0=k[<span class="number">0</span>], k1=k[<span class="number">1</span>], k2=k[<span class="number">2</span>], k3=k[<span class="number">3</span>];   <span class="comment">/* cache key */</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">32</span>; i++) &#123;                         <span class="comment">/* basic cycle start */</span></span><br><span class="line">        v1 -= ((v0&lt;&lt;<span class="number">4</span>) + k2) ^ (v0 + sum) ^ ((v0&gt;&gt;<span class="number">5</span>) + k3);</span><br><span class="line">        v0 -= ((v1&lt;&lt;<span class="number">4</span>) + k0) ^ (v1 + sum) ^ ((v1&gt;&gt;<span class="number">5</span>) + k1);</span><br><span class="line">        sum -= delta;</span><br><span class="line">    &#125;                                              <span class="comment">/* end cycle */</span></span><br><span class="line">    v[<span class="number">0</span>]=v0; v[<span class="number">1</span>]=v1;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> v[<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,k[<span class="number">4</span>]=&#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    <span class="comment">// v为要加密的数据是两个32位无符号整数</span></span><br><span class="line">    <span class="comment">// k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"加密前原始数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    encrypt(v, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"加密后的数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    decrypt(v, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"解密后的数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="XTEA"><a href="#XTEA" class="headerlink" title="XTEA"></a>XTEA</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* take 64 bits of data in v[0] and v[1] and 128 bits of key[0] - key[3] */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">encipher</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> num_rounds, <span class="keyword">uint32_t</span> v[<span class="number">2</span>], <span class="keyword">uint32_t</span> <span class="keyword">const</span> key[<span class="number">4</span>])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">uint32_t</span> v0=v[<span class="number">0</span>], v1=v[<span class="number">1</span>], sum=<span class="number">0</span>, delta=<span class="number">0x9E3779B9</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i &lt; num_rounds; i++) &#123;</span><br><span class="line">        v0 += (((v1 &lt;&lt; <span class="number">4</span>) ^ (v1 &gt;&gt; <span class="number">5</span>)) + v1) ^ (sum + key[sum &amp; <span class="number">3</span>]);</span><br><span class="line">        sum += delta;</span><br><span class="line">        v1 += (((v0 &lt;&lt; <span class="number">4</span>) ^ (v0 &gt;&gt; <span class="number">5</span>)) + v0) ^ (sum + key[(sum&gt;&gt;<span class="number">11</span>) &amp; <span class="number">3</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    v[<span class="number">0</span>]=v0; v[<span class="number">1</span>]=v1;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">decipher</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> num_rounds, <span class="keyword">uint32_t</span> v[<span class="number">2</span>], <span class="keyword">uint32_t</span> <span class="keyword">const</span> key[<span class="number">4</span>])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">uint32_t</span> v0=v[<span class="number">0</span>], v1=v[<span class="number">1</span>], delta=<span class="number">0x9E3779B9</span>, sum=delta*num_rounds;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i &lt; num_rounds; i++) &#123;</span><br><span class="line">        v1 -= (((v0 &lt;&lt; <span class="number">4</span>) ^ (v0 &gt;&gt; <span class="number">5</span>)) + v0) ^ (sum + key[(sum&gt;&gt;<span class="number">11</span>) &amp; <span class="number">3</span>]);</span><br><span class="line">        sum -= delta;</span><br><span class="line">        v0 -= (((v1 &lt;&lt; <span class="number">4</span>) ^ (v1 &gt;&gt; <span class="number">5</span>)) + v1) ^ (sum + key[sum &amp; <span class="number">3</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    v[<span class="number">0</span>]=v0; v[<span class="number">1</span>]=v1;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> v[<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">    <span class="keyword">uint32_t</span> <span class="keyword">const</span> k[<span class="number">4</span>]=&#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> r=<span class="number">32</span>;<span class="comment">//num_rounds建议取值为32</span></span><br><span class="line">    <span class="comment">// v为要加密的数据是两个32位无符号整数</span></span><br><span class="line">    <span class="comment">// k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"加密前原始数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    encipher(r, v, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"加密后的数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    decipher(r, v, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"解密后的数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="XXTEA"><a href="#XXTEA" class="headerlink" title="XXTEA"></a>XXTEA</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DELTA 0x9e3779b9</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MX (((z&gt;&gt;5^y<span class="meta-string">&lt;&lt;2) + (y&gt;&gt;3^z&lt;&lt;4)) ^ ((sum^y) + (key[(p&amp;3)^e] ^ z)))</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">btea</span><span class="params">(<span class="keyword">uint32_t</span> *v, <span class="keyword">int</span> n, <span class="keyword">uint32_t</span> <span class="keyword">const</span> key[<span class="number">4</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> y, z, sum;</span><br><span class="line">    <span class="keyword">unsigned</span> p, rounds, e;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>)            <span class="comment">/* Coding Part */</span></span><br><span class="line">    &#123;</span><br><span class="line">        rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">        z = v[n<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            sum += DELTA;</span><br><span class="line">            e = (sum &gt;&gt; <span class="number">2</span>) &amp; <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">for</span> (p=<span class="number">0</span>; p&lt;n<span class="number">-1</span>; p++)</span><br><span class="line">            &#123;</span><br><span class="line">                y = v[p+<span class="number">1</span>];</span><br><span class="line">                z = v[p] += MX;</span><br><span class="line">            &#125;</span><br><span class="line">            y = v[<span class="number">0</span>];</span><br><span class="line">            z = v[n<span class="number">-1</span>] += MX;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (--rounds);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n &lt; <span class="number">-1</span>)      <span class="comment">/* Decoding Part */</span></span><br><span class="line">    &#123;</span><br><span class="line">        n = -n;</span><br><span class="line">        rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">        sum = rounds*DELTA;</span><br><span class="line">        y = v[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            e = (sum &gt;&gt; <span class="number">2</span>) &amp; <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">for</span> (p=n<span class="number">-1</span>; p&gt;<span class="number">0</span>; p--)</span><br><span class="line">            &#123;</span><br><span class="line">                z = v[p<span class="number">-1</span>];</span><br><span class="line">                y = v[p] -= MX;</span><br><span class="line">            &#125;</span><br><span class="line">            z = v[n<span class="number">-1</span>];</span><br><span class="line">            y = v[<span class="number">0</span>] -= MX;</span><br><span class="line">            sum -= DELTA;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (--rounds);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> v[<span class="number">2</span>]= &#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">    <span class="keyword">uint32_t</span> <span class="keyword">const</span> k[<span class="number">4</span>]= &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> n= <span class="number">2</span>; <span class="comment">//n的绝对值表示v的长度，取正表示加密，取负表示解密</span></span><br><span class="line">    <span class="comment">// v为要加密的数据是两个32位无符号整数</span></span><br><span class="line">    <span class="comment">// k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"加密前原始数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    btea(v, n, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"加密后的数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    btea(v, -n, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"解密后的数据：%u %u\n"</span>,v[<span class="number">0</span>],v[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="TEA-in-CTF"><a href="#TEA-in-CTF" class="headerlink" title="TEA in CTF"></a>TEA in CTF</h3><p>例题：Tea相关</p>
+<p>认清三种TEA加密</p>
+<p>解密代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DELTA 0x9e3779b9</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MX (((z&gt;&gt;5^y<span class="meta-string">&lt;&lt;2) + (y&gt;&gt;3^z&lt;&lt;4)) ^ ((sum^y) + (key[(p&amp;3)^e] ^ z)))</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">btea</span><span class="params">(<span class="keyword">uint32_t</span> *v, <span class="keyword">int</span> n, <span class="keyword">uint32_t</span> <span class="keyword">const</span> key[<span class="number">4</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">uint32_t</span> y, z, sum;</span><br><span class="line">	<span class="keyword">unsigned</span> p, rounds, e;</span><br><span class="line">	<span class="keyword">if</span> (n &gt; <span class="number">1</span>)            <span class="comment">/* Coding Part */</span></span><br><span class="line">	&#123;</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span> / n;</span><br><span class="line">		sum = <span class="number">0</span>;</span><br><span class="line">		z = v[n - <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			sum += DELTA;</span><br><span class="line">			e = (sum &gt;&gt; <span class="number">2</span>) &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span> (p = <span class="number">0</span>; p&lt;n - <span class="number">1</span>; p++)</span><br><span class="line">			&#123;</span><br><span class="line">				y = v[p + <span class="number">1</span>];</span><br><span class="line">				z = v[p] += MX;</span><br><span class="line">			&#125;</span><br><span class="line">			y = v[<span class="number">0</span>];</span><br><span class="line">			z = v[n - <span class="number">1</span>] += MX;</span><br><span class="line">		&#125; <span class="keyword">while</span> (--rounds);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (n &lt; <span class="number">-1</span>)      <span class="comment">/* Decoding Part */</span></span><br><span class="line">	&#123;</span><br><span class="line">		n = -n;</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span> / n;</span><br><span class="line">		sum = rounds*DELTA;</span><br><span class="line">		y = v[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			e = (sum &gt;&gt; <span class="number">2</span>) &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span> (p = n - <span class="number">1</span>; p&gt;<span class="number">0</span>; p--)</span><br><span class="line">			&#123;</span><br><span class="line">				z = v[p - <span class="number">1</span>];</span><br><span class="line">				y = v[p] -= MX;</span><br><span class="line">			&#125;</span><br><span class="line">			z = v[n - <span class="number">1</span>];</span><br><span class="line">			y = v[<span class="number">0</span>] -= MX;</span><br><span class="line">			sum -= DELTA;</span><br><span class="line">		&#125; <span class="keyword">while</span> (--rounds);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">decipher</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> num_rounds, <span class="keyword">uint32_t</span> v[<span class="number">2</span>], <span class="keyword">uint32_t</span> <span class="keyword">const</span> key[<span class="number">4</span>])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">uint32_t</span> v0 = v[<span class="number">0</span>], v1 = v[<span class="number">1</span>], delta = <span class="number">0x9E3779B9</span>, sum = delta*num_rounds;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; num_rounds; i++) &#123;</span><br><span class="line">		v1 -= (((v0 &lt;&lt; <span class="number">4</span>) ^ (v0 &gt;&gt; <span class="number">5</span>)) + v0) ^ (sum + key[(sum &gt;&gt; <span class="number">11</span>) &amp; <span class="number">3</span>]);</span><br><span class="line">		sum -= delta;</span><br><span class="line">		v0 -= (((v1 &lt;&lt; <span class="number">4</span>) ^ (v1 &gt;&gt; <span class="number">5</span>)) + v1) ^ (sum + key[sum &amp; <span class="number">3</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	v[<span class="number">0</span>] = v0; v[<span class="number">1</span>] = v1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">decrypt</span><span class="params">(<span class="keyword">uint32_t</span>* v, <span class="keyword">uint32_t</span>* k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">uint32_t</span> v0 = v[<span class="number">0</span>], v1 = v[<span class="number">1</span>], sum = <span class="number">0xC6EF3720</span>, i;  <span class="comment">/* set up */</span></span><br><span class="line">	<span class="keyword">uint32_t</span> delta = <span class="number">0x9e3779b9</span>;                     <span class="comment">/* a key schedule constant */</span></span><br><span class="line">	<span class="keyword">uint32_t</span> k0 = k[<span class="number">0</span>], k1 = k[<span class="number">1</span>], k2 = k[<span class="number">2</span>], k3 = k[<span class="number">3</span>];   <span class="comment">/* cache key */</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;<span class="number">32</span>; i++) &#123;                         <span class="comment">/* basic cycle start */</span></span><br><span class="line">		v1 -= ((v0 &lt;&lt; <span class="number">4</span>) + k2) ^ (v0 + sum) ^ ((v0 &gt;&gt; <span class="number">5</span>) + k3);</span><br><span class="line">		v0 -= ((v1 &lt;&lt; <span class="number">4</span>) + k0) ^ (v1 + sum) ^ ((v1 &gt;&gt; <span class="number">5</span>) + k1);</span><br><span class="line">		sum -= delta;</span><br><span class="line">	&#125;                                              <span class="comment">/* end cycle */</span></span><br><span class="line">	v[<span class="number">0</span>] = v0; v[<span class="number">1</span>] = v1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> v[<span class="number">2</span>] = &#123; <span class="number">0xE96DCB1C</span>,<span class="number">0x5434E1AC</span> &#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span>  key[<span class="number">4</span>] = &#123; <span class="number">0x656d6f63</span>, <span class="number">0x7469775f</span>, <span class="number">0x656d5f68</span>, <span class="number">0x646E655f</span> &#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"解密后的数据：%x %x\n"</span>, v[<span class="number">0</span>], v[<span class="number">1</span>]);</span><br><span class="line">	btea(v, <span class="number">-2</span>, key);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"解密后的数据：%x %x\n"</span>, v[<span class="number">0</span>], v[<span class="number">1</span>]);</span><br><span class="line">	decipher(<span class="number">32</span>, v, key);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"解密后的数据：%x %x\n"</span>, v[<span class="number">0</span>], v[<span class="number">1</span>]);</span><br><span class="line">	decrypt(v, key);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"解密后的数据：%x %x\n"</span>, v[<span class="number">0</span>], v[<span class="number">1</span>]);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-SM4"><a href="#4-SM4" class="headerlink" title="4.SM4"></a>4.SM4</h2><p>国密SM4(无线局域网SMS4)算法， 一个分组算法， 分组长度为128bit， 密钥长度为128bit(长度为16位)</p>
+<h3 id="特征-1"><a href="#特征-1" class="headerlink" title="特征"></a>特征</h3><ul>
+<li>系统参数FK           0xA3B1BAC6       0x56AA3350    0x677D9197      0xB27022DC</li>
+<li>S盒</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/p1aymaker/picture/master/img/20191005140759.png" alt=""></p>
+<h3 id="SM4-in-CTF"><a href="#SM4-in-CTF" class="headerlink" title="SM4 in CTF"></a>SM4 in CTF</h3><p>找到关键点判断SM4：解密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pysm4 <span class="keyword">import</span> encrypt, decrypt</span><br><span class="line">mk = <span class="number">0x636F6D655F776974685F6D655F656E64</span></span><br><span class="line">cipher_num = <span class="number">0xbc0d155d831fc8ff94f2340a42441486</span></span><br><span class="line">clear_num = decrypt(cipher_num, mk)</span><br><span class="line"><span class="keyword">print</span> hex(clear_num)</span><br><span class="line"><span class="keyword">print</span> hex(clear_num)[<span class="number">2</span>:<span class="number">-1</span>].decode(<span class="string">"hex"</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-MD5"><a href="#5-MD5" class="headerlink" title="5.MD5"></a>5.MD5</h2><h3 id="特征-2"><a href="#特征-2" class="headerlink" title="特征"></a>特征</h3><p>5个初始变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">int</span> h0 := <span class="number">0x67452301</span></span><br><span class="line">var <span class="keyword">int</span> h1 := <span class="number">0xEFCDAB89</span></span><br><span class="line">var <span class="keyword">int</span> h2 := <span class="number">0x98BADCFE</span></span><br><span class="line">var <span class="keyword">int</span> h3 := <span class="number">0x10325476</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="MD5-in-ctf"><a href="#MD5-in-ctf" class="headerlink" title="MD5 in ctf"></a>MD5 in ctf</h3><p>MD5解密</p>
+<p><img src="https://raw.githubusercontent.com/p1aymaker/picture/master/img/20191005163847.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/p1aymaker/picture/master/img/20191005164007.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/p1aymaker/picture/master/img/20191005172339.png" alt=""></p>
+<h2 id="6-RSA"><a href="#6-RSA" class="headerlink" title="6.RSA"></a>6.RSA</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>RSA加密算法</strong>是一种<a href="https://zh.wikipedia.org/wiki/非对称加密演算法" target="_blank" rel="noopener">非对称加密算法</a>，在<a href="https://zh.wikipedia.org/wiki/公开密钥加密" target="_blank" rel="noopener">公开密钥加密</a>和<a href="https://zh.wikipedia.org/wiki/电子商业" target="_blank" rel="noopener">电子商业</a>中被广泛使用</p>
+<h3 id="加密原理-2"><a href="#加密原理-2" class="headerlink" title="加密原理"></a>加密原理</h3><ul>
+<li>公开密钥  n,e</li>
+<li>m为原信息</li>
+<li>c为加密信息</li>
+<li>d为解密密钥</li>
+</ul>
+<p>加密过程：(m^e) mod n=c</p>
+<p>解密过程：(c^d) mod n=m</p>
+<h3 id="RSA-in-CTF"><a href="#RSA-in-CTF" class="headerlink" title="RSA in CTF"></a>RSA in CTF</h3><p>利用gmpy2库解方程组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">n=<span class="number">103461035900816914121390101299049044413950405173712170434161686539878160984549</span></span><br><span class="line">phin=<span class="number">282164587459512124844245113950593348270</span>*<span class="number">366669102002966856876605669837014229418</span></span><br><span class="line">e=<span class="number">65537</span></span><br><span class="line">d=gmpy2.invert(e,phin)</span><br><span class="line">m=gmpy2.powmod(<span class="number">0xad939ff59f6e70bcbfad406f2494993757eee98b91bc244184a377520d06fc35</span>,d,n)</span><br><span class="line"><span class="keyword">print</span> hex(m)[<span class="number">2</span>:].decode(<span class="string">"hex"</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/09/Untitled/" rel="next" title="红帽杯RE WP">
+                <i class="fa fa-chevron-left"></i> 红帽杯RE WP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/26/python-bytecode/" rel="prev" title="python-bytecode">
+                python-bytecode <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="L0x1c" />
+            
+              <p class="site-author-name" itemprop="name">L0x1c</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/L0x1c" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/L0x1c" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xi4or0uji.github.io/" title="Xi4or0uji" target="_blank">Xi4or0uji</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#reverse之密码算法"><span class="nav-number">1.</span> <span class="nav-text">reverse之密码算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-base64编码"><span class="nav-number">1.1.</span> <span class="nav-text">1.base64编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加密原理"><span class="nav-number">1.1.1.</span> <span class="nav-text">加密原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#base64-In-CTF"><span class="nav-number">1.1.2.</span> <span class="nav-text">base64 In CTF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#easy-Base64"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">easy Base64</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#changed-Base64"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">changed Base64</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-RC4加密"><span class="nav-number">1.2.</span> <span class="nav-text">2.RC4加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加密原理-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">加密原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RC4-in-CTF"><span class="nav-number">1.2.2.</span> <span class="nav-text">RC4 in CTF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TEA系列（微型加密算法）"><span class="nav-number">1.3.</span> <span class="nav-text">3.TEA系列（微型加密算法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征"><span class="nav-number">1.3.1.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TEA"><span class="nav-number">1.3.2.</span> <span class="nav-text">TEA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XTEA"><span class="nav-number">1.3.3.</span> <span class="nav-text">XTEA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XXTEA"><span class="nav-number">1.3.4.</span> <span class="nav-text">XXTEA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TEA-in-CTF"><span class="nav-number">1.3.5.</span> <span class="nav-text">TEA in CTF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-SM4"><span class="nav-number">1.4.</span> <span class="nav-text">4.SM4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SM4-in-CTF"><span class="nav-number">1.4.2.</span> <span class="nav-text">SM4 in CTF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-MD5"><span class="nav-number">1.5.</span> <span class="nav-text">5.MD5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征-2"><span class="nav-number">1.5.1.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MD5-in-ctf"><span class="nav-number">1.5.2.</span> <span class="nav-text">MD5 in ctf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-RSA"><span class="nav-number">1.6.</span> <span class="nav-text">6.RSA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.6.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密原理-2"><span class="nav-number">1.6.2.</span> <span class="nav-text">加密原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA-in-CTF"><span class="nav-number">1.6.3.</span> <span class="nav-text">RSA in CTF</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">L0x1c</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
