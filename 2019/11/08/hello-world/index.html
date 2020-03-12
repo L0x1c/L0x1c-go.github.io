@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-TW">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CTF," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记录一下buuctf的write up.REEasyre下载后的拖进ida64:  发现 flag{this_Is_a_EaSyRe} helloword打开下载的压缩包里面发现是个apk的文件拖进APK改之理找到主函数发现flag  flag{7631a988259a00816deda84afb29430a} Reverse1打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll)，我们需要">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Buuctf wp">
+<meta property="og:url" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;2019&#x2F;11&#x2F;08&#x2F;hello-world&#x2F;index.html">
+<meta property="og:site_name" content="L0x1c-Grow up">
+<meta property="og:description" content="记录一下buuctf的write up.REEasyre下载后的拖进ida64:  发现 flag{this_Is_a_EaSyRe} helloword打开下载的压缩包里面发现是个apk的文件拖进APK改之理找到主函数发现flag  flag{7631a988259a00816deda84afb29430a} Reverse1打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll)，我们需要">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-0.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-3.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-4.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-5.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-6.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-10.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-11.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-12.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-13.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-14.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-15.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-16.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-17.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-18.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-19.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-20.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-21.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-22.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-23.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-24.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-25.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-26.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-27.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-28.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-154.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-155.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-156.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-157.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-158.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-64.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-65.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-66.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-67.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-68.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-69.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-70.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-71.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-72.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-73.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-74.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-75.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-76.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-77.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-78.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-79.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-80.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-81.png">
+<meta property="og:updated_time" content="2020-01-22T05:21:33.088Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;l0x1c.github.io&#x2F;images&#x2F;pasted-0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://l0x1c.github.io/2019/11/08/hello-world/"/>
+
+
+
+
+
+  <title>Buuctf wp | L0x1c-Grow up</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">L0x1c-Grow up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"> By:L0x1c</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l0x1c.github.io/2019/11/08/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="L0x1c">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="L0x1c-Grow up">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Buuctf wp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-08T19:37:17+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-22T13:21:33+08:00">
+                2020-01-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-RE/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-RE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="记录一下buuctf的write-up"><a href="#记录一下buuctf的write-up" class="headerlink" title="记录一下buuctf的write up."></a>记录一下buuctf的write up.</h1><h2 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h2><h3 id="Easyre"><a href="#Easyre" class="headerlink" title="Easyre"></a>Easyre</h3><p>下载后的拖进ida64:</p>
+<p><a href="/images/pasted-0.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-0.png" class="lazyload"></a></p>
+<p>发现 flag{this_Is_a_EaSyRe}</p>
+<h3 id="helloword"><a href="#helloword" class="headerlink" title="helloword"></a>helloword</h3><p>打开下载的压缩包里面发现是个apk的文件<br>拖进APK改之理找到主函数发现flag</p>
+<p><a href="/images/pasted-1.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-1.png" class="lazyload"></a></p>
+<p>flag{7631a988259a00816deda84afb29430a}</p>
+<h3 id="Reverse1"><a href="#Reverse1" class="headerlink" title="Reverse1"></a>Reverse1</h3><p>打开压缩包拖进dbg，由于我们现在在内核模式空间(.dll)，我们需要自己调整到用户层面(.exe)，所以按一下alt+f9</p>
+<p><a href="/images/pasted-2.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-2.png" class="lazyload"></a><br>大概主函数在exit的附近看见exit有两个我们在附近进去看看</p>
+<p><a href="/images/pasted-3.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-3.png" class="lazyload"></a><br>我们看到了flag的值 但是我们需要判断进行了什么操作,然后我们去进行分析</p>
+<p><a href="/images/pasted-4.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-4.png" class="lazyload"></a><br>经过分析来说</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( Str2[j] == <span class="string">'o'</span> )</span><br><span class="line">  	Str2[j] = <span class="string">'0'</span>;</span><br></pre></td></tr></table></figure></div>
+<p>可以看到进行的操作是o字符变成了0所以flag为：<br>flag{hell0_world}</p>
+<h3 id="Reverse2"><a href="#Reverse2" class="headerlink" title="Reverse2"></a>Reverse2</h3><p>打开压缩包放进ida</p>
+<p><a href="/images/pasted-5.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-5.png" class="lazyload"></a><br>可以看到里面进行了判断如果字符串有i和r就变成1 看到了strcmp里面进行和flag地址进行了比较</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.data:0000000000601080 flag            db <span class="string">'&#123;'</span>                  ; DATA XREF: main+34↑r</span><br><span class="line">.data:0000000000601080                                         ; main+44↑r ...</span><br><span class="line">.data:0000000000601081 aHackingForFun  db <span class="string">'hacking_for_fun&#125;'</span>,0</span><br></pre></td></tr></table></figure></div>
+
+<p>我们可以推出来flag{hacking_for_fun}进行变换：flag{hack1ng_fo1_fun}</p>
+<h3 id="新年快乐"><a href="#新年快乐" class="headerlink" title="新年快乐"></a>新年快乐</h3><p>我们把这个压缩包拖进PEiD的时候发现有壳是一个upx的壳</p>
+<p><a href="/images/pasted-6.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-6.png" class="lazyload"></a><br>我们把这个包拖进dbg 找到popad</p>
+<p><a href="/images/pasted-10.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-10.png" class="lazyload"></a><br>我们给jmp下断点</p>
+<p><a href="/images/pasted-11.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-11.png" class="lazyload"></a><br>到call 00401000位置进去 发现已经脱壳成功</p>
+<p><a href="/images/pasted-12.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-12.png" class="lazyload"></a><br>进行字符串探索 进入到403024:”please input the true flag:”位置进去看看</p>
+<p><a href="/images/pasted-13.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-13.png" class="lazyload"></a><br>我们可以分析出来进行了字符串的strcmp的函数功能判断是否和HappyNewYear!相同<br>flag为flag{HappyNewYear!}</p>
+<h3 id="xor"><a href="#xor" class="headerlink" title="xor"></a>xor</h3><p>打开压缩文件，拖进ida</p>
+<p><a href="/images/pasted-14.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-14.png" class="lazyload"></a><br>看到strcmp函数进行了比较，我们进去看一下再跳转到100000F6Eh可以看到进行了字符串</p>
+<p><a href="/images/pasted-15.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-15.png" class="lazyload"></a></p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( i = 1; i &lt; <span class="string">'!'</span>; ++i )</span><br><span class="line">  v6[i] ^= v6[i - 1];</span><br></pre></td></tr></table></figure></div>
+
+<p>可以不难分析，进行了前一个和下一个字符串进行了异或，第一个字符串不变，而两次异或就是原来的值所以我们写一个python的脚本</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">str1 = [<span class="string">'f'</span>, 0x0A, <span class="string">'k'</span>, 0x0C, <span class="string">'w'</span>, <span class="string">'&amp;'</span>, <span class="string">'O'</span>, <span class="string">'.'</span>, <span class="string">'@'</span>, 0x11, <span class="string">'x'</span>, 0x0D, <span class="string">'Z'</span>, <span class="string">';'</span>, <span class="string">'U'</span>, 0x11, <span class="string">'p'</span>, 0x19, <span class="string">'F'</span>, 0x1F, <span class="string">'v'</span>, <span class="string">'"'</span>, <span class="string">'M'</span>, <span class="string">'#'</span>, <span class="string">'D'</span>, 0x0E, <span class="string">'g'</span>, 6, <span class="string">'h'</span>, 0x0F, <span class="string">'G'</span>, <span class="string">'2'</span>, <span class="string">'O'</span>]</span><br><span class="line">x = <span class="string">'f'</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(1, len(str1)):</span><br><span class="line">    <span class="keyword">if</span> (isinstance(str1[i], str)):</span><br><span class="line">        <span class="keyword">if</span> (isinstance(str1[i - 1], str)):</span><br><span class="line">            x += chr(ord(str1[i]) ^ ord(str1[i - 1]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x += chr(ord(str1[i]) ^ str1[i - 1])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x += chr(str1[i] ^ ord(str1[i - 1]))</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure></div>
+
+<p>跑出来就是：</p>
+<p><a href="/images/pasted-16.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-16.png" class="lazyload"></a></p>
+<h3 id="内涵的软件"><a href="#内涵的软件" class="headerlink" title="内涵的软件"></a>内涵的软件</h3><p>打开压缩包中的文件拖进ida</p>
+<p><a href="/images/pasted-17.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-17.png" class="lazyload"></a><br>进入pirntf的里面那个地址看看有什么重要信息</p>
+<p><a href="/images/pasted-18.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-18.png" class="lazyload"></a><br>Y输入就是</p>
+<p><a href="/images/pasted-19.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-19.png" class="lazyload"></a><br>N输入就是</p>
+<p><a href="/images/pasted-20.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-20.png" class="lazyload"></a><br>如果输入非Y/N就是</p>
+<p><a href="/images/pasted-21.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-21.png" class="lazyload"></a><br>我们看一下结果的函数我们发现了提示</p>
+<p><a href="/images/pasted-22.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-22.png" class="lazyload"></a></p>
+<p>flag为：flag{49d3c93df25caad81232130f3d2ebfad}</p>
+<h3 id="Reverse3"><a href="#Reverse3" class="headerlink" title="Reverse3"></a>Reverse3</h3><p>我们打开压缩包里的文件放进ida</p>
+<p><a href="/images/pasted-23.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-23.png" class="lazyload"></a><br>看见了strcmp的函数里面进行了比较我们进去看一下</p>
+<p><a href="/images/pasted-24.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-24.png" class="lazyload"></a><br>我们看到了关键的字符串：e3nifIH9b_C@n@dH</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">for</span> ( j = 0; j &lt; v10; ++j )</span><br><span class="line">    Dest[j] += j;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">看到了这个函数我们就知道我们进行的操作是dest字符串第一个减去0第二个减去2 是原来的数组&lt;br&gt;写一个python的脚本</span><br><span class="line">```bash</span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">s = <span class="string">"e3nifIH9b_C@n@dH"</span></span><br><span class="line">x = <span class="string">" "</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,len(s)):</span><br><span class="line">        x += chr(ord(s[i]) - i)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure></div>
+
+<p>得到字符串 e2lfbDB2ZV95b3V9<br>strncpy是放进第一个数组里面我们看一下v1函数进行的操作</p>
+<p><a href="/images/pasted-25.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-25.png" class="lazyload"></a></p>
+<p><a href="/images/pasted-26.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-26.png" class="lazyload"></a>看到了的数是base64进行转换的数<br>去写python脚本</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">import base64</span><br><span class="line">s = <span class="string">"e3nifIH9b_C@n@dH"</span></span><br><span class="line">x = <span class="string">" "</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,len(s)):</span><br><span class="line">        x += chr(ord(s[i]) - i)</span><br><span class="line"><span class="built_in">print</span>(base64.b64decode(x))</span><br></pre></td></tr></table></figure></div>
+
+<p>运行出现了flag:flag{i_l0ve_you}</p>
+<h3 id="不一样的flag"><a href="#不一样的flag" class="headerlink" title="不一样的flag"></a>不一样的flag</h3><p>打开压缩包文件放进ida</p>
+<p><a href="/images/pasted-27.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-27.png" class="lazyload"></a></p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( v8[5 * v4 - 41 + v5] == <span class="string">'1'</span> )</span><br><span class="line">  <span class="built_in">exit</span>(1);</span><br><span class="line"><span class="keyword">if</span> ( v8[5 * v4 - 41 + v5] == <span class="string">'#'</span> )</span><br><span class="line">&#123;</span><br><span class="line">  puts(<span class="string">"\nok, the order you enter is the flag!"</span>);</span><br><span class="line">  <span class="built_in">exit</span>(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以分析出来1是j结束运行到#就是flag</p>
+<p><a href="/images/pasted-28.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-28.png" class="lazyload"></a><br>可以看到一个关键的字符串：*11110100001010000101111#</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ( v6 == 2 )</span><br><span class="line">    &#123;</span><br><span class="line">      ++v4;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ( v6 &gt; 2 )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( v6 == 3 )</span><br><span class="line">      &#123;</span><br><span class="line">        --v5;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( v6 != 4 )</span><br><span class="line">LABEL_13:</span><br><span class="line">          <span class="built_in">exit</span>(1);</span><br><span class="line">        ++v5;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( v6 != 1 )</span><br><span class="line">        goto LABEL_13;</span><br><span class="line">      --v4;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到v6是输入的值，我们up和down是v4进行操作，left和right是v5进行操作<br>5 * v4 - 41 + v5  看出来是5*5方阵：<br>*1111<br>01000<br>01010<br>00010<br>1111#<br>走迷宫flag为22244114422：flag{22244114422}</p>
+<h3 id="刮开有奖"><a href="#刮开有奖" class="headerlink" title="刮开有奖"></a>刮开有奖</h3><p>把程序放入ida中，进行分析，找到了主函数<br><a href="/images/pasted-154.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-154.png" class="lazyload"></a></p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">  memset(&amp;String, 0, 0xFFFFu);</span><br><span class="line">  GetDlgItemTextA(hDlg, 1000, &amp;String, 0xFFFF);</span><br><span class="line">  <span class="keyword">if</span> ( strlen(&amp;String) == 8 )</span><br><span class="line">  &#123;</span><br><span class="line">    v7 = <span class="string">'Z'</span>;</span><br><span class="line">    v8 = <span class="string">'J'</span>;</span><br><span class="line">    v9 = <span class="string">'S'</span>;</span><br><span class="line">    v10 = <span class="string">'E'</span>;</span><br><span class="line">    v11 = <span class="string">'C'</span>;</span><br><span class="line">    v12 = <span class="string">'a'</span>;</span><br><span class="line">    v13 = <span class="string">'N'</span>;</span><br><span class="line">    v14 = <span class="string">'H'</span>;</span><br><span class="line">    v15 = <span class="string">'3'</span>;</span><br><span class="line">    v16 = <span class="string">'n'</span>;</span><br><span class="line">    v17 = <span class="string">'g'</span>;</span><br><span class="line">    sub_4010F0(&amp;v7, 0, 10);</span><br><span class="line">    memset(&amp;v26, 0, 0xFFFFu);</span><br><span class="line">    v26 = v23;</span><br><span class="line">    v28 = v25;</span><br><span class="line">    v27 = v24;</span><br><span class="line">    v4 = (const char *)sub_401000(&amp;v26, strlen(&amp;v26));</span><br><span class="line">    memset(&amp;v26, 0, 0xFFFFu);</span><br><span class="line">    v27 = v21;</span><br><span class="line">    v26 = v20;</span><br><span class="line">    v28 = v22;</span><br><span class="line">    v5 = (const char *)sub_401000(&amp;v26, strlen(&amp;v26));</span><br><span class="line">    <span class="keyword">if</span> ( String == v7 + 34</span><br><span class="line">      &amp;&amp; v19 == v11</span><br><span class="line">      &amp;&amp; 4 * v20 - 141 == 3 * v9</span><br><span class="line">      &amp;&amp; v21 / 4 == 2 * (v14 / 9)</span><br><span class="line">      &amp;&amp; !strcmp(v4, <span class="string">"ak1w"</span>)</span><br><span class="line">      &amp;&amp; !strcmp(v5, <span class="string">"V1Ax"</span>) )</span><br><span class="line">    &#123;</span><br><span class="line">      MessageBoxA(hDlg, <span class="string">"U g3t 1T!"</span>, <span class="string">"@_@"</span>, 0);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>GetDlgItemTextA(hDlg, 1000, &amp;String, 0xFFFF)知道是我们输入的位置，下面对string进行了判定，知道我们输入的字符应该是8位，然后对v9的开始的地址的数值中间有个函数的调用，我们进去看一下</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl sub_4010F0(int a1, int a2, int a3)</span><br><span class="line">&#123;</span><br><span class="line">  int result; // eax</span><br><span class="line">  int i; // esi</span><br><span class="line">  int v5; // ecx</span><br><span class="line">  int v6; // edx</span><br><span class="line"></span><br><span class="line">  result = a3;</span><br><span class="line">  <span class="keyword">for</span> ( i = a2; i &lt;= a3; a2 = i )</span><br><span class="line">  &#123;</span><br><span class="line">    v5 = 4 * i;</span><br><span class="line">    v6 = *(_DWORD *)(4 * i + a1);</span><br><span class="line">    <span class="keyword">if</span> ( a2 &lt; result &amp;&amp; i &lt; result )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( v6 &gt; *(_DWORD *)(a1 + 4 * result) )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> ( i &gt;= result )</span><br><span class="line">            <span class="built_in">break</span>;</span><br><span class="line">          ++i;</span><br><span class="line">          *(_DWORD *)(v5 + a1) = *(_DWORD *)(a1 + 4 * result);</span><br><span class="line">          <span class="keyword">if</span> ( i &gt;= result )</span><br><span class="line">            <span class="built_in">break</span>;</span><br><span class="line">          <span class="keyword">while</span> ( *(_DWORD *)(a1 + 4 * i) &lt;= v6 )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">if</span> ( ++i &gt;= result )</span><br><span class="line">              goto LABEL_13;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> ( i &gt;= result )</span><br><span class="line">            <span class="built_in">break</span>;</span><br><span class="line">          v5 = 4 * i;</span><br><span class="line">          *(_DWORD *)(a1 + 4 * result) = *(_DWORD *)(4 * i + a1);</span><br><span class="line">        &#125;</span><br><span class="line">        --result;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span> ( i &lt; result );</span><br><span class="line">    &#125;</span><br><span class="line">LABEL_13:</span><br><span class="line">    *(_DWORD *)(a1 + 4 * result) = v6;</span><br><span class="line">    sub_4010F0(a1, a2, i - 1);</span><br><span class="line">    result = a3;</span><br><span class="line">    ++i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>转化成了c进行了运行，看一下进行了什么变化<br><a href="/images/pasted-155.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-155.png" class="lazyload"></a><br>进入到下面的一个加密方式</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">_BYTE *__cdecl sub_401000(int a1, int a2)</span><br><span class="line">&#123;</span><br><span class="line">  int v2; // eax</span><br><span class="line">  int v3; // esi</span><br><span class="line">  size_t v4; // ebx</span><br><span class="line">  _BYTE *v5; // eax</span><br><span class="line">  _BYTE *v6; // edi</span><br><span class="line">  int v7; // eax</span><br><span class="line">  _BYTE *v8; // ebx</span><br><span class="line">  int v9; // edi</span><br><span class="line">  signed int v10; // edx</span><br><span class="line">  int v11; // edi</span><br><span class="line">  signed int v12; // eax</span><br><span class="line">  signed int v13; // esi</span><br><span class="line">  _BYTE *result; // eax</span><br><span class="line">  _BYTE *v15; // [esp+Ch] [ebp-10h]</span><br><span class="line">  _BYTE *v16; // [esp+10h] [ebp-Ch]</span><br><span class="line">  int v17; // [esp+14h] [ebp-8h]</span><br><span class="line">  int v18; // [esp+18h] [ebp-4h]</span><br><span class="line"></span><br><span class="line">  v2 = a2 / 3;</span><br><span class="line">  v3 = 0;</span><br><span class="line">  <span class="keyword">if</span> ( a2 % 3 &gt; 0 )</span><br><span class="line">    ++v2;</span><br><span class="line">  v4 = 4 * v2 + 1;</span><br><span class="line">  v5 = malloc(v4);</span><br><span class="line">  v6 = v5;</span><br><span class="line">  v15 = v5;</span><br><span class="line">  <span class="keyword">if</span> ( !v5 )</span><br><span class="line">    <span class="built_in">exit</span>(0);</span><br><span class="line">  memset(v5, 0, v4);</span><br><span class="line">  v7 = a2;</span><br><span class="line">  v8 = v6;</span><br><span class="line">  v16 = v6;</span><br><span class="line">  <span class="keyword">if</span> ( a2 &gt; 0 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">while</span> ( 1 )</span><br><span class="line">    &#123;</span><br><span class="line">      v9 = 0;</span><br><span class="line">      v10 = 0;</span><br><span class="line">      v18 = 0;</span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( v3 &gt;= v7 )</span><br><span class="line">          <span class="built_in">break</span>;</span><br><span class="line">        ++v10;</span><br><span class="line">        v9 = *(unsigned __int8 *)(v3++ + a1) | (v9 &lt;&lt; 8);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span> ( v10 &lt; 3 );</span><br><span class="line">      v11 = v9 &lt;&lt; 8 * (3 - v10);</span><br><span class="line">      v12 = 0;</span><br><span class="line">      v17 = v3;</span><br><span class="line">      v13 = 18;</span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( v10 &gt;= v12 )</span><br><span class="line">        &#123;</span><br><span class="line">          *((_BYTE *)&amp;v18 + v12) = (v11 &gt;&gt; v13) &amp; 0x3F;</span><br><span class="line">          v8 = v16;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          *((_BYTE *)&amp;v18 + v12) = 64;</span><br><span class="line">        &#125;</span><br><span class="line">        *v8++ = byte_407830[*((char *)&amp;v18 + v12)];</span><br><span class="line">        v13 -= 6;</span><br><span class="line">        ++v12;</span><br><span class="line">        v16 = v8;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span> ( v13 &gt; -6 );</span><br><span class="line">      v3 = v17;</span><br><span class="line">      <span class="keyword">if</span> ( v17 &gt;= a2 )</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">      v7 = a2;</span><br><span class="line">    &#125;</span><br><span class="line">    v6 = v15;</span><br><span class="line">  &#125;</span><br><span class="line">  result = v6;</span><br><span class="line">  *v8 = 0;</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>知道这是个base64：密码表为<br><a href="/images/pasted-156.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-156.png" class="lazyload"></a><br>flag的判别：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( String == v7 + 34</span><br><span class="line">        &amp;&amp; v19 == v11</span><br><span class="line">        &amp;&amp; 4 * v20 - 141 == 3 * v9</span><br><span class="line">        &amp;&amp; v21 / 4 == 2 * (v14 / 9)</span><br><span class="line">        &amp;&amp; !strcmp(v4, <span class="string">"ak1w"</span>)</span><br><span class="line">        &amp;&amp; !strcmp(v5, <span class="string">"V1Ax"</span>) )</span><br><span class="line">      &#123;</span><br><span class="line">        MessageBoxA(hDlg, <span class="string">"U g3t 1T!"</span>, <span class="string">"@_@"</span>, 0);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></div>
+<p>可以看出来后面的两个base64的加密等于V1Axak1w 前面的等于一个U一个J</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">import base64</span><br><span class="line">base_now=<span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="</span></span><br><span class="line">base_init=<span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="</span></span><br><span class="line">clear=<span class="string">"V1Axak1w"</span></span><br><span class="line">c=<span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(clear)):</span><br><span class="line">    b=base_now.find(clear[i])</span><br><span class="line">    c+=base_init[b]</span><br><span class="line">c=base64.b64decode(c)</span><br><span class="line"><span class="built_in">print</span> c</span><br></pre></td></tr></table></figure></div>
+<p>结果flag为：flag{UJWP1jMp}</p>
+<h3 id="SimpleRev"><a href="#SimpleRev" class="headerlink" title="SimpleRev"></a>SimpleRev</h3><p>把程序放入ida中，找到主函数：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl __noreturn main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  int v3; // eax</span><br><span class="line">  char v4; // [rsp+Fh] [rbp-1h]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> ( 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">while</span> ( 1 )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"Welcome to CTF game!\nPlease input d/D to start or input q/Q to quit this program: "</span>, argv, envp);</span><br><span class="line">      v4 = getchar();</span><br><span class="line">      <span class="keyword">if</span> ( v4 != 100 &amp;&amp; v4 != 68 )</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">      Decry();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( v4 == 113 || v4 == 81 )</span><br><span class="line">      Exit();</span><br><span class="line">    puts(<span class="string">"Input fault format!"</span>);</span><br><span class="line">    v3 = getchar();</span><br><span class="line">    putchar(v3);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>可以看出来，重要的是Decry函数：<br><a href="/images/pasted-157.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-157.png" class="lazyload"></a><br>str2[v2] = (v1 - 39 - key[v3++ % v5] + 97) % 26 + 97;运算，最后与text比较<br>直接给程序跑了：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int i, j, n = 0, v5 = 10, v3 = 0, v2 = 0;</span><br><span class="line">	char v1;</span><br><span class="line">	char flag[11] = &#123; 0 &#125;;</span><br><span class="line">	char str2[104] = &#123; 0 &#125;;</span><br><span class="line">	char key[] = <span class="string">"ADSFKNDCLS"</span>;</span><br><span class="line">	char text[] = <span class="string">"killshadow"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = 0; i &lt; v5; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (key[v3 % v5] &gt; 64 &amp;&amp; key[v3 % v5] &lt;= 90)</span><br><span class="line">			key[i] = key[v3 % v5] + 32;</span><br><span class="line">		++v3;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (j = 0; j &lt; 10; ++j) &#123;</span><br><span class="line">		<span class="keyword">for</span> (v2 = 0; v2 &lt; 10; ++v2) &#123;</span><br><span class="line">			v1 = text[v2] - 97 + 26 * j - 97 + key[v3++ % v5] + 39;</span><br><span class="line">			<span class="keyword">if</span> ((v1 &gt;= 65 &amp;&amp; v1 &lt;= 90) || (v1 &gt;= 97 &amp;&amp; v1 &lt;= 122)) &#123;</span><br><span class="line">				flag[v2] = v1;</span><br><span class="line">				<span class="keyword">if</span> (++n == 10) &#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, flag);</span><br><span class="line">					<span class="built_in">return</span> 0;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><a href="/images/pasted-158.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-158.png" class="lazyload"></a><br>出来了flag：flag{KLDQCUDFZO}</p>
+<h3 id="Java逆向解密"><a href="#Java逆向解密" class="headerlink" title="Java逆向解密"></a>Java逆向解密</h3><h3 id="SWPU2019-EasiestRe"><a href="#SWPU2019-EasiestRe" class="headerlink" title="[SWPU2019]EasiestRe"></a>[SWPU2019]EasiestRe</h3><p>这道题主要运用了od的分析，打开放入了ida Shift+f12进行字符串检索看到了关键字<br><a href="/images/pasted-64.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-64.png" class="lazyload"></a><br>进入查看<br><a href="/images/pasted-65.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-65.png" class="lazyload"></a></p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">      v7 = (int *)&amp;v24;</span><br><span class="line">      <span class="keyword">if</span> ( v26 &gt;= 0x10 )</span><br><span class="line">        v7 = v24;</span><br><span class="line">      *((_BYTE *)v7 + v5) ^= *((_BYTE *)&amp;v33 + v5 % v6);</span><br><span class="line">      ++v5;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> ( v5 &lt; 32 );</span><br><span class="line">    v8 = (int *)&amp;v24;</span><br><span class="line">    v4 = (int)v24;</span><br><span class="line">    <span class="keyword">if</span> ( v26 &gt;= 0x10 )</span><br><span class="line">      v8 = v24;</span><br><span class="line">    v29 = 0;</span><br><span class="line">    v27 = 0i64;</span><br><span class="line">    v28 = 0i64;</span><br><span class="line">    *(_QWORD *)&amp;v30 = *(_QWORD *)v8;</span><br><span class="line">    *((_QWORD *)&amp;v30 + 1) = *((_QWORD *)v8 + 1);</span><br><span class="line">    *(_QWORD *)&amp;v31 = *((_QWORD *)v8 + 2);</span><br><span class="line">    *((_QWORD *)&amp;v31 + 1) = *((_QWORD *)v8 + 3);</span><br><span class="line">    sub_4025C0(v22, v23, 256, (unsigned int)&amp;v30, (unsigned int)&amp;v27);</span><br><span class="line">    v36 = -133220429;</span><br><span class="line">    v37 = 1571732668;</span><br><span class="line">    v9 = &amp;v36;</span><br><span class="line">    v38 = -2041750854;</span><br><span class="line">    v10 = &amp;v27;</span><br><span class="line">    v39 = -748513468;</span><br><span class="line">    v11 = 28;</span><br><span class="line">    v40 = 371505743;</span><br><span class="line">    v41 = 443719435;</span><br><span class="line">    v42 = 644704357;</span><br><span class="line">    v43 = 1741188026;</span><br><span class="line">    <span class="keyword">while</span> ( 1 )</span><br><span class="line">    &#123;</span><br><span class="line">      v12 = *v9;</span><br><span class="line">      <span class="keyword">if</span> ( *v9 != *(_DWORD *)v10 )</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">      ++v9;</span><br><span class="line">      v10 = (__int128 *)((char *)v10 + 4);</span><br><span class="line">      v14 = v11 &lt; 4;</span><br><span class="line">      v11 -= 4;</span><br><span class="line">      <span class="keyword">if</span> ( v14 )</span><br><span class="line">      &#123;</span><br><span class="line">        v13 = 0;</span><br><span class="line">        goto LABEL_19;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+<p>这个就是主函数，防止od与ida不对应，我就看了pe结构进行了修改<br><a href="/images/pasted-66.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-66.png" class="lazyload"></a><br>可以看到dynamic_base 是动态链接库属性<br><a href="/images/pasted-67.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-67.png" class="lazyload"></a><br>找到了位置，由于偏移量，修改成00 81<br><br>进入od 发现第一次的异或的位置：具体的地方给了注释<br><a href="/images/pasted-68.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-68.png" class="lazyload"></a><br><a href="/images/pasted-69.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-69.png" class="lazyload"></a><br><a href="/images/pasted-70.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-70.png" class="lazyload"></a><br>我们进行了分析，他把我们输入的值和所对应的密钥进行了异或的关系<br><br>我们下内存断点然后F9，看后面是谁对这串字符进行了操作<br><a href="/images/pasted-71.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-71.png" class="lazyload"></a><br>找到了后，我们看到只是放到了堆栈里面，既没有cmp和je或者jne,所以需要继续下内存断点<br><a href="/images/pasted-72.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-72.png" class="lazyload"></a><br>发现，ecx里面存的是第二次异或的密钥，那么我们还要继续下内存断点<br><a href="/images/pasted-73.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-73.png" class="lazyload"></a><br>发现，有了cmp函数进行比较，这样我们的思路就完全分析明白了，自己改了ZF标志位分析后发现进行了两次异或操作然后跟最后的进行比较，看是否正确，所以写了c语言<br><a href="/images/pasted-74.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-74.png" class="lazyload"></a><br>出现了flag:flag{Y0uaretheB3st!#@_VirtualCC}</p>
+<h3 id="SWPU2019-Android1"><a href="#SWPU2019-Android1" class="headerlink" title="[SWPU2019]Android1"></a>[SWPU2019]Android1</h3><p>拿到后，直接把.so文件放进了ida,shift+f12发现flag字段后，发现不对，分了很奇怪的4个函数，c语言如下</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;string.h&gt; </span></span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt; </span></span><br><span class="line">int <span class="function"><span class="title">main</span></span>() &#123; </span><br><span class="line">char v3[] = <span class="string">"MWa"</span>; </span><br><span class="line">char v2[3]; //后一次为4 </span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt;= 2; ++i) </span><br><span class="line">v2[i] = v3[i] ^ 0x38;     </span><br><span class="line">//uoY </span><br><span class="line">char v3[] = <span class="string">"AVE"</span>;</span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt;= 2; ++i)  </span><br><span class="line">v2[i] = v3[i] ^ 0x24;     </span><br><span class="line">//era </span><br><span class="line">char v3[] = <span class="string">"R_C"</span>; </span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt;= 2; ++i) </span><br><span class="line">v2[i] = v3[i] ^ 0x37;    /</span><br><span class="line">/eht</span><br><span class="line">char v3[] = <span class="string">"#<span class="variable">$D5</span>"</span>; </span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt;= 3; ++i)    </span><br><span class="line">v2[i] = v3[i] ^ 0x77;    </span><br><span class="line">//TS3B </span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt;= 3; ++i) </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c"</span>, v2[i]); </span><br><span class="line"><span class="built_in">return</span> 0; &#125;</span><br></pre></td></tr></table></figure></div>
+<p>flag为：flag{YouaretheB3ST}</p>
+<h3 id="SWPU2019-Android3"><a href="#SWPU2019-Android3" class="headerlink" title="[SWPU2019]Android3"></a>[SWPU2019]Android3</h3><p>找到check函数：<br><a href="/images/pasted-75.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-75.png" class="lazyload"></a><br>判断长度是否为11，根据data值操作来存放数组的下标，进行调用fun1<br><a href="/images/pasted-76.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-76.png" class="lazyload"></a><br>相当于链表，查看fun2<br><a href="/images/pasted-77.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-77.png" class="lazyload"></a><br>V1=原始值 v2= -1^（(b下标+原来下标)%2）<br><a href="/images/pasted-78.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-78.png" class="lazyload"></a><br><a href="/images/pasted-79.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-79.png" class="lazyload"></a></p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">int <span class="function"><span class="title">main</span></span>()&#123; </span><br><span class="line">char a[] = <span class="string">"0123456789a"</span>; </span><br><span class="line">int data[] = &#123; 6, 2, 5, 0, 7, 3, 10, 9, 1, 4, 8 &#125;; </span><br><span class="line">int data2[] = &#123; 0x3C, 0x6C, 0x33, 0x4F, 0x81, 0x38, 0x2C, 0x5E, 0x54, 0x45, 0x40 &#125;; </span><br><span class="line">int v1[24] = &#123; 0 &#125;; </span><br><span class="line">int b; int* z1; </span><br><span class="line">int* z2; </span><br><span class="line">int* z3; </span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; 11; i++) &#123;  </span><br><span class="line">b = data[i]; </span><br><span class="line">v1[2 * b ] = i; </span><br><span class="line">v1[2 * b + 1] = a[i]; &#125; </span><br><span class="line">z1 = (int*)malloc(16u); </span><br><span class="line">int i = 0; </span><br><span class="line"><span class="keyword">while</span> (i != 11) &#123;  </span><br><span class="line">z2 = (int*)malloc(16u);  </span><br><span class="line">*z2 = v1[2 * i + 2];  </span><br><span class="line">z2[1] = i;  </span><br><span class="line">z3 = &amp;v1[2 * i + 2];  </span><br><span class="line">z2[3] = 0;  ++i;  </span><br><span class="line">*(z2 + 2) = *(z3 + 1);  </span><br><span class="line">z1[3] = *z2;  z1 = z2;  </span><br><span class="line">v1[1] = (int)z2; &#125; </span><br><span class="line">z1[3] = 0; </span><br><span class="line"><span class="keyword">while</span> (1) &#123;  </span><br><span class="line">*z3 = z3[3];  </span><br><span class="line"><span class="keyword">if</span> ((z3[1] + z3[0]) % 2)  &#123;  </span><br><span class="line">b = z3[2] + (z3[1] + z3[0]);   </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,data2[z3[1]] - z3[1] - z3[0]);  &#125;  </span><br><span class="line"><span class="keyword">else</span> &#123;   </span><br><span class="line">b = z3[2] - (z3[1] + z3[0]);   </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,data2[z3[1]] + z3[1] + z3[0]);  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int s[] = &#123; 50,48,49,57,83,87,80,85,99,116,102 &#125;; </span><br><span class="line"><span class="keyword">for</span> (int i = 0;i&lt;11 ;i++) &#123;  </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c"</span>, s[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><a href="/images/pasted-80.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-80.png" class="lazyload"></a><br>flag:flag{2019SWPUctf}</p>
+<h3 id="RoarCTF2019-polyre"><a href="#RoarCTF2019-polyre" class="headerlink" title="RoarCTF2019 polyre"></a>RoarCTF2019 polyre</h3><p><a href="/images/pasted-81.png" data-fancybox="group" data-caption="upload successful" class="fancybox"><img alt="upload successful" title="upload successful" data-src="/images/pasted-81.png" class="lazyload"></a><br>从大佬那里问出来是ollvm混淆问题<br><br>参考教程：<a href="https://security.tencent.com/index.php/blog/msg/112" target="_blank" rel="noopener">https://security.tencent.com/index.php/blog/msg/112</a><br><br>使用default.py脚本：<a href="https://security.tencent.com/index.php/opensource/detail/18" target="_blank" rel="noopener">https://security.tencent.com/index.php/opensource/detail/18</a><br></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/18/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E6%A0%88/" rel="prev" title="函数调用约定以及栈">
+                函数调用约定以及栈 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="L0x1c" />
+            
+              <p class="site-author-name" itemprop="name">L0x1c</p>
+              <p class="site-description motion-element" itemprop="description">一个努力学习二进制的小白 !!!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/L0x1c" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/L0x1c" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xi4or0uji.github.io/" title="Xi4or0uji" target="_blank">Xi4or0uji</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记录一下buuctf的write-up"><span class="nav-number">1.</span> <span class="nav-text">记录一下buuctf的write up.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RE"><span class="nav-number">1.1.</span> <span class="nav-text">RE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Easyre"><span class="nav-number">1.1.1.</span> <span class="nav-text">Easyre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#helloword"><span class="nav-number">1.1.2.</span> <span class="nav-text">helloword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse1"><span class="nav-number">1.1.3.</span> <span class="nav-text">Reverse1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse2"><span class="nav-number">1.1.4.</span> <span class="nav-text">Reverse2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新年快乐"><span class="nav-number">1.1.5.</span> <span class="nav-text">新年快乐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xor"><span class="nav-number">1.1.6.</span> <span class="nav-text">xor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内涵的软件"><span class="nav-number">1.1.7.</span> <span class="nav-text">内涵的软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse3"><span class="nav-number">1.1.8.</span> <span class="nav-text">Reverse3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不一样的flag"><span class="nav-number">1.1.9.</span> <span class="nav-text">不一样的flag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刮开有奖"><span class="nav-number">1.1.10.</span> <span class="nav-text">刮开有奖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleRev"><span class="nav-number">1.1.11.</span> <span class="nav-text">SimpleRev</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java逆向解密"><span class="nav-number">1.1.12.</span> <span class="nav-text">Java逆向解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SWPU2019-EasiestRe"><span class="nav-number">1.1.13.</span> <span class="nav-text">[SWPU2019]EasiestRe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SWPU2019-Android1"><span class="nav-number">1.1.14.</span> <span class="nav-text">[SWPU2019]Android1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SWPU2019-Android3"><span class="nav-number">1.1.15.</span> <span class="nav-text">[SWPU2019]Android3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RoarCTF2019-polyre"><span class="nav-number">1.1.16.</span> <span class="nav-text">RoarCTF2019 polyre</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">L0x1c</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
